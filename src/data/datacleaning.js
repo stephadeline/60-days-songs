@@ -24,20 +24,6 @@ const catIndicators = [
   "New EV sales per million capita",
 ];
 
-// shortlisted column names from the inequality data
-const inequalityColumns = ["Entity", "Year", "Gini coefficient"];
-
-// shortlisted column names from the penn world data
-const pennWorldColumns = [
-  "Entity",
-  "Year",
-  "GDP (expenditure, multiple price benchmarks)",
-  "Consumption of households and government (single price benchmark)",
-  "Annual working hours per worker",
-  "GDP per capita (expenditure, multiple price benchmarks)",
-  "Productivity: output per hour worked",
-];
-
 const NAME_OVERRIDES = {
   Brunei: "Brunei Darussalam",
   "Cape Verde": "Cabo Verde",
@@ -121,16 +107,4 @@ const finalData = joinedData.map((obj) => {
   return obj;
 });
 
-// fs.writeFileSync(
-//   "src/data/cat.json",
-//   JSON.stringify(cleanCat.objects(), null, 2)
-// );
-// fs.writeFileSync(
-//   "src/data/inequality.json",
-//   JSON.stringify(cleanInequality.objects(), null, 2)
-// );
-// fs.writeFileSync(
-//   "src/data/pennworld.json",
-//   JSON.stringify(cleanPennworld.objects(), null, 2)
-// );
 fs.writeFileSync("src/data/joined.json", JSON.stringify(finalData, null, 2));
