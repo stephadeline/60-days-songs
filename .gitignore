@@ -1,0 +1,5 @@
+.DS_Store
+.retype
+.tmp
+node_modules
+.env

@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "node src/data/datacleaning.js"
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^1.1.0",
@@ -20,6 +21,7 @@
   },
   "dependencies": {
     "@observablehq/plot": "^0.6.0",
-    "arquero": "^5.1.0"
+    "arquero": "^5.1.0",
+    "country-locale-map": "^1.8.11"
   }
 }
