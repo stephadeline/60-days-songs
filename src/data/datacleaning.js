@@ -53,6 +53,7 @@ const pennworldTable = aq
   .select(
     "Entity",
     "Year",
+    "Population",
     "GDP (expenditure, multiple price benchmarks)",
     "Consumption of households and government (single price benchmark)",
     "Annual working hours per worker",
@@ -90,13 +91,28 @@ const cleanJoined = pennworldTable
     {
       alpha3: aq.escape((d) => clm.getAlpha3ByAlpha2(d.alpha2)),
       country_name: aq.escape((d) => clm.getCountryNameByAlpha2(d.alpha2)),
+      consumption_per_capita: (d) =>
+        d["Consumption of households and government (single price benchmark)"] /
+        d.Population,
     },
     { before: "Year" }
   )
   .rename({ Year: "year" })
   .select(aq.not("Entity"));
 
-const joinedData = cleanCat.join_full(cleanJoined).orderby("alpha2").objects();
+const joinedData = cleanCat
+  .join_full(cleanJoined)
+  .orderby("alpha2", "year")
+  .derive(
+    {
+      continent: aq.escape((d) => {
+        const country = clm.getCountryByAlpha2(d.alpha2);
+        return country.continent;
+      }),
+    },
+    { before: "year" }
+  )
+  .objects();
 
 const finalData = joinedData.map((obj) => {
   Object.keys(obj).forEach((key) => {
