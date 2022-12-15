@@ -30,6 +30,7 @@
 
 <main>
 	<div class="year-controls">
+		<h1>This is Group 2's final project</h1>
 		<div>{selectedYear}</div>
 		<RangePlayback min={yearMin} max={yearMax} bind:value={selectedYear} />
 	</div>
