@@ -112,9 +112,11 @@ const joinedData = cleanCat
     },
     { before: "year" }
   )
-  .objects();
+  .filter((d) => d.year >= 1990 && d.year <= 2018 && d.Population);
 
-const finalData = joinedData.map((obj) => {
+// console.log(joinedData.columnNames());
+
+const finalData = joinedData.objects().map((obj) => {
   Object.keys(obj).forEach((key) => {
     if (!obj[key]) {
       delete obj[key];
