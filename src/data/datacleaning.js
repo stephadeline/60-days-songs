@@ -7,10 +7,15 @@ const { op } = aq;
 const catCsv = fs.readFileSync("src/data/climateactiontracker.csv", "utf8");
 const inequalityCsv = fs.readFileSync("src/data/inequality.csv", "utf8");
 const pennworldCsv = fs.readFileSync("src/data/pennworlddata.csv", "utf8");
+const meatConsumptionCsv = fs.readFileSync(
+  "src/data/meatconsumption.csv",
+  "utf8"
+);
 
 // list of all country names (to exclude regions, continents etc)
 const allCountries = clm.getAllCountries();
 const allAlpha2 = allCountries.map((country) => country.alpha2);
+const allAlpha3 = allCountries.map((country) => country.alpha3);
 
 // shortlisted indicators from the CAT data
 const catIndicators = [
@@ -40,6 +45,29 @@ const NAME_OVERRIDES = {
   "Sint Maarten (Dutch part)": "Sint Maarten",
 };
 
+const meatTable = aq
+  .fromCSV(meatConsumptionCsv)
+  .rename(
+    aq.names(
+      "alpha3",
+      "indicator",
+      "type",
+      "measure",
+      "frequency",
+      "year",
+      "value"
+    )
+  )
+  .groupby("alpha3", "year")
+  .pivot("type", "value")
+  .filter(aq.escape((d) => allAlpha3.includes(d.alpha3)))
+  .derive(
+    {
+      alpha2: aq.escape((d) => clm.getAlpha2ByAlpha3(d.alpha3)),
+      country_name: aq.escape((d) => clm.getCountryNameByAlpha3(d.alpha3)),
+    },
+    { before: "year" }
+  );
 const catTable = aq
   .fromCSV(catCsv)
   .filter(aq.escape((d) => catIndicators.includes(d.indicator)));
@@ -98,7 +126,8 @@ const cleanJoined = pennworldTable
     { before: "Year" }
   )
   .rename({ Year: "year" })
-  .select(aq.not("Entity"));
+  .select(aq.not("Entity"))
+  .join_full(meatTable);
 
 const joinedData = cleanCat
   .join_full(cleanJoined)
@@ -126,3 +155,7 @@ const finalData = joinedData.objects().map((obj) => {
 });
 
 fs.writeFileSync("src/data/joined.json", JSON.stringify(finalData, null, 2));
+fs.writeFileSync(
+  "src/data/joinedTest.json",
+  JSON.stringify(cleanJoined.objects(), null, 2)
+);
