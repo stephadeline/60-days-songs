@@ -22,10 +22,6 @@ const catIndicators = [
   "Agriculture activity (total): consumption",
   "Agriculture activity (meat): consumption",
   "Electricity activity (per capita)",
-  "Waste generation (per capita)",
-  "Total fossil CO2 emission",
-  "Oil and Gas activity: production",
-  "Gas share in primary energy",
   "New EV sales per million capita",
 ];
 
@@ -84,14 +80,14 @@ const pennworldTable = aq
     "Population",
     "GDP (expenditure, multiple price benchmarks)",
     "Consumption of households and government (single price benchmark)",
-    "Annual working hours per worker",
     "GDP per capita (expenditure, multiple price benchmarks)",
     "Productivity: output per hour worked"
   );
 
 const cleanCat = catTable
-  .groupby("country", "year", "variable")
-  .pivot(["indicator", "variable"], "value")
+  .filter((d) => d.variable === "historic")
+  .groupby("country", "year")
+  .pivot("indicator", "value")
   .derive(
     {
       alpha3: aq.escape((d) => clm.getAlpha3ByAlpha2(d.country)),
@@ -119,7 +115,7 @@ const cleanJoined = pennworldTable
     {
       alpha3: aq.escape((d) => clm.getAlpha3ByAlpha2(d.alpha2)),
       country_name: aq.escape((d) => clm.getCountryNameByAlpha2(d.alpha2)),
-      consumption_per_capita: (d) =>
+      "Consumption of households and government per capita": (d) =>
         d["Consumption of households and government (single price benchmark)"] /
         d.Population,
     },
@@ -153,6 +149,11 @@ const finalData = joinedData.objects().map((obj) => {
   });
   return obj;
 });
+
+// get names of columns
+const names = joinedData.columnNames();
+
+console.log(names);
 
 fs.writeFileSync("src/data/joined.json", JSON.stringify(finalData, null, 2));
 fs.writeFileSync(
