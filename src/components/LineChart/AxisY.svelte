@@ -1,18 +1,27 @@
 <script>
+  // import { format } from "d3-format"
   export let yScale;
   export let margin;
   export let width;
   export let height;
-  export let nTicks = 5;
+  export let nTicksY = 5;
   export let grid = true;
   export let xScale;
-  $: yTicks = yScale.ticks(nTicks);
-  $: xTicks = xScale.ticks();
-  console.log(xScale.ticks())
+  export let isLog = false;
+  export let isMobile = false;
+
+  $: nTicksX = isMobile ? 5 : 10;
+  $: yTicks = yScale.ticks(nTicksY)
+  $: xTicks = xScale.ticks(nTicksX)
+  
+
 
 function formatNum(num) {
+    if (num >= 1000000000000) {
+        return (num / 1000000000000).toFixed(1).replace(/\.0$/, '') + 'T';
+     }
      if (num >= 1000000000) {
-        return (num / 1000000000).toFixed(1).replace(/\.0$/, '') + 'G';
+        return (num / 1000000000).toFixed(1).replace(/\.0$/, '') + 'B';
      }
      if (num >= 1000000) {
         return (num / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
