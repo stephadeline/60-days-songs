@@ -7,10 +7,9 @@
   export let nTicksY = 5;
   export let grid = true;
   export let xScale;
-  export let isLog = false;
   export let isMobile = false;
 
-  $: nTicksX = isMobile ? 5 : 10;
+  $: nTicksX = isMobile ? 3 : 10;
   $: yTicks = yScale.ticks(nTicksY)
   $: xTicks = xScale.ticks(nTicksX)
   

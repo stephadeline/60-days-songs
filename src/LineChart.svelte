@@ -11,6 +11,10 @@
     "Electricity activity (per capita)",
     "New EV sales per million capita",
     "Consumption of households and government per capita",
+    "BEEF",
+    "PIG",
+    "POULTRY", 
+    "SHEEP"
   ];
 
   const wealthIndicators = [
@@ -117,8 +121,6 @@
       {zoom}
       {isLog}
       groupList={continents}
-      height="200"
-      width="800"
       hasSelectors={true}
     />
 
@@ -140,8 +142,6 @@
       {zoom}
       {isLog}
       groupList={continents}
-      height="200"
-      width="800"
       hasSelectors={true}
 
     />

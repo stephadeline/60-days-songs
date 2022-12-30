@@ -15,11 +15,12 @@
   export let groupList;
 
   export let isLog = false;
+  export let nTicksY = 5;
 
 
   export let margin = ({top: 20, right: 100, bottom: 20, left: 60});
-  export let width = 600; //width of SVG in pixels
-  export let height = 200; //height of SVG in pixels
+  $: width = 600; //width of SVG in pixels
+  $: height = 200; //height of SVG in pixels
 
   export let hasSelectors = false;
 
@@ -67,24 +68,20 @@
 
   $: isMobile = width <= 500
 
-  $: labeledData = data.filter(d => selectedLabel.includes(d[label]) && d.x === maxX)
+  function getMaxofLabel(c) {
+    const thisLabel = data.filter(d => d[label] === c && d.y)
+    const maxOfLabel = Math.max(...thisLabel.map(d => d.x))
+    return maxOfLabel;
+  }
+
+  $: labeledData = data.filter(d => selectedLabel.includes(d[label]) && d.x === getMaxofLabel(d[label]))
 
 
 </script>
 <div class="line-chart-graphic" bind:clientWidth={width} bind:clientHeight={height}>
 
   <svg height={height} width={width} viewBox="0 0 {width} {height}">
-    <AxisY {yScale} {xScale} {margin} {width} {height} {isMobile} nTicksY=5/>
-
-    {#each groupedData as d, i}
-      <path
-        d={drawLine(d[1])}
-        stroke={colorScale(d[1][0][group])}
-        stroke-opacity={!selected ? 1 : isSelected(d[0], d[1][0][group]) ? 1 : 0.2}
-        stroke-width={selected && isSelected(d[0], d[1][0][group]) ? 2 : 1}
-        fill="none"
-      />
-    {/each}
+    <AxisY {yScale} {xScale} {margin} {width} {height} {isMobile} {nTicksY}/>
 
 
     {#each labeledData as d}
@@ -98,6 +95,24 @@
       {d[label]}
     </text>
     {/each}
+
+    <!-- <defs>
+      <clipPath id="clip-path">
+          <rect x={margin.left} y={margin.top} width={width} height={height-margin.top-margin.bottom}/>
+      </clipPath>
+    </defs> -->
+
+    <g class="line-chart-clipped">
+    {#each groupedData as d, i}
+      <path
+        d={drawLine(d[1])}
+        stroke={colorScale(d[1][0][group])}
+        stroke-opacity={!selected ? 1 : isSelected(d[0], d[1][0][group]) ? 1 : 0.2}
+        stroke-width={selected && isSelected(d[0], d[1][0][group]) ? 2 : 1}
+        fill="none"
+      />
+    {/each}
+  </g>
     
 
   </svg>

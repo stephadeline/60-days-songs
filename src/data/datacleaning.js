@@ -155,8 +155,33 @@ const names = joinedData.columnNames();
 
 console.log(names);
 
+const forMeatChart = aq
+  .fromCSV(meatConsumptionCsv)
+  .rename(
+    aq.names(
+      "alpha3",
+      "indicator",
+      "type",
+      "measure",
+      "frequency",
+      "year",
+      "value"
+    )
+  )
+  .derive(
+    {
+      country_name: aq.escape((d) => clm.getCountryNameByAlpha3(d.alpha3)),
+    },
+    { before: "year" }
+  )
+  .groupby("type", "year")
+  .pivot("country_name", "value");
+
+forMeatChart.print();
+
 fs.writeFileSync("src/data/joined.json", JSON.stringify(finalData, null, 2));
+
 fs.writeFileSync(
-  "src/data/joinedTest.json",
-  JSON.stringify(cleanJoined.objects(), null, 2)
+  "src/data/meatChart.json",
+  JSON.stringify(forMeatChart.objects(), null, 2)
 );

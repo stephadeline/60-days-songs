@@ -37,6 +37,8 @@
 
 {#each indicators as i}
 <div class="small-line-chart">
+  <p>{i}</p>
+
     <Chart
       data={filterData(i)}
       height="200"
