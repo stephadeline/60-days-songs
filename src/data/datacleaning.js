@@ -70,7 +70,7 @@ const catTable = aq
 
 const inequalityTable = aq
   .fromCSV(inequalityCsv)
-  .select("Entity", "Year", "Gini coefficient");
+  .select("Entity", "Year", "Gini coefficient", "Palma ratio (S90/S40 ratio)");
 
 const pennworldTable = aq
   .fromCSV(pennworldCsv)

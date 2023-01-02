@@ -23,6 +23,7 @@
     "GDP per capita (expenditure, multiple price benchmarks)",
     "Productivity: output per hour worked",
     "Gini coefficient",
+    "Palma ratio (S90/S40 ratio)",
   ];
 
   let zoom = false;
@@ -139,9 +140,9 @@
       data={wealthData}
       selectedLabel={selectedCountries}
       selectedGroup={selectedContinents}
+      groupList={continents}
       {zoom}
       {isLog}
-      groupList={continents}
       hasSelectors={true}
 
     />
