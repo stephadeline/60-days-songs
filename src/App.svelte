@@ -1,26 +1,52 @@
 <script>
-	import LineChart from './LineChart.svelte'
+	import LineChartInteractive from './LineChartInteractive.svelte'
 	import ScatterPlot from './ScatterPlot.svelte'
 	import BarChart from './BarChart.svelte'
-	import data from './data/joined.json';
-
 	import SmallMultipleLine from './SmallMultipleLine.svelte'
 	import SmallMultipleLineMeat from './SmallMultipleLineMeat.svelte'
 
 </script>
 
 <main>
-	<h1>This is Group 2's final project</h1>
-	<h3>Small multiple line charts</h3>
+	<h1>Title of project</h1>
+
+	<p>Introduction</p>
+	<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut at ex debitis dolores error qui distinctio expedita excepturi suscipit laboriosam incidunt voluptate porro illo dolorum, iure doloremque vero. Adipisci, tempore.</p>
+
 	<SmallMultipleLine />
+
+	<p>Potential reasons why countries have high/low meat consumption</p>
+	<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut at ex debitis dolores error qui distinctio expedita excepturi suscipit laboriosam incidunt voluptate porro illo dolorum, iure doloremque vero. Adipisci, tempore.</p>
+
 	<SmallMultipleLineMeat />
 
+	<p>Potential reasons explaining trends above</p>
+	<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut at ex debitis dolores error qui distinctio expedita excepturi suscipit laboriosam incidunt voluptate porro illo dolorum, iure doloremque vero. Adipisci, tempore.</p>
+
 	<BarChart/>
+
+	<p>Potential reasons explaining trends above</p>
+
+	<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut at ex debitis dolores error qui distinctio expedita excepturi suscipit laboriosam incidunt voluptate porro illo dolorum, iure doloremque vero. Adipisci, tempore.</p>
+
+	<p>Intro to scatterplot interactive</p>
+
+	<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut at ex debitis dolores error qui distinctio expedita excepturi suscipit laboriosam incidunt voluptate porro illo dolorum, iure doloremque vero. Adipisci, tempore.</p>
+
 	<ScatterPlot/>
-	<LineChart/>
+
+	<p>Intro to line chart interactive</p>
+	<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut at ex debitis dolores error qui distinctio expedita excepturi suscipit laboriosam incidunt voluptate porro illo dolorum, iure doloremque vero. Adipisci, tempore.</p>
+
+	<LineChartInteractive/>
 </main>
 
 
 <style>
+	p {
+		text-align: left;
+		margin: 10px auto 10px auto;
+		max-width: 700px;
+	}
 
 </style>

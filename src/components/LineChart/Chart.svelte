@@ -6,7 +6,6 @@
   import AxisY from "./AxisY.svelte";
 
   export let data;
-  import Parliament from "../charts/Parliament.svelte";
   export let label = "country_name";
   export let group = "continent";
   export let selectedLabel = [];
@@ -18,9 +17,9 @@
   export let nTicksY = 5;
 
 
-  export let margin = ({top: 20, right: 100, bottom: 20, left: 60});
-  $: width = 600; //width of SVG in pixels
-  $: height = 200; //height of SVG in pixels
+  export let margin = ({top: 10, right: 100, bottom: 20, left: 60});
+  $: width = 600; 
+  $: height = 200; 
 
   export let hasSelectors = false;
 
@@ -40,12 +39,11 @@
   $: yScaleLinear = scaleLinear()
     .domain(yDomain)
     .range([height - margin.bottom, margin.top])
-    .nice();
+
 
   $: yScaleLog = scaleLog()
     .domain(yDomain)
     .range([height -margin.bottom, margin.top])
-    .nice();
 
   $: yScale = isLog ? yScaleLog : yScaleLinear;
 
@@ -62,6 +60,7 @@
     .x(d => xScale(d.x))
     .y(d => yScale(d.y));
 
+
   $: isSelected = function(l, g) {
      return selectedLabel.includes(l) || selectedGroup.includes(g) 
     }
@@ -74,7 +73,17 @@
     return maxOfLabel;
   }
 
+  $: drawLineNA = function(data) {
+    const noData = data.filter(drawLine.defined())
+    if (noData.length > 0) {
+      return drawLine(noData)
+    } else {
+      return null;
+    }
+  }
+
   $: labeledData = data.filter(d => selectedLabel.includes(d[label]) && d.x === getMaxofLabel(d[label]))
+
 
 
 </script>
@@ -96,14 +105,21 @@
     </text>
     {/each}
 
-    <!-- <defs>
-      <clipPath id="clip-path">
-          <rect x={margin.left} y={margin.top} width={width} height={height-margin.top-margin.bottom}/>
-      </clipPath>
-    </defs> -->
 
     <g class="line-chart-clipped">
-    {#each groupedData as d, i}
+    {#each groupedData as d}
+    <!-- Draw dashed line for missing data if any -->
+    {#if drawLineNA(d[1])}
+    <path class="line-undefined"
+        d={drawLineNA(d[1])}
+        stroke={colorScale(d[1][0][group])}
+        stroke-opacity={!selected ? 1 : isSelected(d[0], d[1][0][group]) ? 1 : 0}
+        stroke-width={selected && isSelected(d[0], d[1][0][group]) ? 2 : 0.5}
+        fill="none"
+        stroke-dasharray="5,5"
+      />
+      {/if}
+
       <path
         d={drawLine(d[1])}
         stroke={colorScale(d[1][0][group])}

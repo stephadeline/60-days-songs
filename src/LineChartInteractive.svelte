@@ -1,4 +1,6 @@
 <script>
+  import { scaleOrdinal } from "d3-scale";
+  import { schemeTableau10 } from "d3-scale-chromatic";
   import Chart from "./components/LineChart/Chart.svelte";
   import MultiSelect from "svelte-multiselect";
   import Select from "svelte-select";
@@ -19,14 +21,20 @@
 
   const wealthIndicators = [
     "GDP (expenditure, multiple price benchmarks)",
-    "Consumption of households and government (single price benchmark)",
     "GDP per capita (expenditure, multiple price benchmarks)",
     "Productivity: output per hour worked",
     "Gini coefficient",
+    "Palma ratio (S90/S40 ratio)",
   ];
 
   let zoom = false;
   let isLog = false;
+
+  const continents = Array.from(new Set(data.map((d) => d.continent)));
+
+  const colorScale = scaleOrdinal() 
+    .domain(continents)
+    .range(schemeTableau10)
 
   $: selectedIndicator = consumptionIndicators[0];
   $: selectedWealth = wealthIndicators[0];
@@ -60,7 +68,6 @@
   );
   $: selectedCountries = [];
 
-  $: continents = Array.from(new Set(data.map((d) => d.continent)));
   $: selectedContinents = ["Asia"];
 
   $: selected = selectedCountries.length > 0 || selectedContinents.length > 0;
@@ -72,7 +79,23 @@
     <div class="select-country">
 
       <h4>Select continents highlight:</h4>
-      <MultiSelect bind:selected={selectedContinents} options={continents} />
+      <MultiSelect bind:selected={selectedContinents} options={continents}>
+
+      <span let:option slot="option">
+        {option}
+        <svg height="10" width="20">
+          <line x1="2" y1="5" x2="20" y2="5" stroke-width="2" stroke={colorScale(option)}>
+          </line>
+        </svg>
+      </span>
+      <span let:option slot="selected">
+        {option}
+        <svg height="10" width="20">
+          <line x1="2" y1="5" x2="20" y2="5" stroke-width="2" stroke={colorScale(option)}>
+          </line>
+        </svg>
+      </span>
+    </MultiSelect>
 
       <h4>Or select countries to highlight:</h4>
       <MultiSelect bind:selected={selectedCountries} options={countries} />
@@ -139,9 +162,9 @@
       data={wealthData}
       selectedLabel={selectedCountries}
       selectedGroup={selectedContinents}
+      groupList={continents}
       {zoom}
       {isLog}
-      groupList={continents}
       hasSelectors={true}
 
     />
@@ -166,6 +189,7 @@
   .line-chart-container {
     width: 80vw;
     height: 80vh;
+    margin: 20px auto;
   }
 
   .line-chart-selector {

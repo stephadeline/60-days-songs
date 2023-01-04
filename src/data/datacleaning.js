@@ -1,14 +1,22 @@
 import fs from "fs";
 import * as aq from "arquero";
 import clm from "country-locale-map";
-
 const { op } = aq;
 
-const catCsv = fs.readFileSync("src/data/climateactiontracker.csv", "utf8");
-const inequalityCsv = fs.readFileSync("src/data/inequality.csv", "utf8");
-const pennworldCsv = fs.readFileSync("src/data/pennworlddata.csv", "utf8");
+const catCsv = fs.readFileSync(
+  "src/data/raw-data/climateactiontracker.csv",
+  "utf8"
+);
+const inequalityCsv = fs.readFileSync(
+  "src/data/raw-data/inequality.csv",
+  "utf8"
+);
+const pennworldCsv = fs.readFileSync(
+  "src/data/raw-data/pennworlddata.csv",
+  "utf8"
+);
 const meatConsumptionCsv = fs.readFileSync(
-  "src/data/meatconsumption.csv",
+  "src/data/raw-data/meatconsumption.csv",
   "utf8"
 );
 
@@ -25,6 +33,7 @@ const catIndicators = [
   "New EV sales per million capita",
 ];
 
+// name overrides for those that have different country names
 const NAME_OVERRIDES = {
   Brunei: "Brunei Darussalam",
   "Cape Verde": "Cabo Verde",
@@ -34,46 +43,44 @@ const NAME_OVERRIDES = {
   Syria: "Syrian Arab Republic",
   Timor: "Timor-Leste",
   Vietnam: "Viet Nam",
-  // 'Zanzibar',
   "British Virgin Islands": "Virgin Islands (British)",
   Curacao: "Curaçao",
   "Micronesia (country)": "Micronesia",
   "Sint Maarten (Dutch part)": "Sint Maarten",
 };
 
-const meatTable = aq
-  .fromCSV(meatConsumptionCsv)
-  .rename(
-    aq.names(
-      "alpha3",
-      "indicator",
-      "type",
-      "measure",
-      "frequency",
-      "year",
-      "value"
-    )
-  )
-  .groupby("alpha3", "year")
-  .pivot("type", "value")
-  .filter(aq.escape((d) => allAlpha3.includes(d.alpha3)))
-  .derive(
-    {
-      alpha2: aq.escape((d) => clm.getAlpha2ByAlpha3(d.alpha3)),
-      country_name: aq.escape((d) => clm.getCountryNameByAlpha3(d.alpha3)),
-    },
-    { before: "year" }
-  );
+// reading the climate action tracker data into arquero
 const catTable = aq
   .fromCSV(catCsv)
-  .filter(aq.escape((d) => catIndicators.includes(d.indicator)));
+  // filtering the table to just the indicators we listed above
+  .filter(aq.escape((d) => catIndicators.includes(d.indicator)))
+  // filtering to just the historic data because we choose not to visualise the projections
+  .filter((d) => d.variable === "historic")
+  // grouping and turning the indicators into column names
+  .groupby("country", "year")
+  .pivot("indicator", "value")
+  // standardising the table so that it includes alpha2, alpha3 and country_name
+  .derive(
+    {
+      alpha3: aq.escape((d) => clm.getAlpha3ByAlpha2(d.country)),
+      country_name: aq.escape((d) => clm.getCountryNameByAlpha2(d.country)),
+    },
+    { before: "year" }
+  )
+  .rename({ country: "alpha2" })
+  // removing the "country names" that aren't really countries (like region names, world, etc)
+  .filter(aq.escape((d) => allAlpha2.includes(d.alpha2)));
 
+// reading the inequality data into arquero
 const inequalityTable = aq
   .fromCSV(inequalityCsv)
-  .select("Entity", "Year", "Gini coefficient");
+  // selecting only the columns/variables we need.
+  .select("Entity", "Year", "Gini coefficient", "Palma ratio (S90/S40 ratio)");
 
+// reading the PennWorld data into arquero
 const pennworldTable = aq
   .fromCSV(pennworldCsv)
+  // selecting only the columns/variables we need.
   .select(
     "Entity",
     "Year",
@@ -84,20 +91,38 @@ const pennworldTable = aq
     "Productivity: output per hour worked"
   );
 
-const cleanCat = catTable
-  .filter((d) => d.variable === "historic")
-  .groupby("country", "year")
-  .pivot("indicator", "value")
+// reading the meat data into arquero
+const meatTable = aq
+  .fromCSV(meatConsumptionCsv)
+  // selecting only the columns/variables we need.
+  .rename(
+    aq.names(
+      "alpha3",
+      "indicator",
+      "type",
+      "measure",
+      "frequency",
+      "year",
+      "value"
+    )
+  );
+
+// further processing the meat table
+const meatForJoining = meatTable
+  // grouping and using the meat type as the column names
+  .groupby("alpha3", "year")
+  .pivot("type", "value")
+  // filtering to just the country names and standardising names
+  .filter(aq.escape((d) => allAlpha3.includes(d.alpha3)))
   .derive(
     {
-      alpha3: aq.escape((d) => clm.getAlpha3ByAlpha2(d.country)),
-      country_name: aq.escape((d) => clm.getCountryNameByAlpha2(d.country)),
+      alpha2: aq.escape((d) => clm.getAlpha2ByAlpha3(d.alpha3)),
+      country_name: aq.escape((d) => clm.getCountryNameByAlpha3(d.alpha3)),
     },
     { before: "year" }
-  )
-  .rename({ country: "alpha2" })
-  .filter(aq.escape((d) => allAlpha2.includes(d.alpha2)));
+  );
 
+// joining the datasets
 const cleanJoined = pennworldTable
   .join_full(inequalityTable)
   .derive(
@@ -122,10 +147,15 @@ const cleanJoined = pennworldTable
     { before: "Year" }
   )
   .rename({ Year: "year" })
-  .select(aq.not("Entity"))
-  .join_full(meatTable);
+  .select(
+    aq.not(
+      "Entity",
+      "Consumption of households and government (single price benchmark)"
+    )
+  )
+  .join_full(meatForJoining);
 
-const joinedData = cleanCat
+const joinedData = catTable
   .join_full(cleanJoined)
   .orderby("alpha2", "year")
   .derive(
@@ -137,9 +167,21 @@ const joinedData = cleanCat
     },
     { before: "year" }
   )
-  .filter((d) => d.year >= 1990 && d.year <= 2018 && d.Population);
-
-// console.log(joinedData.columnNames());
+  .filter((d) => d.year >= 1990 && d.year <= 2018 && d.Population)
+  // round the values for optimisation
+  .derive({
+    Population: (d) => op.round(d["Population"]),
+    "Consumption of households and government per capita": (d) =>
+      op.round(d["Consumption of households and government per capita"]),
+    "GDP (expenditure, multiple price benchmarks)": (d) =>
+      op.round(d["GDP (expenditure, multiple price benchmarks)"]),
+    "GDP per capita (expenditure, multiple price benchmarks)": (d) =>
+      op.round(d["GDP per capita (expenditure, multiple price benchmarks)"]),
+    "Productivity: output per hour worked": (d) =>
+      op.round(d["Productivity: output per hour worked"]),
+    "Electricity activity (per capita)": (d) =>
+      op.round(d["Electricity activity (per capita)"]),
+  });
 
 const finalData = joinedData.objects().map((obj) => {
   Object.keys(obj).forEach((key) => {
@@ -150,34 +192,26 @@ const finalData = joinedData.objects().map((obj) => {
   return obj;
 });
 
-// get names of columns
-const names = joinedData.columnNames();
+const countrySelection = [
+  "Argentina",
+  "Switzerland",
+  "India",
+  "China",
+  "United States",
+];
 
-console.log(names);
-
-const forMeatChart = aq
-  .fromCSV(meatConsumptionCsv)
-  .rename(
-    aq.names(
-      "alpha3",
-      "indicator",
-      "type",
-      "measure",
-      "frequency",
-      "year",
-      "value"
-    )
-  )
+// creating a separate data format for the small multiple meat types chart
+const forMeatChart = meatTable
   .derive(
     {
       country_name: aq.escape((d) => clm.getCountryNameByAlpha3(d.alpha3)),
     },
     { before: "year" }
   )
+  .filter(aq.escape((d) => countrySelection.includes(d.country_name)))
+  // grouping by year and using the country as the column name.
   .groupby("type", "year")
   .pivot("country_name", "value");
-
-forMeatChart.print();
 
 fs.writeFileSync("src/data/joined.json", JSON.stringify(finalData, null, 2));
 
