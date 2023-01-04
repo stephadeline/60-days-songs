@@ -3,11 +3,20 @@ import * as aq from "arquero";
 import clm from "country-locale-map";
 const { op } = aq;
 
-const catCsv = fs.readFileSync("src/data/climateactiontracker.csv", "utf8");
-const inequalityCsv = fs.readFileSync("src/data/inequality.csv", "utf8");
-const pennworldCsv = fs.readFileSync("src/data/pennworlddata.csv", "utf8");
+const catCsv = fs.readFileSync(
+  "src/data/raw-data/climateactiontracker.csv",
+  "utf8"
+);
+const inequalityCsv = fs.readFileSync(
+  "src/data/raw-data/inequality.csv",
+  "utf8"
+);
+const pennworldCsv = fs.readFileSync(
+  "src/data/raw-data/pennworlddata.csv",
+  "utf8"
+);
 const meatConsumptionCsv = fs.readFileSync(
-  "src/data/meatconsumption.csv",
+  "src/data/raw-data/meatconsumption.csv",
   "utf8"
 );
 
