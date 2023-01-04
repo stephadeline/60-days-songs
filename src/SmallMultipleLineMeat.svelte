@@ -60,6 +60,7 @@
 
   .small-line-chart p {
       font-size: 15px;
+      font-weight: bold;
   }
 
   @media screen and (max-width: 700px) {
