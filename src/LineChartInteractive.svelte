@@ -21,7 +21,6 @@
 
   const wealthIndicators = [
     "GDP (expenditure, multiple price benchmarks)",
-    "Consumption of households and government (single price benchmark)",
     "GDP per capita (expenditure, multiple price benchmarks)",
     "Productivity: output per hour worked",
     "Gini coefficient",

@@ -39,12 +39,11 @@
   $: yScaleLinear = scaleLinear()
     .domain(yDomain)
     .range([height - margin.bottom, margin.top])
-    .nice();
+
 
   $: yScaleLog = scaleLog()
     .domain(yDomain)
     .range([height -margin.bottom, margin.top])
-    .nice();
 
   $: yScale = isLog ? yScaleLog : yScaleLinear;
 
@@ -109,7 +108,7 @@
 
     <g class="line-chart-clipped">
     {#each groupedData as d}
-    <!-- dashed line for missing data -->
+    <!-- Draw dashed line for missing data if any -->
     {#if drawLineNA(d[1])}
     <path class="line-undefined"
         d={drawLineNA(d[1])}
@@ -120,6 +119,7 @@
         stroke-dasharray="5,5"
       />
       {/if}
+
       <path
         d={drawLine(d[1])}
         stroke={colorScale(d[1][0][group])}
