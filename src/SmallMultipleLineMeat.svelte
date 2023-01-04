@@ -54,14 +54,23 @@
 
 <style>
   .small-line-chart {
-  width: calc(100%/5);
+  width: calc(100%/3);
   float: left;  
   }
 
-  @media screen and (max-width: 500px) {
-    .small-line-chart {
-      width: calc(100%/3);
-      float: left;  
+  .small-line-chart p {
+      font-size: 15px;
   }
+
+  @media screen and (max-width: 700px) {
+      .small-line-chart {
+        width: 100%;
+        float: left;  
+    }
+    
+  }
+
+  .small-line-chart-container {
+    display: inline-block;
   }
 </style>

@@ -1,9 +1,7 @@
 <script>
-	import LineChart from './LineChart.svelte'
+	import LineChartInteractive from './LineChartInteractive.svelte'
 	import ScatterPlot from './ScatterPlot.svelte'
 	import BarChart from './BarChart.svelte'
-	import data from './data/joined.json';
-
 	import SmallMultipleLine from './SmallMultipleLine.svelte'
 	import SmallMultipleLineMeat from './SmallMultipleLineMeat.svelte'
 
@@ -17,7 +15,7 @@
 
 	<BarChart/>
 	<ScatterPlot/>
-	<LineChart/>
+	<LineChartInteractive/>
 </main>
 
 
