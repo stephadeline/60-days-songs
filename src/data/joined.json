@@ -12612,10 +12612,10 @@
     "Productivity: output per hour worked": 43,
     "Gini coefficient": 0.412666915374864,
     "Palma ratio (S90/S40 ratio)": 2.0896921,
-    "BEEF": 174.454,
-    "PIG": 272.614,
-    "POULTRY": 73.642,
-    "SHEEP": 12.421
+    "BEEF": 18.356,
+    "PIG": 31.962,
+    "POULTRY": 9.741,
+    "SHEEP": 1.643
   },
   {
     "alpha2": "CH",
@@ -12633,10 +12633,10 @@
     "Productivity: output per hour worked": 42,
     "Gini coefficient": 0.405662805639693,
     "Palma ratio (S90/S40 ratio)": 2.010561,
-    "BEEF": 178.329,
-    "PIG": 269.313,
-    "POULTRY": 77.682,
-    "SHEEP": 12.278
+    "BEEF": 18.579,
+    "PIG": 31.265,
+    "POULTRY": 10.174,
+    "SHEEP": 1.608
   },
   {
     "alpha2": "CH",
@@ -12654,10 +12654,10 @@
     "Productivity: output per hour worked": 42,
     "Gini coefficient": 0.398252163173876,
     "Palma ratio (S90/S40 ratio)": 1.9264802,
-    "BEEF": 178.329,
-    "PIG": 267.294,
-    "POULTRY": 75.81,
-    "SHEEP": 12.778
+    "BEEF": 18.377,
+    "PIG": 30.692,
+    "POULTRY": 9.821,
+    "SHEEP": 1.655
   },
   {
     "alpha2": "CH",
@@ -12675,10 +12675,10 @@
     "Productivity: output per hour worked": 43,
     "Gini coefficient": 0.402008766060319,
     "Palma ratio (S90/S40 ratio)": 1.9630851,
-    "BEEF": 172.508,
-    "PIG": 264.267,
-    "POULTRY": 74.649,
-    "SHEEP": 12.598
+    "BEEF": 17.58,
+    "PIG": 30.009,
+    "POULTRY": 9.564,
+    "SHEEP": 1.614
   },
   {
     "alpha2": "CH",
@@ -12696,10 +12696,10 @@
     "Productivity: output per hour worked": 44,
     "Gini coefficient": 0.40013636728667,
     "Palma ratio (S90/S40 ratio)": 1.9409091,
-    "BEEF": 158.393,
-    "PIG": 249.373,
-    "POULTRY": 79.76,
-    "SHEEP": 12.435
+    "BEEF": 15.98,
+    "PIG": 28.034,
+    "POULTRY": 10.116,
+    "SHEEP": 1.577
   },
   {
     "alpha2": "CH",
@@ -12717,10 +12717,10 @@
     "Productivity: output per hour worked": 45,
     "Gini coefficient": 0.397018596289762,
     "Palma ratio (S90/S40 ratio)": 1.9083333,
-    "BEEF": 158.188,
-    "PIG": 256.135,
-    "POULTRY": 79.174,
-    "SHEEP": 12.417
+    "BEEF": 15.829,
+    "PIG": 28.559,
+    "POULTRY": 9.96,
+    "SHEEP": 1.562
   },
   {
     "alpha2": "CH",
@@ -12738,10 +12738,10 @@
     "Productivity: output per hour worked": 46,
     "Gini coefficient": 0.41299884233306,
     "Palma ratio (S90/S40 ratio)": 2.0872753,
-    "BEEF": 161.38,
-    "PIG": 236.506,
-    "POULTRY": 85.761,
-    "SHEEP": 13.196
+    "BEEF": 16.051,
+    "PIG": 26.211,
+    "POULTRY": 10.723,
+    "SHEEP": 1.65
   },
   {
     "alpha2": "CH",
@@ -12759,10 +12759,10 @@
     "Productivity: output per hour worked": 49,
     "Gini coefficient": 0.416746437787104,
     "Palma ratio (S90/S40 ratio)": 2.1295924,
-    "BEEF": 161.559,
-    "PIG": 233.996,
-    "POULTRY": 86.538,
-    "SHEEP": 13.708
+    "BEEF": 15.999,
+    "PIG": 25.821,
+    "POULTRY": 10.774,
+    "SHEEP": 1.707
   },
   {
     "alpha2": "CH",
@@ -12780,10 +12780,10 @@
     "Productivity: output per hour worked": 49,
     "Gini coefficient": 0.421737534058884,
     "Palma ratio (S90/S40 ratio)": 2.1861882,
-    "BEEF": 159.098,
-    "PIG": 246.353,
-    "POULTRY": 88.38,
-    "SHEEP": 13.217
+    "BEEF": 15.704,
+    "PIG": 27.096,
+    "POULTRY": 10.967,
+    "SHEEP": 1.64
   },
   {
     "alpha2": "CH",
@@ -12801,10 +12801,10 @@
     "Productivity: output per hour worked": 50,
     "Gini coefficient": 0.418543184859274,
     "Palma ratio (S90/S40 ratio)": 2.1464407,
-    "BEEF": 157.971,
-    "PIG": 242.722,
-    "POULTRY": 87.14,
-    "SHEEP": 12.761
+    "BEEF": 15.542,
+    "PIG": 26.609,
+    "POULTRY": 10.778,
+    "SHEEP": 1.578
   },
   {
     "alpha2": "CH",
@@ -12822,10 +12822,10 @@
     "Productivity: output per hour worked": 50,
     "Gini coefficient": 0.422329428105797,
     "Palma ratio (S90/S40 ratio)": 2.1997273,
-    "BEEF": 149.838,
-    "PIG": 242.13,
-    "POULTRY": 95.849,
-    "SHEEP": 14.326
+    "BEEF": 14.682,
+    "PIG": 26.437,
+    "POULTRY": 11.807,
+    "SHEEP": 1.765
   },
   {
     "alpha2": "CH",
@@ -12843,10 +12843,10 @@
     "Productivity: output per hour worked": 51,
     "Gini coefficient": 0.415864144930865,
     "Palma ratio (S90/S40 ratio)": 2.117409,
-    "BEEF": 149.105,
-    "PIG": 243.926,
-    "POULTRY": 101.663,
-    "SHEEP": 13.139
+    "BEEF": 14.538,
+    "PIG": 26.502,
+    "POULTRY": 12.462,
+    "SHEEP": 1.611
   },
   {
     "alpha2": "CH",
@@ -12864,10 +12864,10 @@
     "Productivity: output per hour worked": 51,
     "Gini coefficient": 0.409234995246365,
     "Palma ratio (S90/S40 ratio)": 2.0436535,
-    "BEEF": 152.466,
-    "PIG": 247.254,
-    "POULTRY": 104.623,
-    "SHEEP": 13.286
+    "BEEF": 14.781,
+    "PIG": 26.71,
+    "POULTRY": 12.751,
+    "SHEEP": 1.619
   },
   {
     "alpha2": "CH",
@@ -12885,10 +12885,10 @@
     "Productivity: output per hour worked": 52,
     "Gini coefficient": 0.426005079189984,
     "Palma ratio (S90/S40 ratio)": 2.2449548,
-    "BEEF": 150.595,
-    "PIG": 244.64,
-    "POULTRY": 108.334,
-    "SHEEP": 13.491
+    "BEEF": 14.504,
+    "PIG": 26.253,
+    "POULTRY": 13.116,
+    "SHEEP": 1.633
   },
   {
     "alpha2": "CH",
@@ -12906,10 +12906,10 @@
     "Productivity: output per hour worked": 53,
     "Gini coefficient": 0.431246241054985,
     "Palma ratio (S90/S40 ratio)": 2.305536,
-    "BEEF": 151.008,
-    "PIG": 244.004,
-    "POULTRY": 108.223,
-    "SHEEP": 13.628
+    "BEEF": 14.433,
+    "PIG": 25.987,
+    "POULTRY": 13.004,
+    "SHEEP": 1.638
   },
   {
     "alpha2": "CH",
@@ -12927,10 +12927,10 @@
     "Productivity: output per hour worked": 57,
     "Gini coefficient": 0.441929854574632,
     "Palma ratio (S90/S40 ratio)": 2.4455588,
-    "BEEF": 153.487,
-    "PIG": 249.679,
-    "POULTRY": 105.358,
-    "SHEEP": 13.069
+    "BEEF": 14.545,
+    "PIG": 26.365,
+    "POULTRY": 12.551,
+    "SHEEP": 1.557
   },
   {
     "alpha2": "CH",
@@ -12948,10 +12948,10 @@
     "Productivity: output per hour worked": 60,
     "Gini coefficient": 0.446842997711613,
     "Palma ratio (S90/S40 ratio)": 2.5061107,
-    "BEEF": 158.191,
-    "PIG": 255.796,
-    "POULTRY": 101.036,
-    "SHEEP": 12.716
+    "BEEF": 14.848,
+    "PIG": 26.753,
+    "POULTRY": 11.922,
+    "SHEEP": 1.5
   },
   {
     "alpha2": "CH",
@@ -12969,10 +12969,10 @@
     "Productivity: output per hour worked": 65,
     "Gini coefficient": 0.435562267754868,
     "Palma ratio (S90/S40 ratio)": 2.37058,
-    "BEEF": 157.752,
-    "PIG": 254.993,
-    "POULTRY": 117.117,
-    "SHEEP": 12.208
+    "BEEF": 14.651,
+    "PIG": 26.389,
+    "POULTRY": 13.674,
+    "SHEEP": 1.425
   },
   {
     "alpha2": "CH",
@@ -12990,10 +12990,10 @@
     "Productivity: output per hour worked": 69,
     "Gini coefficient": 0.415706072924973,
     "Palma ratio (S90/S40 ratio)": 2.1268759,
-    "BEEF": 166.453,
-    "PIG": 254.33,
-    "POULTRY": 126.15,
-    "SHEEP": 12.072
+    "BEEF": 15.285,
+    "PIG": 26.024,
+    "POULTRY": 14.563,
+    "SHEEP": 1.394
   },
   {
     "alpha2": "CH",
@@ -13011,10 +13011,10 @@
     "Productivity: output per hour worked": 68,
     "Gini coefficient": 0.420013075112728,
     "Palma ratio (S90/S40 ratio)": 2.1683779,
-    "BEEF": 166.63,
-    "PIG": 252.402,
-    "POULTRY": 127.477,
-    "SHEEP": 11.75
+    "BEEF": 15.121,
+    "PIG": 25.522,
+    "POULTRY": 14.543,
+    "SHEEP": 1.34
   },
   {
     "alpha2": "CH",
@@ -13032,10 +13032,10 @@
     "Productivity: output per hour worked": 71,
     "Gini coefficient": 0.437650684433152,
     "Palma ratio (S90/S40 ratio)": 2.3824363,
-    "BEEF": 172.565,
-    "PIG": 262.708,
-    "POULTRY": 128.922,
-    "SHEEP": 12.012
+    "BEEF": 15.469,
+    "PIG": 26.242,
+    "POULTRY": 14.529,
+    "SHEEP": 1.354
   },
   {
     "alpha2": "CH",
@@ -13053,10 +13053,10 @@
     "Productivity: output per hour worked": 76,
     "Gini coefficient": 0.438062979682506,
     "Palma ratio (S90/S40 ratio)": 2.3933616,
-    "BEEF": 176.419,
-    "PIG": 260.236,
-    "POULTRY": 132.524,
-    "SHEEP": 12.124
+    "BEEF": 15.618,
+    "PIG": 25.672,
+    "POULTRY": 14.749,
+    "SHEEP": 1.349
   },
   {
     "alpha2": "CH",
@@ -13074,10 +13074,10 @@
     "Productivity: output per hour worked": 78,
     "Gini coefficient": 0.430544368539351,
     "Palma ratio (S90/S40 ratio)": 2.286509,
-    "BEEF": 174.004,
-    "PIG": 249.24,
-    "POULTRY": 133.707,
-    "SHEEP": 11.759
+    "BEEF": 15.21,
+    "PIG": 24.277,
+    "POULTRY": 14.693,
+    "SHEEP": 1.292
   },
   {
     "alpha2": "CH",
@@ -13095,10 +13095,10 @@
     "Productivity: output per hour worked": 78,
     "Gini coefficient": 0.431684315256007,
     "Palma ratio (S90/S40 ratio)": 2.3028612,
-    "BEEF": 166.115,
-    "PIG": 249.456,
-    "POULTRY": 137.191,
-    "SHEEP": 11.299
+    "BEEF": 14.34,
+    "PIG": 23.995,
+    "POULTRY": 14.888,
+    "SHEEP": 1.226
   },
   {
     "alpha2": "CH",
@@ -13116,10 +13116,10 @@
     "Productivity: output per hour worked": 79,
     "Gini coefficient": 0.430674286643622,
     "Palma ratio (S90/S40 ratio)": 2.296711,
-    "BEEF": 166.367,
-    "PIG": 255.997,
-    "POULTRY": 144.882,
-    "SHEEP": 12.44
+    "BEEF": 14.192,
+    "PIG": 24.333,
+    "POULTRY": 15.537,
+    "SHEEP": 1.334
   },
   {
     "alpha2": "CH",
@@ -13137,10 +13137,10 @@
     "Productivity: output per hour worked": 77,
     "Gini coefficient": 0.432387773117028,
     "Palma ratio (S90/S40 ratio)": 2.3104415,
-    "BEEF": 164.041,
-    "PIG": 249.287,
-    "POULTRY": 148.408,
-    "SHEEP": 12.342
+    "BEEF": 13.84,
+    "PIG": 23.436,
+    "POULTRY": 15.741,
+    "SHEEP": 1.309
   },
   {
     "alpha2": "CH",
@@ -13158,10 +13158,10 @@
     "Productivity: output per hour worked": 78,
     "Gini coefficient": 0.433130154933714,
     "Palma ratio (S90/S40 ratio)": 2.326241,
-    "BEEF": 167.048,
-    "PIG": 249.076,
-    "POULTRY": 151.469,
-    "SHEEP": 12.572
+    "BEEF": 13.954,
+    "PIG": 23.184,
+    "POULTRY": 15.906,
+    "SHEEP": 1.32
   },
   {
     "alpha2": "CH",
@@ -13179,10 +13179,10 @@
     "Productivity: output per hour worked": 81,
     "Gini coefficient": 0.424788339908638,
     "Palma ratio (S90/S40 ratio)": 2.2156727,
-    "BEEF": 162.048,
-    "PIG": 248.78,
-    "POULTRY": 148.967,
-    "SHEEP": 11.557
+    "BEEF": 13.415,
+    "PIG": 22.949,
+    "POULTRY": 15.503,
+    "SHEEP": 1.203
   },
   {
     "alpha2": "CH",
@@ -13197,10 +13197,10 @@
     "GDP (expenditure, multiple price benchmarks)": 610572750000,
     "GDP per capita (expenditure, multiple price benchmarks)": 71616,
     "Productivity: output per hour worked": 82,
-    "BEEF": 162.048,
-    "PIG": 246.98,
-    "POULTRY": 142.086,
-    "SHEEP": 11.551
+    "BEEF": 13.305,
+    "PIG": 22.596,
+    "POULTRY": 14.666,
+    "SHEEP": 1.192
   },
   {
     "alpha2": "CI",
@@ -23464,10 +23464,10 @@
     "Productivity: output per hour worked": 31,
     "Gini coefficient": 0.458115369606718,
     "Palma ratio (S90/S40 ratio)": 2.7333333,
-    "BEEF": 1102.267,
-    "PIG": 1316.343,
-    "POULTRY": 1022.949,
-    "SHEEP": 417.357
+    "BEEF": 12.722,
+    "PIG": 17.971,
+    "POULTRY": 15.928,
+    "SHEEP": 6.305
   },
   {
     "alpha2": "GB",
@@ -23485,10 +23485,10 @@
     "Productivity: output per hour worked": 31,
     "Gini coefficient": 0.46053698975909,
     "Palma ratio (S90/S40 ratio)": 2.7752137,
-    "BEEF": 1124.156,
-    "PIG": 1320.28,
-    "POULTRY": 1073.414,
-    "SHEEP": 397.888
+    "BEEF": 12.987,
+    "PIG": 17.975,
+    "POULTRY": 15.444,
+    "SHEEP": 6.079
   },
   {
     "alpha2": "GB",
@@ -23506,10 +23506,10 @@
     "Productivity: output per hour worked": 32,
     "Gini coefficient": 0.456041486104807,
     "Palma ratio (S90/S40 ratio)": 2.6805325,
-    "BEEF": 1086.1,
-    "PIG": 1312.637,
-    "POULTRY": 1287.438,
-    "SHEEP": 386.149
+    "BEEF": 12.632,
+    "PIG": 17.823,
+    "POULTRY": 22.711,
+    "SHEEP": 6.018
   },
   {
     "alpha2": "GB",
@@ -23527,10 +23527,10 @@
     "Productivity: output per hour worked": 33,
     "Gini coefficient": 0.465084857023477,
     "Palma ratio (S90/S40 ratio)": 2.8008404,
-    "BEEF": 927.771,
-    "PIG": 1309.799,
-    "POULTRY": 1327.223,
-    "SHEEP": 381.705
+    "BEEF": 10.463,
+    "PIG": 17.736,
+    "POULTRY": 17.394,
+    "SHEEP": 5.957
   },
   {
     "alpha2": "GB",
@@ -23548,10 +23548,10 @@
     "Productivity: output per hour worked": 34,
     "Gini coefficient": 0.469282790522538,
     "Palma ratio (S90/S40 ratio)": 2.8595319,
-    "BEEF": 940.917,
-    "PIG": 1344.151,
-    "POULTRY": 1429.289,
-    "SHEEP": 357.857
+    "BEEF": 10.359,
+    "PIG": 18.151,
+    "POULTRY": 21.82,
+    "SHEEP": 5.659
   },
   {
     "alpha2": "GB",
@@ -23569,10 +23569,10 @@
     "Productivity: output per hour worked": 37,
     "Gini coefficient": 0.474498779459012,
     "Palma ratio (S90/S40 ratio)": 2.9603448,
-    "BEEF": 983.175,
-    "PIG": 1289.743,
-    "POULTRY": 1474.721,
-    "SHEEP": 361.808
+    "BEEF": 10.688,
+    "PIG": 17.365,
+    "POULTRY": 20.99,
+    "SHEEP": 5.716
   },
   {
     "alpha2": "GB",
@@ -23590,10 +23590,10 @@
     "Productivity: output per hour worked": 39,
     "Gini coefficient": 0.478561404777984,
     "Palma ratio (S90/S40 ratio)": 3.0419879,
-    "BEEF": 813.372,
-    "PIG": 1319.407,
-    "POULTRY": 1552.405,
-    "SHEEP": 383.318
+    "BEEF": 9.391,
+    "PIG": 17.709,
+    "POULTRY": 26.331,
+    "SHEEP": 5.846
   },
   {
     "alpha2": "GB",
@@ -23611,10 +23611,10 @@
     "Productivity: output per hour worked": 40,
     "Gini coefficient": 0.476303586896471,
     "Palma ratio (S90/S40 ratio)": 3,
-    "BEEF": 862.714,
-    "PIG": 1314.824,
-    "POULTRY": 1592.337,
-    "SHEEP": 362.331
+    "BEEF": 10.326,
+    "PIG": 17.589,
+    "POULTRY": 17.531,
+    "SHEEP": 5.445
   },
   {
     "alpha2": "GB",
@@ -23632,10 +23632,10 @@
     "Productivity: output per hour worked": 41,
     "Gini coefficient": 0.485090491981438,
     "Palma ratio (S90/S40 ratio)": 3.1336207,
-    "BEEF": 853.618,
-    "PIG": 1353.849,
-    "POULTRY": 1705.144,
-    "SHEEP": 371.592
+    "BEEF": 10.039,
+    "PIG": 18.048,
+    "POULTRY": 24.238,
+    "SHEEP": 5.66
   },
   {
     "alpha2": "GB",
@@ -23653,10 +23653,10 @@
     "Productivity: output per hour worked": 42,
     "Gini coefficient": 0.490883136579356,
     "Palma ratio (S90/S40 ratio)": 3.2294793,
-    "BEEF": 855.597,
-    "PIG": 1320.556,
-    "POULTRY": 1703.774,
-    "SHEEP": 378.922
+    "BEEF": 10.181,
+    "PIG": 17.543,
+    "POULTRY": 24.463,
+    "SHEEP": 5.786
   },
   {
     "alpha2": "GB",
@@ -23674,10 +23674,10 @@
     "Productivity: output per hour worked": 45,
     "Gini coefficient": 0.478116126740087,
     "Palma ratio (S90/S40 ratio)": 3.0261602,
-    "BEEF": 892.427,
-    "PIG": 1292.756,
-    "POULTRY": 1703.726,
-    "SHEEP": 391.864
+    "BEEF": 10.602,
+    "PIG": 17.113,
+    "POULTRY": 25.445,
+    "SHEEP": 5.852
   },
   {
     "alpha2": "GB",
@@ -23695,10 +23695,10 @@
     "Productivity: output per hour worked": 45,
     "Gini coefficient": 0.485098197936463,
     "Palma ratio (S90/S40 ratio)": 3.1379011,
-    "BEEF": 899.846,
-    "PIG": 1331.269,
-    "POULTRY": 1731.81,
-    "SHEEP": 341.636
+    "BEEF": 10.654,
+    "PIG": 17.563,
+    "POULTRY": 25.776,
+    "SHEEP": 5.085
   },
   {
     "alpha2": "GB",
@@ -23716,10 +23716,10 @@
     "Productivity: output per hour worked": 46,
     "Gini coefficient": 0.487286493811894,
     "Palma ratio (S90/S40 ratio)": 3.1613183,
-    "BEEF": 983.047,
-    "PIG": 1345.806,
-    "POULTRY": 1710.325,
-    "SHEEP": 360.323
+    "BEEF": 11.599,
+    "PIG": 17.694,
+    "POULTRY": 25.37,
+    "SHEEP": 5.345
   },
   {
     "alpha2": "GB",
@@ -23737,10 +23737,10 @@
     "Productivity: output per hour worked": 46,
     "Gini coefficient": 0.497054081195806,
     "Palma ratio (S90/S40 ratio)": 3.3286095,
-    "BEEF": 999.685,
-    "PIG": 1402.666,
-    "POULTRY": 1709.585,
-    "SHEEP": 361.524
+    "BEEF": 11.749,
+    "PIG": 18.369,
+    "POULTRY": 25.259,
+    "SHEEP": 5.341
   },
   {
     "alpha2": "GB",
@@ -23758,10 +23758,10 @@
     "Productivity: output per hour worked": 47,
     "Gini coefficient": 0.490320349152384,
     "Palma ratio (S90/S40 ratio)": 3.2051947,
-    "BEEF": 1033.938,
-    "PIG": 1379.117,
-    "POULTRY": 1751.847,
-    "SHEEP": 375.175
+    "BEEF": 12.088,
+    "PIG": 17.967,
+    "POULTRY": 25.748,
+    "SHEEP": 5.514
   },
   {
     "alpha2": "GB",
@@ -23780,10 +23780,10 @@
     "Productivity: output per hour worked": 50,
     "Gini coefficient": 0.49758187248333,
     "Palma ratio (S90/S40 ratio)": 3.3406305,
-    "BEEF": 1037.45,
-    "PIG": 1397.642,
-    "POULTRY": 1789.616,
-    "SHEEP": 375.794
+    "BEEF": 12.046,
+    "PIG": 18.083,
+    "POULTRY": 26.122,
+    "SHEEP": 5.485
   },
   {
     "alpha2": "GB",
@@ -23802,10 +23802,10 @@
     "Productivity: output per hour worked": 50,
     "Gini coefficient": 0.501202458337829,
     "Palma ratio (S90/S40 ratio)": 3.4366071,
-    "BEEF": 1069.418,
-    "PIG": 1391.348,
-    "POULTRY": 1725.457,
-    "SHEEP": 378.413
+    "BEEF": 12.308,
+    "PIG": 17.843,
+    "POULTRY": 24.965,
+    "SHEEP": 5.475
   },
   {
     "alpha2": "GB",
@@ -23824,10 +23824,10 @@
     "Productivity: output per hour worked": 49,
     "Gini coefficient": 0.498690820458741,
     "Palma ratio (S90/S40 ratio)": 3.3509991,
-    "BEEF": 1090.472,
-    "PIG": 1450.97,
-    "POULTRY": 1631.02,
-    "SHEEP": 390.139
+    "BEEF": 12.421,
+    "PIG": 18.416,
+    "POULTRY": 23.355,
+    "SHEEP": 5.587
   },
   {
     "alpha2": "GB",
@@ -23846,10 +23846,10 @@
     "Productivity: output per hour worked": 51,
     "Gini coefficient": 0.488280397805965,
     "Palma ratio (S90/S40 ratio)": 3.1911764,
-    "BEEF": 1060.779,
-    "PIG": 1364.245,
-    "POULTRY": 1592.661,
-    "SHEEP": 372.32
+    "BEEF": 11.949,
+    "PIG": 17.123,
+    "POULTRY": 22.553,
+    "SHEEP": 5.272
   },
   {
     "alpha2": "GB",
@@ -23868,10 +23868,10 @@
     "Productivity: output per hour worked": 48,
     "Gini coefficient": 0.50612790728465,
     "Palma ratio (S90/S40 ratio)": 3.525641,
-    "BEEF": 1022.208,
-    "PIG": 1362.039,
-    "POULTRY": 1626.772,
-    "SHEEP": 350.343
+    "BEEF": 11.389,
+    "PIG": 16.909,
+    "POULTRY": 22.785,
+    "SHEEP": 4.907
   },
   {
     "alpha2": "GB",
@@ -23890,10 +23890,10 @@
     "Productivity: output per hour worked": 51,
     "Gini coefficient": 0.465462551422995,
     "Palma ratio (S90/S40 ratio)": 2.8025889,
-    "BEEF": 1075.546,
-    "PIG": 1353.655,
-    "POULTRY": 1776.435,
-    "SHEEP": 313.089
+    "BEEF": 11.864,
+    "PIG": 16.638,
+    "POULTRY": 24.634,
+    "SHEEP": 4.342
   },
   {
     "alpha2": "GB",
@@ -23912,10 +23912,10 @@
     "Productivity: output per hour worked": 52,
     "Gini coefficient": 0.473092031640618,
     "Palma ratio (S90/S40 ratio)": 2.9178982,
-    "BEEF": 1062.388,
-    "PIG": 1347.425,
-    "POULTRY": 1784.578,
-    "SHEEP": 298.989
+    "BEEF": 11.616,
+    "PIG": 16.416,
+    "POULTRY": 24.53,
+    "SHEEP": 4.11
   },
   {
     "alpha2": "GB",
@@ -23934,10 +23934,10 @@
     "Productivity: output per hour worked": 52,
     "Gini coefficient": 0.48462608494642,
     "Palma ratio (S90/S40 ratio)": 3.1091218,
-    "BEEF": 1039.903,
-    "PIG": 1327.326,
-    "POULTRY": 1806.69,
-    "SHEEP": 283.289
+    "BEEF": 11.281,
+    "PIG": 16.045,
+    "POULTRY": 24.64,
+    "SHEEP": 3.864
   },
   {
     "alpha2": "GB",
@@ -23956,10 +23956,10 @@
     "Productivity: output per hour worked": 53,
     "Gini coefficient": 0.499662272721032,
     "Palma ratio (S90/S40 ratio)": 3.385289,
-    "BEEF": 1023.414,
-    "PIG": 1305.26,
-    "POULTRY": 1831.562,
-    "SHEEP": 300.712
+    "BEEF": 11.024,
+    "PIG": 15.667,
+    "POULTRY": 24.803,
+    "SHEEP": 4.072
   },
   {
     "alpha2": "GB",
@@ -23978,10 +23978,10 @@
     "Productivity: output per hour worked": 52,
     "Gini coefficient": 0.479583619283396,
     "Palma ratio (S90/S40 ratio)": 3.0322313,
-    "BEEF": 1060.65,
-    "PIG": 1345.066,
-    "POULTRY": 1817.665,
-    "SHEEP": 302.245
+    "BEEF": 11.349,
+    "PIG": 16.036,
+    "POULTRY": 24.449,
+    "SHEEP": 4.066
   },
   {
     "alpha2": "GB",
@@ -23999,10 +23999,10 @@
     "Productivity: output per hour worked": 53,
     "Gini coefficient": 0.469553480582967,
     "Palma ratio (S90/S40 ratio)": 2.8548517,
-    "BEEF": 1094.539,
-    "PIG": 1383.315,
-    "POULTRY": 1982.536,
-    "SHEEP": 333.527
+    "BEEF": 11.633,
+    "PIG": 16.383,
+    "POULTRY": 26.49,
+    "SHEEP": 4.457
   },
   {
     "alpha2": "GB",
@@ -24020,10 +24020,10 @@
     "Productivity: output per hour worked": 53,
     "Gini coefficient": 0.467841352143061,
     "Palma ratio (S90/S40 ratio)": 2.822504,
-    "BEEF": 1107.867,
-    "PIG": 1450.053,
-    "POULTRY": 2076.822,
-    "SHEEP": 324.12
+    "BEEF": 11.697,
+    "PIG": 17.06,
+    "POULTRY": 27.567,
+    "SHEEP": 4.302
   },
   {
     "alpha2": "GB",
@@ -24041,10 +24041,10 @@
     "Productivity: output per hour worked": 55,
     "Gini coefficient": 0.466155623288287,
     "Palma ratio (S90/S40 ratio)": 2.7673345,
-    "BEEF": 1115.878,
-    "PIG": 1422.308,
-    "POULTRY": 2050.991,
-    "SHEEP": 305.577
+    "BEEF": 11.706,
+    "PIG": 16.626,
+    "POULTRY": 27.048,
+    "SHEEP": 4.03
   },
   {
     "alpha2": "GB",
@@ -24059,10 +24059,10 @@
     "GDP (expenditure, multiple price benchmarks)": 3080494750000,
     "GDP per capita (expenditure, multiple price benchmarks)": 45881,
     "Productivity: output per hour worked": 55,
-    "BEEF": 1125.594,
-    "PIG": 1449.039,
-    "POULTRY": 2169.426,
-    "SHEEP": 299.124
+    "BEEF": 11.735,
+    "PIG": 16.834,
+    "POULTRY": 28.434,
+    "SHEEP": 3.921
   },
   {
     "alpha2": "GD",
@@ -50095,10 +50095,10 @@
     "Productivity: output per hour worked": 45,
     "Gini coefficient": 0.325010217092112,
     "Palma ratio (S90/S40 ratio)": 1.262959,
-    "BEEF": 76.702,
-    "PIG": 83.792,
-    "POULTRY": 20.084,
-    "SHEEP": 23.308
+    "BEEF": 12.641,
+    "PIG": 15.388,
+    "POULTRY": 4.161,
+    "SHEEP": 4.829
   },
   {
     "alpha2": "NO",
@@ -50116,10 +50116,10 @@
     "Productivity: output per hour worked": 46,
     "Gini coefficient": 0.324340099223941,
     "Palma ratio (S90/S40 ratio)": 1.2651637,
-    "BEEF": 79.135,
-    "PIG": 86.252,
-    "POULTRY": 20.539,
-    "SHEEP": 24.464
+    "BEEF": 12.975,
+    "PIG": 15.758,
+    "POULTRY": 4.233,
+    "SHEEP": 5.042
   },
   {
     "alpha2": "NO",
@@ -50137,10 +50137,10 @@
     "Productivity: output per hour worked": 47,
     "Gini coefficient": 0.329492520733894,
     "Palma ratio (S90/S40 ratio)": 1.3168635,
-    "BEEF": 80.588,
-    "PIG": 88.305,
-    "POULTRY": 23.117,
-    "SHEEP": 25.014
+    "BEEF": 13.141,
+    "PIG": 16.045,
+    "POULTRY": 4.739,
+    "SHEEP": 5.128
   },
   {
     "alpha2": "NO",
@@ -50158,10 +50158,10 @@
     "Productivity: output per hour worked": 47,
     "Gini coefficient": 0.348807967370973,
     "Palma ratio (S90/S40 ratio)": 1.4711161,
-    "BEEF": 82.507,
-    "PIG": 92.374,
-    "POULTRY": 23.088,
-    "SHEEP": 25.447
+    "BEEF": 13.379,
+    "PIG": 16.691,
+    "POULTRY": 4.707,
+    "SHEEP": 5.188
   },
   {
     "alpha2": "NO",
@@ -50179,10 +50179,10 @@
     "Productivity: output per hour worked": 48,
     "Gini coefficient": 0.36496415259559,
     "Palma ratio (S90/S40 ratio)": 1.6048009,
-    "BEEF": 89.42,
-    "PIG": 95.663,
-    "POULTRY": 26.172,
-    "SHEEP": 27.152
+    "BEEF": 14.417,
+    "PIG": 17.187,
+    "POULTRY": 5.305,
+    "SHEEP": 5.503
   },
   {
     "alpha2": "NO",
@@ -50200,10 +50200,10 @@
     "Productivity: output per hour worked": 52,
     "Gini coefficient": 0.366469003988044,
     "Palma ratio (S90/S40 ratio)": 1.6214622,
-    "BEEF": 87.986,
-    "PIG": 100.768,
-    "POULTRY": 29.658,
-    "SHEEP": 27.486
+    "BEEF": 14.104,
+    "PIG": 17.998,
+    "POULTRY": 5.976,
+    "SHEEP": 5.539
   },
   {
     "alpha2": "NO",
@@ -50221,10 +50221,10 @@
     "Productivity: output per hour worked": 57,
     "Gini coefficient": 0.381728668308959,
     "Palma ratio (S90/S40 ratio)": 1.7663438,
-    "BEEF": 90.26,
-    "PIG": 107.141,
-    "POULTRY": 32.619,
-    "SHEEP": 27.734
+    "BEEF": 14.382,
+    "PIG": 19.023,
+    "POULTRY": 6.534,
+    "SHEEP": 5.555
   },
   {
     "alpha2": "NO",
@@ -50242,10 +50242,10 @@
     "Productivity: output per hour worked": 59,
     "Gini coefficient": 0.397699410007064,
     "Palma ratio (S90/S40 ratio)": 1.9221594,
-    "BEEF": 90.068,
-    "PIG": 101.739,
-    "POULTRY": 33.488,
-    "SHEEP": 25.126
+    "BEEF": 14.263,
+    "PIG": 17.953,
+    "POULTRY": 6.667,
+    "SHEEP": 5.002
   },
   {
     "alpha2": "NO",
@@ -50263,10 +50263,10 @@
     "Productivity: output per hour worked": 55,
     "Gini coefficient": 0.374204253104416,
     "Palma ratio (S90/S40 ratio)": 1.6944278,
-    "BEEF": 92.667,
-    "PIG": 107.053,
-    "POULTRY": 31.429,
-    "SHEEP": 23.705
+    "BEEF": 14.585,
+    "PIG": 18.775,
+    "POULTRY": 6.219,
+    "SHEEP": 4.69
   },
   {
     "alpha2": "NO",
@@ -50284,10 +50284,10 @@
     "Productivity: output per hour worked": 60,
     "Gini coefficient": 0.383605879596594,
     "Palma ratio (S90/S40 ratio)": 1.7839319,
-    "BEEF": 89.752,
-    "PIG": 99.821,
-    "POULTRY": 36.754,
-    "SHEEP": 22.917
+    "BEEF": 14.043,
+    "PIG": 17.403,
+    "POULTRY": 7.229,
+    "SHEEP": 4.508
   },
   {
     "alpha2": "NO",
@@ -50305,10 +50305,10 @@
     "Productivity: output per hour worked": 75,
     "Gini coefficient": 0.412103088718254,
     "Palma ratio (S90/S40 ratio)": 2.081254,
-    "BEEF": 92.781,
-    "PIG": 103.936,
-    "POULTRY": 43.607,
-    "SHEEP": 24.372
+    "BEEF": 14.435,
+    "PIG": 18.018,
+    "POULTRY": 8.529,
+    "SHEEP": 4.767
   },
   {
     "alpha2": "NO",
@@ -50326,10 +50326,10 @@
     "Productivity: output per hour worked": 77,
     "Gini coefficient": 0.387293798792783,
     "Palma ratio (S90/S40 ratio)": 1.8246359,
-    "BEEF": 89.796,
-    "PIG": 110.08,
-    "POULTRY": 43.348,
-    "SHEEP": 25.073
+    "BEEF": 13.897,
+    "PIG": 18.983,
+    "POULTRY": 8.434,
+    "SHEEP": 4.878
   },
   {
     "alpha2": "NO",
@@ -50347,10 +50347,10 @@
     "Productivity: output per hour worked": 76,
     "Gini coefficient": 0.390228304928399,
     "Palma ratio (S90/S40 ratio)": 1.8547113,
-    "BEEF": 90.462,
-    "PIG": 105.393,
-    "POULTRY": 46.808,
-    "SHEEP": 25.463
+    "BEEF": 13.929,
+    "PIG": 18.083,
+    "POULTRY": 9.061,
+    "SHEEP": 4.929
   },
   {
     "alpha2": "NO",
@@ -50368,10 +50368,10 @@
     "Productivity: output per hour worked": 84,
     "Gini coefficient": 0.397918115219802,
     "Palma ratio (S90/S40 ratio)": 1.9337461,
-    "BEEF": 93.068,
-    "PIG": 109.385,
-    "POULTRY": 49.872,
-    "SHEEP": 24.786
+    "BEEF": 14.255,
+    "PIG": 18.669,
+    "POULTRY": 9.603,
+    "SHEEP": 4.773
   },
   {
     "alpha2": "NO",
@@ -50389,10 +50389,10 @@
     "Productivity: output per hour worked": 88,
     "Gini coefficient": 0.405584136086176,
     "Palma ratio (S90/S40 ratio)": 2.015142,
-    "BEEF": 94.764,
-    "PIG": 113.505,
-    "POULTRY": 54.99,
-    "SHEEP": 26.454
+    "BEEF": 14.426,
+    "PIG": 19.254,
+    "POULTRY": 10.524,
+    "SHEEP": 5.063
   },
   {
     "alpha2": "NO",
@@ -50411,10 +50411,10 @@
     "Productivity: output per hour worked": 108,
     "Gini coefficient": 0.413226386582537,
     "Palma ratio (S90/S40 ratio)": 2.0996785,
-    "BEEF": 96.445,
-    "PIG": 117.649,
-    "POULTRY": 58.198,
-    "SHEEP": 26.308
+    "BEEF": 14.574,
+    "PIG": 19.81,
+    "POULTRY": 11.056,
+    "SHEEP": 4.998
   },
   {
     "alpha2": "NO",
@@ -50433,10 +50433,10 @@
     "Productivity: output per hour worked": 115,
     "Gini coefficient": 0.420845120987238,
     "Palma ratio (S90/S40 ratio)": 2.187541,
-    "BEEF": 92.356,
-    "PIG": 116.148,
-    "POULTRY": 63.642,
-    "SHEEP": 25.721
+    "BEEF": 13.835,
+    "PIG": 19.387,
+    "POULTRY": 11.985,
+    "SHEEP": 4.844
   },
   {
     "alpha2": "NO",
@@ -50455,10 +50455,10 @@
     "Productivity: output per hour worked": 112,
     "Gini coefficient": 0.422058544252749,
     "Palma ratio (S90/S40 ratio)": 2.1973855,
-    "BEEF": 94.884,
-    "PIG": 125.926,
-    "POULTRY": 71.199,
-    "SHEEP": 26.237
+    "BEEF": 14.074,
+    "PIG": 20.813,
+    "POULTRY": 13.276,
+    "SHEEP": 4.892
   },
   {
     "alpha2": "NO",
@@ -50477,10 +50477,10 @@
     "Productivity: output per hour worked": 123,
     "Gini coefficient": 0.423167055403553,
     "Palma ratio (S90/S40 ratio)": 2.2112768,
-    "BEEF": 98.078,
-    "PIG": 124.638,
-    "POULTRY": 84.858,
-    "SHEEP": 26.714
+    "BEEF": 14.39,
+    "PIG": 20.377,
+    "POULTRY": 15.652,
+    "SHEEP": 4.927
   },
   {
     "alpha2": "NO",
@@ -50499,10 +50499,10 @@
     "Productivity: output per hour worked": 106,
     "Gini coefficient": 0.395271814859413,
     "Palma ratio (S90/S40 ratio)": 1.9110012,
-    "BEEF": 93.87,
-    "PIG": 123.848,
-    "POULTRY": 82.335,
-    "SHEEP": 25.311
+    "BEEF": 13.613,
+    "PIG": 20.013,
+    "POULTRY": 15.011,
+    "SHEEP": 4.615
   },
   {
     "alpha2": "NO",
@@ -50521,10 +50521,10 @@
     "Productivity: output per hour worked": 115,
     "Gini coefficient": 0.411750294689206,
     "Palma ratio (S90/S40 ratio)": 2.0766284,
-    "BEEF": 90.707,
-    "PIG": 127.891,
-    "POULTRY": 84.673,
-    "SHEEP": 25.821
+    "BEEF": 12.996,
+    "PIG": 20.417,
+    "POULTRY": 15.251,
+    "SHEEP": 4.651
   },
   {
     "alpha2": "NO",
@@ -50543,10 +50543,10 @@
     "Productivity: output per hour worked": 124,
     "Gini coefficient": 0.415681918546056,
     "Palma ratio (S90/S40 ratio)": 2.1121857,
-    "BEEF": 94,
-    "PIG": 131.952,
-    "POULTRY": 85.131,
-    "SHEEP": 25.043
+    "BEEF": 13.297,
+    "PIG": 20.799,
+    "POULTRY": 15.14,
+    "SHEEP": 4.454
   },
   {
     "alpha2": "NO",
@@ -50565,10 +50565,10 @@
     "Productivity: output per hour worked": 129,
     "Gini coefficient": 0.418777007982627,
     "Palma ratio (S90/S40 ratio)": 2.1534944,
-    "BEEF": 97.806,
-    "PIG": 131.25,
-    "POULTRY": 93.743,
-    "SHEEP": 25.591
+    "BEEF": 13.655,
+    "PIG": 20.419,
+    "POULTRY": 16.454,
+    "SHEEP": 4.492
   },
   {
     "alpha2": "NO",
@@ -50587,10 +50587,10 @@
     "Productivity: output per hour worked": 126,
     "Gini coefficient": 0.413575530847616,
     "Palma ratio (S90/S40 ratio)": 2.0984457,
-    "BEEF": 99.944,
-    "PIG": 129.326,
-    "POULTRY": 106.461,
-    "SHEEP": 26.791
+    "BEEF": 13.773,
+    "PIG": 19.859,
+    "POULTRY": 18.444,
+    "SHEEP": 4.642
   },
   {
     "alpha2": "NO",
@@ -50609,10 +50609,10 @@
     "Productivity: output per hour worked": 117,
     "Gini coefficient": 0.412922770515102,
     "Palma ratio (S90/S40 ratio)": 2.0895522,
-    "BEEF": 92.735,
-    "PIG": 131.882,
-    "POULTRY": 104.728,
-    "SHEEP": 26.536
+    "BEEF": 12.624,
+    "PIG": 20.004,
+    "POULTRY": 17.922,
+    "SHEEP": 4.541
   },
   {
     "alpha2": "NO",
@@ -50630,10 +50630,10 @@
     "Productivity: output per hour worked": 97,
     "Gini coefficient": 0.39794928020093,
     "Palma ratio (S90/S40 ratio)": 1.9306868,
-    "BEEF": 104.388,
-    "PIG": 139.767,
-    "POULTRY": 93.963,
-    "SHEEP": 27.283
+    "BEEF": 14.053,
+    "PIG": 20.966,
+    "POULTRY": 15.902,
+    "SHEEP": 4.617
   },
   {
     "alpha2": "NO",
@@ -50651,10 +50651,10 @@
     "Productivity: output per hour worked": 93,
     "Gini coefficient": 0.397970684977121,
     "Palma ratio (S90/S40 ratio)": 1.932869,
-    "BEEF": 105.477,
-    "PIG": 142.106,
-    "POULTRY": 100.532,
-    "SHEEP": 26.888
+    "BEEF": 14.061,
+    "PIG": 21.109,
+    "POULTRY": 16.848,
+    "SHEEP": 4.506
   },
   {
     "alpha2": "NO",
@@ -50672,10 +50672,10 @@
     "Productivity: output per hour worked": 97,
     "Gini coefficient": 0.4020057939629,
     "Palma ratio (S90/S40 ratio)": 1.9649458,
-    "BEEF": 103.732,
-    "PIG": 141.654,
-    "POULTRY": 103.26,
-    "SHEEP": 28.255
+    "BEEF": 13.71,
+    "PIG": 20.862,
+    "POULTRY": 17.157,
+    "SHEEP": 4.695
   },
   {
     "alpha2": "NO",
@@ -50690,10 +50690,10 @@
     "GDP (expenditure, multiple price benchmarks)": 342195968750,
     "GDP per capita (expenditure, multiple price benchmarks)": 64106,
     "Productivity: output per hour worked": 104,
-    "BEEF": 98.218,
-    "PIG": 143.537,
-    "POULTRY": 105.021,
-    "SHEEP": 27.936
+    "BEEF": 12.88,
+    "PIG": 20.974,
+    "POULTRY": 17.314,
+    "SHEEP": 4.606
   },
   {
     "alpha2": "NP",

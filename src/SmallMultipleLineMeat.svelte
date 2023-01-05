@@ -1,6 +1,7 @@
 <script>
   import Chart from "./components/LineChart/Chart.svelte";
   import data from "./data/meatChart.json";
+  let scaleAdjusted = false;
 
   const countries = [
     "Argentina",
@@ -29,12 +30,18 @@
     });
     return newData
   }
-  $: continents = Array.from(new Set(data.map((d) => d.continent)));
+  $: maxYOverride = scaleAdjusted ? null : 55.559
 
 </script>
 
 <div class="small-line-chart-container">
 
+  <div class="scale-toggle">
+    <label>
+      Adjust scale:
+      <input type="checkbox" bind:checked={scaleAdjusted}/>
+    </label>
+  </div>
 
 
 {#each countries as c}
@@ -47,6 +54,7 @@
       groupList={types}
       selectedLabel={types}
       selectedGroup={types}
+      maxYOverride={maxYOverride}
     />
   </div>
 {/each}
@@ -73,5 +81,11 @@
 
   .small-line-chart-container {
     display: inline-block;
+  }
+
+  .scale-toggle {
+    text-align: left;
+    max-width: 700px;
+    margin: auto;
   }
 </style>

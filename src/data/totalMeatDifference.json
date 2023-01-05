@@ -1,0 +1,290 @@
+[
+  {
+    "alpha2": "AE",
+    "alpha3": "ARE",
+    "country": "United Arab Emirates",
+    "continent": "Asia",
+    "year": 2018,
+    "agriculture_meat_consumption": 276,
+    "difference": -27.176781002638524
+  },
+  {
+    "alpha2": "AR",
+    "alpha3": "ARG",
+    "country": "Argentina",
+    "continent": "Americas",
+    "year": 2018,
+    "agriculture_meat_consumption": 658,
+    "difference": 25.812619502868067
+  },
+  {
+    "alpha2": "AU",
+    "alpha3": "AUS",
+    "country": "Australia",
+    "continent": "Oceania",
+    "year": 2018,
+    "agriculture_meat_consumption": 469,
+    "difference": -3.4979423868312756
+  },
+  {
+    "alpha2": "BR",
+    "alpha3": "BRA",
+    "country": "Brazil",
+    "continent": "Americas",
+    "year": 2018,
+    "agriculture_meat_consumption": 468,
+    "difference": 99.14893617021276
+  },
+  {
+    "alpha2": "CA",
+    "alpha3": "CAN",
+    "country": "Canada",
+    "continent": "Americas",
+    "year": 2018,
+    "agriculture_meat_consumption": 366,
+    "difference": 6.705539358600583
+  },
+  {
+    "alpha2": "CH",
+    "alpha3": "CHE",
+    "country": "Switzerland",
+    "continent": "Europe",
+    "year": 2018,
+    "agriculture_meat_consumption": 407,
+    "difference": -24.76894639556377
+  },
+  {
+    "alpha2": "CL",
+    "alpha3": "CHL",
+    "country": "Chile",
+    "continent": "Americas",
+    "year": 2018,
+    "agriculture_meat_consumption": 488,
+    "difference": 109.4420600858369
+  },
+  {
+    "alpha2": "CN",
+    "alpha3": "CHN",
+    "country": "China",
+    "continent": "Asia",
+    "year": 2018,
+    "agriculture_meat_consumption": 487,
+    "difference": 114.53744493392071
+  },
+  {
+    "alpha2": "CR",
+    "alpha3": "CRI",
+    "country": "Costa Rica",
+    "continent": "Americas",
+    "year": 2018,
+    "agriculture_meat_consumption": 180,
+    "difference": 30.434782608695656
+  },
+  {
+    "alpha2": "DE",
+    "alpha3": "DEU",
+    "country": "Germany",
+    "continent": "Europe",
+    "year": 2018,
+    "agriculture_meat_consumption": 321,
+    "difference": -17.05426356589147
+  },
+  {
+    "alpha2": "ET",
+    "alpha3": "ETH",
+    "country": "Ethiopia",
+    "continent": "Africa",
+    "year": 2018,
+    "agriculture_meat_consumption": 38,
+    "difference": null
+  },
+  {
+    "alpha2": "FR",
+    "alpha3": "FRA",
+    "country": "France",
+    "continent": "Europe",
+    "year": 2018,
+    "agriculture_meat_consumption": 427,
+    "difference": -20.63197026022305
+  },
+  {
+    "alpha2": "GB",
+    "alpha3": "GBR",
+    "country": "United Kingdom",
+    "continent": "Europe",
+    "year": 2018,
+    "agriculture_meat_consumption": 434,
+    "difference": -0.91324200913242
+  },
+  {
+    "alpha2": "GM",
+    "alpha3": "GMB",
+    "country": "Gambia",
+    "continent": "Africa",
+    "year": 2018,
+    "agriculture_meat_consumption": 35,
+    "difference": -25.53191489361702
+  },
+  {
+    "alpha2": "ID",
+    "alpha3": "IDN",
+    "country": "Indonesia",
+    "continent": "Asia",
+    "year": 2018,
+    "agriculture_meat_consumption": 55,
+    "difference": 1.8518518518518516
+  },
+  {
+    "alpha2": "IN",
+    "alpha3": "IND",
+    "country": "India",
+    "continent": "Asia",
+    "year": 2018,
+    "agriculture_meat_consumption": 16,
+    "difference": -11.11111111111111
+  },
+  {
+    "alpha2": "IT",
+    "alpha3": "ITA",
+    "country": "Italy",
+    "continent": "Europe",
+    "year": 2018,
+    "agriculture_meat_consumption": 356,
+    "difference": -11.442786069651742
+  },
+  {
+    "alpha2": "JP",
+    "alpha3": "JPN",
+    "country": "Japan",
+    "continent": "Asia",
+    "year": 2018,
+    "agriculture_meat_consumption": 200,
+    "difference": 34.22818791946309
+  },
+  {
+    "alpha2": "KR",
+    "alpha3": "KOR",
+    "country": "South Korea",
+    "continent": "Asia",
+    "year": 2018,
+    "agriculture_meat_consumption": 313,
+    "difference": 146.45669291338584
+  },
+  {
+    "alpha2": "KZ",
+    "alpha3": "KAZ",
+    "country": "Kazakhstan",
+    "continent": "Asia",
+    "year": 2018,
+    "agriculture_meat_consumption": 329,
+    "difference": null
+  },
+  {
+    "alpha2": "MX",
+    "alpha3": "MEX",
+    "country": "Mexico",
+    "continent": "Americas",
+    "year": 2018,
+    "agriculture_meat_consumption": 353,
+    "difference": 82.90155440414507
+  },
+  {
+    "alpha2": "NO",
+    "alpha3": "NOR",
+    "country": "Norway",
+    "continent": "Europe",
+    "year": 2018,
+    "agriculture_meat_consumption": 386,
+    "difference": 23.322683706070286
+  },
+  {
+    "alpha2": "NP",
+    "alpha3": "NPL",
+    "country": "Nepal",
+    "continent": "Asia",
+    "year": 2018,
+    "agriculture_meat_consumption": 51,
+    "difference": 30.76923076923077
+  },
+  {
+    "alpha2": "NZ",
+    "alpha3": "NZL",
+    "country": "New Zealand",
+    "continent": "Oceania",
+    "year": 2018,
+    "agriculture_meat_consumption": 379,
+    "difference": -12.268518518518519
+  },
+  {
+    "alpha2": "PE",
+    "alpha3": "PER",
+    "country": "Peru",
+    "continent": "Americas",
+    "year": 2018,
+    "agriculture_meat_consumption": 112,
+    "difference": 51.35135135135135
+  },
+  {
+    "alpha2": "PH",
+    "alpha3": "PHL",
+    "country": "Philippines",
+    "continent": "Asia",
+    "year": 2018,
+    "agriculture_meat_consumption": 244,
+    "difference": 54.43037974683544
+  },
+  {
+    "alpha2": "RU",
+    "alpha3": "RUS",
+    "country": "Russia",
+    "continent": "Asia",
+    "year": 2018,
+    "agriculture_meat_consumption": 321,
+    "difference": null
+  },
+  {
+    "alpha2": "SA",
+    "alpha3": "SAU",
+    "country": "Saudi Arabia",
+    "continent": "Asia",
+    "year": 2018,
+    "agriculture_meat_consumption": 186,
+    "difference": -7.000000000000001
+  },
+  {
+    "alpha2": "TR",
+    "alpha3": "TUR",
+    "country": "Turkey",
+    "continent": "Asia",
+    "year": 2018,
+    "agriculture_meat_consumption": 154,
+    "difference": 63.829787234042556
+  },
+  {
+    "alpha2": "UA",
+    "alpha3": "UKR",
+    "country": "Ukraine",
+    "continent": "Europe",
+    "year": 2018,
+    "agriculture_meat_consumption": 220,
+    "difference": null
+  },
+  {
+    "alpha2": "US",
+    "alpha3": "USA",
+    "country": "United States",
+    "continent": "Americas",
+    "year": 2018,
+    "agriculture_meat_consumption": 455,
+    "difference": 10.436893203883495
+  },
+  {
+    "alpha2": "ZA",
+    "alpha3": "ZAF",
+    "country": "South Africa",
+    "continent": "Africa",
+    "year": 2018,
+    "agriculture_meat_consumption": 331,
+    "difference": 46.46017699115044
+  }
+]

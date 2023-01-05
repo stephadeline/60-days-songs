@@ -4,7 +4,7 @@
 
   const countries = [
     "Argentina",
-    "France",
+    "Switzerland",
     "India",
     "China",
     "United States",

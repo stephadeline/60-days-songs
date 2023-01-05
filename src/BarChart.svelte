@@ -1,84 +1,21 @@
 <script>
+  import { Rect } from "@observablehq/plot";
   import * as d3 from "d3";
-  import data from "./data/joined.json";
+  import { onMount } from "svelte";
+  import data from "./data/totalMeatDifference.json";
 
-  //Change names of properties
-
-  const dataRename = data.map((d) => {
-    let newd = {
-      alpha2: d["alpha2"],
-      alpha3: d["alpha3"],
-      country: d["country_name"],
-      continent: d["continent"],
-      year: +d["year"],
-      variable: d["variable"],
-      annual_working_hours_per_worker: +d["Annual working hours per worker"],
-      productivity: +d["Productivity: output per hour worked"],
-      agriculture_meat_consumption:
-        +d["Agriculture activity (meat): consumption_historic"],
-      agriculture_total_consumption:
-        +d["Agriculture activity (total): consumption_historic"],
-      electricity_per_capita: +d["Electricity activity (per capita)_historic"],
-      gas_share_primary_energy: +d["Gas share in primary energy_historic"],
-      oil_gas_production: +d["Oil and Gas activity: production_historic"],
-      consumption_per_capita: +d["consumption_per_capita"],
-      population: +d["Population"],
-      gdp: +d["GDP (expenditure, multiple price benchmarks)"],
-      consumption_households_government:
-        +d["Consumption of households and government (single price benchmark)"],
-      gdp_per_capita:
-        +d["GDP per capita (expenditure, multiple price benchmarks)"],
-      gini: +d["Gini coefficient"],
-      EV_sales: +d["New EV sales per million capita_historic"],
-      waste_generation_CTI: +d["Waste generation (per capita)_CTI scenario"],
-      waste_generation: +d["Waste generation (per capita)_historic"],
-    };
-    return newd;
-  });
-
-  // Function to calculate percentage change
-  function getPercentageChange(oldNumber, newNumber) {
-    const value = newNumber - oldNumber;
-    return (value / oldNumber) * 100;
-  }
-
-  // Filter the array to get only the elements of year 1991
-  let countriesInitialYear = dataRename.filter(function (country) {
-    return country.year == 1991;
-  });
-
-  // Find matches in country name between the filtered array and the original one
-  let dataPercentages = dataRename.map(function (country) {
-    var initialYear = countriesInitialYear.find(function (initialYearCountry) {
-      return initialYearCountry.country === country.country;
-    });
-    if (initialYear) {
-      // If there's a match, we create a new property (difference) with the percentage change
-      var percentageChange = getPercentageChange(
-        initialYear.agriculture_meat_consumption,
-        country.agriculture_meat_consumption
-      );
-      return {
-        ...country,
-        difference: percentageChange,
-      };
-    } else {
-      // If not, we return the original element without 'difference' property
-      return country;
-    }
-  });
-
-  let total_meat_2018 = dataPercentages
-    .filter((d) => d.year == 2018)
-    .filter((g) => g.agriculture_meat_consumption);
+  let total_meat_2018 = data;
 
   //Bar chart with D3
 
   const margin = { top: 30, right: 20, bottom: 20, left: 40 }; //margin object
   const width = 900; //width of SVG in pixels
   const height = 400; //height of SVG in pixels
+
   const svg = d3
-    .create("svg")
+    .select("#bar-chart")
+    .append("svg") // create svg in the div id bar-chart
+    // .create("svg")
     .attr("width", width)
     .attr("height", height)
     .attr("viewBox", [0, 0, width, height]);
@@ -108,14 +45,14 @@
     .domain(total_meat_2018.map((d) => d.continent))
     .range(d3.schemeCategory10);
 
-  selection
-    .data(total_meat_2018)
-    .join("rect")
-    .attr("x", (d) => xScale(d.alpha3))
-    .attr("y", (d) => (d.difference < 0 ? yScale(0) : yScale(d.difference)))
-    .attr("width", xScale.bandwidth() * 0.9)
-    .attr("height", (d) => Math.abs(yScale(0) - yScale(d.difference)))
-    .style("fill", (d) => colorScale(d.continent));
+  // selection
+  //   .data(total_meat_2018)
+  //   .join("rect")
+  //   .attr("x", (d) => xScale(d.alpha3))
+  //   .attr("y", (d) => (d.difference < 0 ? yScale(0) : yScale(d.difference)))
+  //   .attr("width", xScale.bandwidth() * 0.9)
+  //   .attr("height", (d) => Math.abs(yScale(0) - yScale(d.difference)))
+  //   .style("fill", (d) => colorScale(d.continent));
 
   const xAxis = (g) =>
     g.attr("transform", `translate(0,${height - margin.bottom})`).call(
@@ -144,39 +81,93 @@
 
   svg.append("g").call(yAxis);
 
-  const legend = svg
-    .append("g")
-    .attr(
-      "transform",
-      `translate(${width - margin.right - 120}, ${margin.top})`
-    );
+  // const legend = svg
+  //   .append("g")
+  //   .attr(
+  //     "transform",
+  //     `translate(${width - margin.right - 120}, ${margin.top})`
+  //   );
 
-  const legendItems = legend
-    .selectAll("g")
-    .data(colorScale.domain())
-    .join("g")
-    .attr("transform", (d, i) => `translate(0, ${i * 20})`);
+  // const legendItems = legend
+  //   .selectAll("g")
+  //   .data(colorScale.domain())
+  //   .join("g")
+  //   .attr("transform", (d, i) => `translate(0, ${i * 20})`);
 
-  legendItems
-    .append("rect")
-    .attr("width", 18)
-    .attr("height", 18)
-    .style("fill", colorScale);
+  // legendItems
+  //   .append("rect")
+  //   .attr("width", 18)
+  //   .attr("height", 18)
+  //   .style("fill", colorScale);
 
-  legendItems
-    .append("text")
-    .attr("x", 24)
-    .attr("y", 9)
-    .attr("dy", "0.35em")
-    .text((d) => d);
+  // legendItems
+  //   .append("text")
+  //   .attr("x", 24)
+  //   .attr("y", 9)
+  //   .attr("dy", "0.35em")
+  //   .text((d) => d);
 
-  legend
-    .append("text")
-    .attr("x", 0)
-    .attr("y", -6)
-    .attr("font-weight", "bold")
-    .text("Continent");
+  // legend
+  //   .append("text")
+  //   .attr("x", 0)
+  //   .attr("y", -6)
+  //   .attr("font-weight", "bold")
+  //   .text("Continent");
+
+  console.log(data);
 </script>
 
+<!-- <div id="bar-chart">
+  <svg>
+    {#each total_meat_2018 as d}
+    <rect x="10" y="10" width="10" height="10" fill="red"></rect>
+    {/each}
+  </svg>
+</div>
+ -->
+
+<!-- <div class="bar-chart" bind:clientWidth={width} bind:clientHeight={height}> -->
+<!-- {#if width} -->
+<svg
+  xmlns:svg="https://www.w3.org/2000/svg"
+  viewBox="0 0 {width} {height}"
+  {width}
+  {height}
+>
+  {#each data as d}
+    <rect
+      height={Math.abs(yScale(0) - yScale(d.difference))}
+      width={xScale.bandwidth()}
+      y={d.difference < 0 ? yScale(0) : yScale(d.difference)}
+      x={xScale(d.alpha3)}
+      fill={colorScale(d.continent)}
+      stroke="none"
+    />
+    <!-- <text 
+              y={height - margin.bottom + 5}
+              x={x(d[keyX])+x.bandwidth()/2}
+              font-size='0.75rem'
+              text-anchor='middle'
+              alignment-baseline='hanging'>
+              {d[keyX]}
+          </text> -->
+  {/each}
+
+  <!-- legend here -->
+
+  <g transform={`translate(${width - margin.right - 120}, ${margin.top})`}>
+    {#each colorScale.domain() as continent, i}
+      <g transform={`translate(0, ${i * 20})`}>
+        <rect width="18" height="18" fill={colorScale(continent)} />
+        <text x="24" y="9" dy="0.35em">{continent}</text>
+      </g>
+    {/each}
+  </g>
+
+  <!-- <AxisY scale={y} {width} {margin}/>         -->
+</svg>
+<!-- {/if} -->
+
+<!-- </div> -->
 <style>
 </style>
