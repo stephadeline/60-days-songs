@@ -134,8 +134,8 @@
   {width}
   {height}
 >
-<!-- <AxisY {yScale} {margin} {width} {height} ordinal={true}/> -->
-<AxisBar scale={yScale} {width} {margin}/>        
+  <!-- <AxisY {yScale} {margin} {width} {height} ordinal={true}/> -->
+  <AxisBar scale={yScale} {width} {margin} />
 
   {#each data as d}
     <rect
@@ -146,14 +146,15 @@
       fill={colorScale(d.continent)}
       stroke="none"
     />
-    <text 
-              y={height - margin.bottom + 5}
-              x={xScale(d.alpha3)+xScale.bandwidth()/2}
-              font-size='0.75rem'
-              text-anchor='middle'
-              alignment-baseline='hanging'>
-              {d.alpha3}
-          </text>
+    <text
+      y={height - margin.bottom + 5}
+      x={xScale(d.alpha3) + xScale.bandwidth() / 2}
+      font-size="0.75rem"
+      text-anchor="middle"
+      alignment-baseline="hanging"
+    >
+      {d.alpha3}
+    </text>
   {/each}
 
   <!-- legend here -->
