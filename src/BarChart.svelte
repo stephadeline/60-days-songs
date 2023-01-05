@@ -1,8 +1,8 @@
 <script>
-  import { Rect } from "@observablehq/plot";
   import * as d3 from "d3";
   import { onMount } from "svelte";
   import data from "./data/totalMeatDifference.json";
+  import AxisBar from "./components/AxisBar.svelte";
 
   let total_meat_2018 = data;
 
@@ -134,6 +134,9 @@
   {width}
   {height}
 >
+<!-- <AxisY {yScale} {margin} {width} {height} ordinal={true}/> -->
+<AxisBar scale={yScale} {width} {margin}/>        
+
   {#each data as d}
     <rect
       height={Math.abs(yScale(0) - yScale(d.difference))}
@@ -143,14 +146,14 @@
       fill={colorScale(d.continent)}
       stroke="none"
     />
-    <!-- <text 
+    <text 
               y={height - margin.bottom + 5}
-              x={x(d[keyX])+x.bandwidth()/2}
+              x={xScale(d.alpha3)+xScale.bandwidth()/2}
               font-size='0.75rem'
               text-anchor='middle'
               alignment-baseline='hanging'>
-              {d[keyX]}
-          </text> -->
+              {d.alpha3}
+          </text>
   {/each}
 
   <!-- legend here -->
@@ -163,8 +166,6 @@
       </g>
     {/each}
   </g>
-
-  <!-- <AxisY scale={y} {width} {margin}/>         -->
 </svg>
 <!-- {/if} -->
 

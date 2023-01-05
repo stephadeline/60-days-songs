@@ -60,7 +60,7 @@ function formatNum(num) {
   {/each}
 </g>
 
-<!-- <g class="axis" transform="translate({margin.left}, 0)"> -->
+<g class="axis" transform="translate({margin.left}, 0)">
   {#each xTicks as tick}
     <g class="axis" transform="translate({xScale(tick)}, 0)">
       {#if grid}
@@ -83,7 +83,7 @@ function formatNum(num) {
       </text>
     </g>
   {/each}
-  <!-- </g> -->
+  </g>
 
 
 <style>
