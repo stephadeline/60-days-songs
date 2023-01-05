@@ -12,6 +12,7 @@
   export let selectedGroup = [];
   export let zoom = null;
   export let groupList;
+  export let maxYOverride = null;
 
   export let isLog = false;
   export let nTicksY = 5;
@@ -30,9 +31,7 @@
   $: dataForScale = zoom && selected ? data.filter(d => selectedLabel.includes(d[label]) || selectedGroup.includes(d[group])) : data
 
   $: minY = isLog ? min(dataForScale, d => d.y) : 0
-  $: maxY = max(dataForScale, d => d.y)
-
-  $: maxX = max(dataForScale, d => d.x)
+  $: maxY = maxYOverride ? maxYOverride : max(dataForScale, d => d.y)
 
   $: yDomain = zoom && selected ? extent(dataForScale, d => d.y) : [minY, maxY]
 
@@ -136,6 +135,7 @@
 </div>
   <style>
     .line-chart-graphic {
-      height: 200px
+      height: 200px;
+      max-width: 100vw;
     }
   </style>

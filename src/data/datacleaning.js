@@ -94,6 +94,7 @@ const pennworldTable = aq
 // reading the meat data into arquero
 const meatTable = aq
   .fromCSV(meatConsumptionCsv)
+  .filter((d) => d["MEASURE"] === "KG_CAP")
   // selecting only the columns/variables we need.
   .rename(
     aq.names(
@@ -219,3 +220,63 @@ fs.writeFileSync(
   "src/data/meatChart.json",
   JSON.stringify(forMeatChart.objects(), null, 2)
 );
+
+// Calculate percentage changes for Guifre's chart
+
+const dataRename = finalData.map((d) => {
+  let newd = {
+    alpha2: d["alpha2"],
+    alpha3: d["alpha3"],
+    country: d["country_name"],
+    continent: d["continent"],
+    year: +d["year"],
+    agriculture_meat_consumption:
+      +d["Agriculture activity (meat): consumption"],
+  };
+  return newd;
+});
+
+// Function to calculate percentage change
+function getPercentageChange(oldNumber, newNumber) {
+  const value = newNumber - oldNumber;
+  return (value / oldNumber) * 100;
+}
+
+// Filter the array to get only the elements of year 1991
+let countriesInitialYear = dataRename.filter(function (country) {
+  return country.year == 1991;
+});
+
+// Find matches in country name between the filtered array and the original one
+let dataPercentages = dataRename.map(function (country) {
+  var initialYear = countriesInitialYear.find(function (initialYearCountry) {
+    return initialYearCountry.country === country.country;
+  });
+  if (initialYear) {
+    // If there's a match, we create a new property (difference) with the percentage change
+    var percentageChange = getPercentageChange(
+      initialYear.agriculture_meat_consumption,
+      country.agriculture_meat_consumption
+    );
+    return {
+      ...country,
+      difference: percentageChange,
+    };
+  } else {
+    // If not, we return the original element without 'difference' property
+    return country;
+  }
+});
+
+let total_meat_2018 = dataPercentages
+  .filter((d) => d.year == 2018)
+  .filter((g) => g.agriculture_meat_consumption);
+
+console.log(total_meat_2018);
+
+fs.writeFileSync(
+  "src/data/totalMeatDifference.json",
+  JSON.stringify(total_meat_2018, null, 2)
+);
+
+// Trying to optimize
