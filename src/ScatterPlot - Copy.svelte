@@ -4,35 +4,34 @@
   import * as d3 from "d3";
   import Select from "svelte-select";
   import { scaleOrdinal } from "d3-scale";
-  import { scaleLinear } from "d3-scale";
-  import { scaleLog } from "d3-scale";
   import { schemeCategory10 } from "d3-scale-chromatic";
   import { onMount } from 'svelte';
 
 
 
   let svg;
-  export let margin = ({top: 10, right: 100, bottom: 20, left: 60});
-  $: width = 600; 
-  $: height = 200; 
+  let margin = ({top: 60, right: 250, bottom: 40, left: 60}); //margin object
+  $: width = 950; //width of SVG in pixels
+  $: height = 600; //height of SVG in pixels
+
 
   const indicatorsX = [
-    "GDP (expenditure, multiple price benchmarks)",
-    "GDP per capita (expenditure, multiple price benchmarks)",
-    "Productivity: output per hour worked",
-    "Gini coefficient",
+    "gdp",
+    "gdp_per_capita",
+    "productivity",
+    "gini"
   ]
 
   const indicatorsY = [
-    "Agriculture activity (meat): consumption",
-    "Agriculture activity (total): consumption",
-    "Electricity activity (per capita)",
+    "agriculture_meat_consumption",
+    "agriculture_total_consumption",
+    "electricity_per_capita",
     // "gas_share_primary_energy",
-    "Electricity activity (per capita)",
+    "EV_sales",
     // "oil_gas_production",
     // "waste_generation_CTI",
     // "waste_generation",
-    "Consumption of households and government per capita"
+    "consumption_per_capita"
   ]
 
 
@@ -43,57 +42,53 @@
   $: selectedX = indicatorsX[0];
   $: selectedY = indicatorsY[0];
   ////--------------------------------- Filtering data  ------------------------------------------------------------------
-  //console.log("selectedX "+selectedX)
-  //console.log("selectedY "+selectedY)
+
 
   $: filteredData = data
-    //.filter((d) => d[selectedX])
+    .filter((d) => d[selectedX])
     .map((d) => {
       let newData = {
         country_name: d["country_name"],
         continent: d["continent"],
-        x: d[selectedX],
+        x: d["year"],
         y: d[selectedY],
-        year: d["year"]
       };
       return newData;
     });
 
-    //console.log(filteredData)
-    //console.log(data)
   ////--------------------------------- circle scale depending on the variable population -------------------------------
   $: rScale = d3.scaleSqrt()
     .domain([0,d3.max(data, d => d.population)])
     .range([0, 50]) //circles, la grandària en quant a rang, tenint en compte lo domini
 
   //scale the axis depending on the information for each axis
-  $: xScale = scaleLog()//Log scales are similar to linear scales, except a logarithmic transform is applied to the input domain value before the output range value is computed. 
-    .domain(d3.extent(data, d=>d[selectedX]))
-    //.domain(d3.extent(data, d=>d[selectedX]))
+  $: xScale = d3.scaleLog()//Log scales are similar to linear scales, except a logarithmic transform is applied to the input domain value before the output range value is computed. 
+    .domain(d3.extent(data.map(d=>d[selectedX]))).nice() 
     .range([margin.left, width - margin.right])
 
-  $: yScale = scaleLinear()
-    .domain([0,d3.max(data, d=>d[selectedY])])
+  $: yScale = d3.scaleLinear()
+    .domain([0,d3.max(data.map(d=>d[selectedY]))]).nice()
     .range([height-margin.bottom, margin.top])
 
-  $: yTicks = yScale.ticks()
-  $: xTicks = xScale.ticks() 
-  ////---------------------------------set color scheme ------------------------------------------------------------------
+  ////---------------------------------  Axis  ------------------------------------------------------------------
+  const xAxis = g => g
+    .attr("transform", `translate(0,${height - margin.bottom})`)
+    .call(d3.axisBottom(xScale))
 
-  const color = scaleOrdinal() 
-    .domain(continents)
-    .range(schemeCategory10)
-
+  //Y axis based on the scale calculated before
+  const yAxis =  g => g
+    .attr("transform", `translate(${margin.left},0)`)
+    .call(d3.axisLeft(yScale))
 
   ////--------------------------------- creating chart area ------------------------------------------------------------------
 
-   svg = d3.create("svg")
+  svg = d3.create("svg")
     .attr("width", width)
     .attr("height", height)
     .attr("viewBox",[0, 0, width, height]);
 
 
-  ////--------------------------------- text square with information ---------------------------------
+  ////--------------------------------- text sqaure with information ---------------------------------
   const tooltip = d3.select('body') 
       .append('div')
       .style('position', 'absolute')
@@ -110,18 +105,12 @@
   const gy = svg.append("g")
     .call(yAxis);
   */
+  ////---------------------------------set color scheme ------------------------------------------------------------------
 
-    /*
-    ////---------------------------------  Axis  ------------------------------------------------------------------
-    const xAxis = g => g
-      .attr("transform", `translate(0,${height - margin.bottom})`)
-      .call(d3.axisBottom(xScale))
-  
-    //Y axis based on the scale calculated before
-    const yAxis =  g => g
-      .attr("transform", `translate(${margin.left},0)`)
-      .call(d3.axisLeft(yScale))
-    */
+  const color = scaleOrdinal() 
+    .domain(continents)
+    .range(schemeCategory10)
+
   //--------------------------------- creating the circles ------------------------------------------------------------
   /*const selection = svg.selectAll("dot")
     .data(filteredData)
@@ -160,26 +149,12 @@
     })
 */
 
-  //onMount(resize);
+  onMount(resize);
 
-  // function resize() {
-  //   ({ width, height } = svg.getBoundingClientRect());
-  // }
+  function resize() {
+    ({ width, height } = svg.getBoundingClientRect());
+  }
 </script>
-
-<!-- <p>
-  {selectedX}
-</p>
-<p>
-  {xScale(1000)}
-</p> -->
-
-<!-- <p>
-  {xTicks}
-</p>
-<p>
-  {yTicks}
-</p> -->
 
 
 <div class=scatterplot>
@@ -211,57 +186,27 @@
 </div>-->
 
 <div>
-  <svg  height={height} width={width} viewBox="0 0 {width} {height}">
+  <svg bind:this={svg}>
     <!-- y axis -->
-<g class='axis' transform='translate({margin.left},0)'>
-    {#each yTicks as tick}
-      <g class='tick' transform='translate(0,{yScale(tick)})'>
-        <!-- <line y1='{yScale(tick)}' y2='{yScale(tick)}'/> -->
-        <!-- <text y='{margin.left - 8}' y='+4'>{tick}</text> -->
-        <line
-          class="y-axis-lines"
-          x1="0"
-          y1="0"
-          x2={width - margin.left - margin.right}
-          y2="0"
-          style="stroke: lightgrey"
-        />
-        <text
-          class="axis-text"
-          x="-5"
-          y="0"
-          text-anchor="end"
-          dominant-baseline="middle"
-          >{tick}
-        </text>
-      </g>
-    {/each}
-  </g>
+    <g class='axis y-axis'>
+      {#each selectedY as tick}
+        <g class='tick tick-{tick}' transform='translate(0, {yScale(tick)})'>
+          <line x1='{margin.left}' x2='{xScale(22)}'/>
+          <text x='{margin.left - 8}' y='+4'>{tick}</text>
+        </g>
+      {/each}
+    </g>
 
-  <!-- <g class='axis' transform='translate(0,{height - margin.bottom})'> -->
-  <g class='axis' transform='translate({margin.left}, 0)'> 
     <!-- x axis -->
-    {#each xTicks as tick}
-      <g class='axis x-axis' transform='translate({ xScale(tick)},0)'>
-        <!-- <line x1='{xScale(tick)}' x2='{height - margin.bottom}'/> -->
-        <line x1="0" 
-          x2="0"
-          y1 = {margin.top}
-          y2 = {height - margin.bottom}
-          style="stroke: lightgrey"/>
-        <text
-          class="axis-text"
-          x="-5"
-          y="0"
-          text-anchor="end"
-          dominant-baseline="middle"
-          >{tick}
-        </text>
-        <!-- <text x='{height - margin.bottom + 16}'>{tick}</text> -->
-      </g>
-    {/each}
-  </g>
-  
+    <g class='axis x-axis'>
+      {#each selectedX as tick}
+        <g class='tick' transform='translate({xScale(tick)},0)'>
+          <line y1='{yScale(0)}' y2='{yScale(13)}'/>
+          <text y='{height - margin.bottom + 16}'>{tick}</text>
+        </g>
+      {/each}
+    </g>
+
     <!-- data -->
     {#each filteredData as d}
       <circle 
