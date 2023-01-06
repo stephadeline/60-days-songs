@@ -20,6 +20,11 @@ const meatConsumptionCsv = fs.readFileSync(
   "utf8"
 );
 
+const incomeClass = fs.readFileSync(
+  "src/data/raw-data/income-classification.csv",
+  "utf8"
+);
+
 // list of all country names (to exclude regions, continents etc)
 const allCountries = clm.getAllCountries();
 const allAlpha2 = allCountries.map((country) => country.alpha2);
@@ -77,6 +82,12 @@ const inequalityTable = aq
   // selecting only the columns/variables we need.
   .select("Entity", "Year", "Gini coefficient", "Palma ratio (S90/S40 ratio)");
 
+// reading income classification data
+const incomeClassTable = aq
+  .fromCSV(incomeClass)
+  .rename({ "Income classifications (World Bank (2021))": "income_class" })
+  .select("Entity", "Year", "income_class");
+
 // reading the PennWorld data into arquero
 const pennworldTable = aq
   .fromCSV(pennworldCsv)
@@ -126,6 +137,7 @@ const meatForJoining = meatTable
 // joining the datasets
 const cleanJoined = pennworldTable
   .join_full(inequalityTable)
+  .join_full(incomeClassTable)
   .derive(
     {
       alpha2: aq.escape((d) => {
@@ -221,6 +233,17 @@ fs.writeFileSync(
   JSON.stringify(forMeatChart.objects(), null, 2)
 );
 
+// Trying to optimize the above data
+// [
+//   {
+//   indicator: "GDP",
+//   }
+
+// ]
+// 2. Group by countries
+
+// end optimization
+
 // Calculate percentage changes for Guifre's chart
 
 const dataRename = finalData.map((d) => {
@@ -271,8 +294,6 @@ let dataPercentages = dataRename.map(function (country) {
 let total_meat_2018 = dataPercentages
   .filter((d) => d.year == 2018)
   .filter((g) => g.agriculture_meat_consumption);
-
-console.log(total_meat_2018);
 
 fs.writeFileSync(
   "src/data/totalMeatDifference.json",

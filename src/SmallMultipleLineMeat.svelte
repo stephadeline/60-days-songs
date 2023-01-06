@@ -35,6 +35,14 @@
 </script>
 
 <div class="small-line-chart-container">
+  <h3>Argentina and India like night and day in meat consumption</h3>
+
+  <p>When it comes to meat consumption, Argentina is clearly in the lead, confirming some clichés, but just partly, because this paradise for beef-lovers has seen poultry surpass the food coming from cows in the past few years.</p>
+
+  <p>At the other end of the rankings, India’s consumption of meat has been very small for decades. Cows are especially sacred for Hindu culture, but none of the other main types of meat is popular either in the second most populated country on Earth.</p> 
+
+  <p>The levels of consumption and the preference of animal vary depending on the country.
+These small multiple line charts show how much of each type of meat several countries across the globe eat.</p>
 
   <div class="scale-toggle">
     <label>
@@ -88,4 +96,17 @@
     max-width: 700px;
     margin: auto;
   }
+
+  p, h1, h4, h3 {
+		text-align: left;
+		margin: 10px auto 10px auto;
+		max-width: 700px;
+	}
+
+	@media screen and (max-width: 700px) {
+		p{
+			max-width: 100vw;
+			margin: 10px auto 10px auto;
+		}
+	}
 </style>

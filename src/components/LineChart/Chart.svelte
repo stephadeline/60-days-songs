@@ -11,7 +11,7 @@
   export let group = "continent";
   export let selectedLabel = [];
   export let selectedGroup = [];
-  export let zoom = null;
+  export let zoom = false;
   export let groupList;
   export let maxYOverride = null;
   export let xKey = "Year";
@@ -21,8 +21,8 @@
   export let nTicksY = 5;
 
   export let margin = { top: 10, right: 100, bottom: 20, left: 60 };
-  $: width = 600;
-  $: height = 200;
+  export let width = 600;
+  export let height = 200;
 
   export let hasSelectors = false;
   let hovered;
@@ -31,9 +31,7 @@
     return n.toLocaleString()
   }
 
-  $: selected = hasSelectors
-    ? selectedLabel.length > 0 || selectedGroup.length > 0
-    : null;
+  $: selected = selectedLabel.length > 0 || selectedGroup.length > 0
 
   $: groupedData = groups(data, (d) => d[label]);
   $: dataForScale =
@@ -70,6 +68,25 @@
     .defined((d) => !isNaN(d.y))
     .x((d) => xScale(d.x))
     .y((d) => yScale(d.y));
+
+    function getMaxofLabel(c) {
+    const thisLabel = data.filter((d) => d[label] === c && d.y);
+    const maxOfLabel = Math.max(...thisLabel.map((d) => d.x));
+    return maxOfLabel;
+  }
+
+  $: drawLineNA = function (data) {
+    const noData = data.filter(drawLine.defined());
+    if (noData.length > 0) {
+      return drawLine(noData);
+    } else {
+      return null;
+    }
+  };
+
+  $: labeledData = data.filter(
+    (d) => selectedLabel.includes(d[label]) && d.x === getMaxofLabel(d[label])
+  );
 
   $: points = data.map((d) => {
     const point = [xScale(d.x), yScale(d.y)];
@@ -143,25 +160,6 @@
   };
 
   $: isMobile = width <= 500;
-
-  function getMaxofLabel(c) {
-    const thisLabel = data.filter((d) => d[label] === c && d.y);
-    const maxOfLabel = Math.max(...thisLabel.map((d) => d.x));
-    return maxOfLabel;
-  }
-
-  $: drawLineNA = function (data) {
-    const noData = data.filter(drawLine.defined());
-    if (noData.length > 0) {
-      return drawLine(noData);
-    } else {
-      return null;
-    }
-  };
-
-  $: labeledData = data.filter(
-    (d) => selectedLabel.includes(d[label]) && d.x === getMaxofLabel(d[label])
-  );
 
 </script>
 

@@ -143,7 +143,6 @@
       {zoom}
       {isLog}
       groupList={continents}
-      hasSelectors={true}
     />
 
     <div class="line-chart-selector">
@@ -164,7 +163,6 @@
       groupList={continents}
       {zoom}
       {isLog}
-      hasSelectors={true}
     />
   </div>
 </div>

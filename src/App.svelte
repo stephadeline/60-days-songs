@@ -17,7 +17,6 @@
 		<p>For this work official data from the OECD, as well as a dataset from the Climate Action Tracker independent scientific analysis. It also uses the Penn World Table, maintained by the University of California and the University of Groningen, and the World Inequality Database (WID), maintained by the World Inequality Lab, located in Paris.
 		</p>
 
-	<h4>Argentina and India like night and day in meat consumption</h4>
 
 	<SmallMultipleLineMeat />
 
