@@ -1,3 +1,6 @@
+import { scaleOrdinal } from "d3-scale";
+import { schemeTableau10 } from "d3-scale-chromatic";
+
 export const units = {
   "Agriculture activity (meat): consumption": "kcal/cap/day",
   "Agriculture activity (total): consumption": "kcal/cap/day",
@@ -31,3 +34,7 @@ export const getFormattedValue = function (indicator, value) {
     return formatNum(value) + " " + unit;
   }
 };
+
+export const colorScale = scaleOrdinal()
+  .domain(["Asia", "Americas", "Europe", "Africa", "Oceania"])
+  .range(schemeTableau10);

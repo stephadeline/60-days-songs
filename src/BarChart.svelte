@@ -3,6 +3,7 @@
   import { onMount } from "svelte";
   import data from "./data/totalMeatDifference.json";
   import AxisBar from "./components/AxisBar.svelte";
+  import {colorScale} from "./components/helperFunctions.js";
 
   let total_meat_2018 = data;
 
@@ -43,10 +44,10 @@
 
   const selection = svg.selectAll("rect");
 
-  const colorScale = d3
-    .scaleOrdinal()
-    .domain(total_meat_2018.map((d) => d.continent))
-    .range(d3.schemeCategory10);
+  // const colorScale = d3
+  //   .scaleOrdinal()
+  //   .domain(total_meat_2018.map((d) => d.continent))
+  //   .range(d3.schemeCategory10);
 
   // selection
   //   .data(total_meat_2018)
