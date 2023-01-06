@@ -8,10 +8,12 @@
   export let grid = true;
   export let xScale;
   export let isMobile = false;
+  export let nTicksX = 10;
+  export let xFormatted = true;
 
-  $: nTicksX = isMobile ? 3 : 10;
+  $: setnTicksX = isMobile ? 3 : nTicksX;
   $: yTicks = yScale.ticks(nTicksY)
-  $: xTicks = xScale.ticks(nTicksX)
+  $: xTicks = xScale.ticks(setnTicksX)
   
 
 
@@ -79,7 +81,7 @@ function formatNum(num) {
         y={height - 5}
         text-anchor="middle"
         dominant-baseline="middle"
-        >{tick}
+        >{xFormatted ? formatNum(tick) : tick}
       </text>
     </g>
   {/each}

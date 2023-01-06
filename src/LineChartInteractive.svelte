@@ -4,7 +4,6 @@
   import Chart from "./components/LineChart/Chart.svelte";
   import MultiSelect from "svelte-multiselect";
   import Select from "svelte-select";
-
   import data from "./data/joined.json";
 
   const consumptionIndicators = [
@@ -166,7 +165,6 @@
       {zoom}
       {isLog}
       hasSelectors={true}
-
     />
   </div>
 </div>
