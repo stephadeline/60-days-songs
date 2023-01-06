@@ -5,6 +5,7 @@
     "Argentina": 55.559,
     "China": 0.639,
     "India": 1.65,
+    "Indonesia": 1.18,
     "Switzerland": 18.356,
     "United States": 30.673
   },
@@ -14,6 +15,7 @@
     "Argentina": 51.817,
     "China": 0.75,
     "India": 1.623,
+    "Indonesia": 1.188,
     "Switzerland": 18.579,
     "United States": 30.46
   },
@@ -23,6 +25,7 @@
     "Argentina": 50.98,
     "China": 1.001,
     "India": 1.616,
+    "Indonesia": 1.292,
     "Switzerland": 18.377,
     "United States": 30.359
   },
@@ -32,6 +35,7 @@
     "Argentina": 51.678,
     "China": 1.256,
     "India": 1.576,
+    "Indonesia": 1.475,
     "Switzerland": 17.58,
     "United States": 29.718
   },
@@ -41,6 +45,7 @@
     "Argentina": 48.594,
     "China": 1.523,
     "India": 1.542,
+    "Indonesia": 1.413,
     "Switzerland": 15.98,
     "United States": 30.772
   },
@@ -50,6 +55,7 @@
     "Argentina": 43.693,
     "China": 1.954,
     "India": 1.488,
+    "Indonesia": 1.314,
     "Switzerland": 15.829,
     "United States": 30.956
   },
@@ -59,6 +65,7 @@
     "Argentina": 44.219,
     "China": 1.944,
     "India": 1.468,
+    "Indonesia": 1.46,
     "Switzerland": 16.051,
     "United States": 31.05
   },
@@ -68,6 +75,7 @@
     "Argentina": 44.86,
     "China": 2.402,
     "India": 1.435,
+    "Indonesia": 1.492,
     "Switzerland": 15.999,
     "United States": 30.316
   },
@@ -77,6 +85,7 @@
     "Argentina": 41.633,
     "China": 2.601,
     "India": 1.427,
+    "Indonesia": 1.364,
     "Switzerland": 15.704,
     "United States": 30.658
   },
@@ -86,6 +95,7 @@
     "Argentina": 45.76,
     "China": 2.739,
     "India": 1.396,
+    "Indonesia": 1.289,
     "Switzerland": 15.542,
     "United States": 30.972
   },
@@ -95,6 +105,7 @@
     "Argentina": 45.282,
     "China": 2.685,
     "India": 1.299,
+    "Indonesia": 1.398,
     "Switzerland": 14.682,
     "United States": 31.067
   },
@@ -104,6 +115,7 @@
     "Argentina": 43.988,
     "China": 2.716,
     "India": 1.31,
+    "Indonesia": 1.32,
     "Switzerland": 14.538,
     "United States": 30.378
   },
@@ -113,6 +125,7 @@
     "Argentina": 40.505,
     "China": 2.782,
     "India": 1.257,
+    "Indonesia": 1.249,
     "Switzerland": 14.781,
     "United States": 31.038
   },
@@ -122,6 +135,7 @@
     "Argentina": 41.864,
     "China": 2.864,
     "India": 1.18,
+    "Indonesia": 1.338,
     "Switzerland": 14.504,
     "United States": 29.803
   },
@@ -131,6 +145,7 @@
     "Argentina": 43.711,
     "China": 2.928,
     "India": 1.156,
+    "Indonesia": 1.579,
     "Switzerland": 14.433,
     "United States": 30.33
   },
@@ -140,6 +155,7 @@
     "Argentina": 42.824,
     "China": 2.934,
     "India": 1.089,
+    "Indonesia": 1.312,
     "Switzerland": 14.545,
     "United States": 30.049
   },
@@ -149,6 +165,7 @@
     "Argentina": 44.105,
     "China": 2.953,
     "India": 1.064,
+    "Indonesia": 1.443,
     "Switzerland": 14.848,
     "United States": 30.171
   },
@@ -158,6 +175,7 @@
     "Argentina": 47.41,
     "China": 3.127,
     "India": 1.071,
+    "Indonesia": 1.303,
     "Switzerland": 14.651,
     "United States": 29.903
   },
@@ -167,6 +185,7 @@
     "Argentina": 47.251,
     "China": 3.126,
     "India": 1.066,
+    "Indonesia": 1.454,
     "Switzerland": 15.285,
     "United States": 28.71
   },
@@ -176,6 +195,7 @@
     "Argentina": 46.961,
     "China": 3.193,
     "India": 1.094,
+    "Indonesia": 1.557,
     "Switzerland": 15.121,
     "United States": 28.037
   },
@@ -185,6 +205,7 @@
     "Argentina": 39.622,
     "China": 3.187,
     "India": 0.936,
+    "Indonesia": 1.702,
     "Switzerland": 15.469,
     "United States": 27.257
   },
@@ -194,6 +215,7 @@
     "Argentina": 38.402,
     "China": 3.073,
     "India": 0.752,
+    "Indonesia": 1.721,
     "Switzerland": 15.618,
     "United States": 26.262
   },
@@ -203,6 +225,7 @@
     "Argentina": 40.476,
     "China": 3.106,
     "India": 0.67,
+    "Indonesia": 1.662,
     "Switzerland": 15.21,
     "United States": 26.083
   },
@@ -212,6 +235,7 @@
     "Argentina": 44.056,
     "China": 3.23,
     "India": 0.457,
+    "Indonesia": 1.682,
     "Switzerland": 14.34,
     "United States": 25.595
   },
@@ -221,6 +245,7 @@
     "Argentina": 40.956,
     "China": 3.222,
     "India": 0.348,
+    "Indonesia": 1.732,
     "Switzerland": 14.192,
     "United States": 24.627
   },
@@ -230,6 +255,7 @@
     "Argentina": 41.079,
     "China": 3.329,
     "India": 0.449,
+    "Indonesia": 1.658,
     "Switzerland": 13.84,
     "United States": 24.599
   },
@@ -239,6 +265,7 @@
     "Argentina": 39.042,
     "China": 3.383,
     "India": 0.469,
+    "Indonesia": 1.888,
     "Switzerland": 13.954,
     "United States": 25.308
   },
@@ -248,6 +275,7 @@
     "Argentina": 39.575,
     "China": 3.523,
     "India": 0.427,
+    "Indonesia": 1.89,
     "Switzerland": 13.415,
     "United States": 25.939
   },
@@ -257,6 +285,7 @@
     "Argentina": 38.881,
     "China": 3.617,
     "India": 0.563,
+    "Indonesia": 2.034,
     "Switzerland": 13.305,
     "United States": 26.057
   },
@@ -266,6 +295,7 @@
     "Argentina": 37.985,
     "China": 4.086,
     "India": 0.532,
+    "Indonesia": 2.159,
     "Switzerland": 13.171,
     "United States": 26.324
   },
@@ -275,6 +305,7 @@
     "Argentina": 36.894,
     "China": 4.186,
     "India": 0.532,
+    "Indonesia": 2.178,
     "Switzerland": 13.107,
     "United States": 26.195
   },
@@ -284,6 +315,7 @@
     "Argentina": 36.853,
     "China": 4.143,
     "India": 0.536,
+    "Indonesia": 2.203,
     "Switzerland": 13.01,
     "United States": 26.081
   },
@@ -293,6 +325,7 @@
     "Argentina": 36.894,
     "China": 4.095,
     "India": 0.538,
+    "Indonesia": 2.226,
     "Switzerland": 12.929,
     "United States": 25.342
   },
@@ -302,6 +335,7 @@
     "Argentina": 36.758,
     "China": 4.047,
     "India": 0.541,
+    "Indonesia": 2.25,
     "Switzerland": 12.845,
     "United States": 25.318
   },
@@ -311,6 +345,7 @@
     "Argentina": 36.631,
     "China": 4.003,
     "India": 0.542,
+    "Indonesia": 2.274,
     "Switzerland": 12.761,
     "United States": 25.309
   },
@@ -320,6 +355,7 @@
     "Argentina": 36.521,
     "China": 3.962,
     "India": 0.546,
+    "Indonesia": 2.301,
     "Switzerland": 12.685,
     "United States": 25.394
   },
@@ -329,6 +365,7 @@
     "Argentina": 36.386,
     "China": 3.973,
     "India": 0.548,
+    "Indonesia": 2.327,
     "Switzerland": 12.608,
     "United States": 25.58
   },
@@ -338,6 +375,7 @@
     "Argentina": 36.264,
     "China": 3.978,
     "India": 0.55,
+    "Indonesia": 2.355,
     "Switzerland": 12.571,
     "United States": 25.712
   },
@@ -347,6 +385,7 @@
     "Argentina": 36.144,
     "China": 3.986,
     "India": 0.552,
+    "Indonesia": 2.384,
     "Switzerland": 12.538,
     "United States": 25.945
   },
@@ -356,6 +395,7 @@
     "Argentina": 36.035,
     "China": 3.993,
     "India": 0.552,
+    "Indonesia": 2.414,
     "Switzerland": 12.506,
     "United States": 25.969
   },
@@ -365,6 +405,7 @@
     "Argentina": 3.674,
     "China": 14.959,
     "India": 0.37,
+    "Indonesia": 2.351,
     "Switzerland": 31.962,
     "United States": 22.496
   },
@@ -374,6 +415,7 @@
     "Argentina": 3.612,
     "China": 15.851,
     "India": 0.375,
+    "Indonesia": 2.429,
     "Switzerland": 31.265,
     "United States": 22.795
   },
@@ -383,6 +425,7 @@
     "Argentina": 4.487,
     "China": 16.951,
     "India": 0.383,
+    "Indonesia": 2.435,
     "Switzerland": 30.692,
     "United States": 24.06
   },
@@ -392,6 +435,7 @@
     "Argentina": 4.851,
     "China": 18.159,
     "India": 0.378,
+    "Indonesia": 2.544,
     "Switzerland": 30.009,
     "United States": 23.746
   },
@@ -401,6 +445,7 @@
     "Argentina": 4.837,
     "China": 19.674,
     "India": 0.373,
+    "Indonesia": 2.657,
     "Switzerland": 28.034,
     "United States": 24.054
   },
@@ -410,6 +455,7 @@
     "Argentina": 5.086,
     "China": 19.939,
     "India": 0.369,
+    "Indonesia": 2.268,
     "Switzerland": 28.559,
     "United States": 23.708
   },
@@ -419,6 +465,7 @@
     "Argentina": 4.889,
     "China": 19.546,
     "India": 0.445,
+    "Indonesia": 2.341,
     "Switzerland": 26.211,
     "United States": 22.144
   },
@@ -428,6 +475,7 @@
     "Argentina": 4.747,
     "China": 22.113,
     "India": 0.363,
+    "Indonesia": 2.438,
     "Switzerland": 25.821,
     "United States": 21.903
   },
@@ -437,6 +485,7 @@
     "Argentina": 5.475,
     "China": 23.708,
     "India": 0.356,
+    "Indonesia": 2.358,
     "Switzerland": 27.096,
     "United States": 23.541
   },
@@ -446,6 +495,7 @@
     "Argentina": 6.148,
     "China": 23.64,
     "India": 0.35,
+    "Indonesia": 2.057,
     "Switzerland": 26.609,
     "United States": 24.075
   },
@@ -455,6 +505,7 @@
     "Argentina": 5.989,
     "China": 23.986,
     "India": 0.345,
+    "Indonesia": 1.529,
     "Switzerland": 26.437,
     "United States": 23.414
   },
@@ -464,6 +515,7 @@
     "Argentina": 4.783,
     "China": 24.267,
     "India": 0.34,
+    "Indonesia": 1.525,
     "Switzerland": 26.502,
     "United States": 22.988
   },
@@ -473,6 +525,7 @@
     "Argentina": 4.445,
     "China": 24.531,
     "India": 0.335,
+    "Indonesia": 1.666,
     "Switzerland": 26.71,
     "United States": 23.581
   },
@@ -482,6 +535,7 @@
     "Argentina": 3.951,
     "China": 24.999,
     "India": 0.331,
+    "Indonesia": 1.761,
     "Switzerland": 26.253,
     "United States": 23.726
   },
@@ -491,6 +545,7 @@
     "Argentina": 4.255,
     "China": 25.322,
     "India": 0.307,
+    "Indonesia": 0.678,
     "Switzerland": 25.987,
     "United States": 23.522
   },
@@ -500,6 +555,7 @@
     "Argentina": 4.825,
     "China": 26.425,
     "India": 0.29,
+    "Indonesia": 0.607,
     "Switzerland": 26.365,
     "United States": 22.925
   },
@@ -509,6 +565,7 @@
     "Argentina": 5.93,
     "China": 26.893,
     "India": 0.272,
+    "Indonesia": 0.678,
     "Switzerland": 26.753,
     "United States": 22.636
   },
@@ -518,6 +575,7 @@
     "Argentina": 6.045,
     "China": 24.774,
     "India": 0.255,
+    "Indonesia": 0.773,
     "Switzerland": 26.389,
     "United States": 23.265
   },
@@ -527,6 +585,7 @@
     "Argentina": 5.933,
     "China": 26.815,
     "India": 0.247,
+    "Indonesia": 0.697,
     "Switzerland": 26.024,
     "United States": 22.654
   },
@@ -536,6 +595,7 @@
     "Argentina": 6.415,
     "China": 28.296,
     "India": 0.244,
+    "Indonesia": 0.653,
     "Switzerland": 25.522,
     "United States": 22.914
   },
@@ -545,6 +605,7 @@
     "Argentina": 6.137,
     "China": 29.34,
     "India": 0.235,
+    "Indonesia": 0.683,
     "Switzerland": 26.242,
     "United States": 21.851
   },
@@ -554,6 +615,7 @@
     "Argentina": 6.582,
     "China": 29.319,
     "India": 0.228,
+    "Indonesia": 0.716,
     "Switzerland": 25.672,
     "United States": 20.86
   },
@@ -563,6 +625,7 @@
     "Argentina": 6.635,
     "China": 30.943,
     "India": 0.221,
+    "Indonesia": 0.73,
     "Switzerland": 24.277,
     "United States": 20.885
   },
@@ -572,6 +635,7 @@
     "Argentina": 7.879,
     "China": 31.796,
     "India": 0.216,
+    "Indonesia": 0.931,
     "Switzerland": 23.995,
     "United States": 21.408
   },
@@ -581,6 +645,7 @@
     "Argentina": 8.026,
     "China": 32.72,
     "India": 0.211,
+    "Indonesia": 0.933,
     "Switzerland": 24.333,
     "United States": 21.172
   },
@@ -590,6 +655,7 @@
     "Argentina": 8.631,
     "China": 31.752,
     "India": 0.205,
+    "Indonesia": 1.015,
     "Switzerland": 23.436,
     "United States": 22.706
   },
@@ -599,6 +665,7 @@
     "Argentina": 9.674,
     "China": 30.947,
     "India": 0.187,
+    "Indonesia": 1.033,
     "Switzerland": 23.184,
     "United States": 22.883
   },
@@ -608,6 +675,7 @@
     "Argentina": 10.421,
     "China": 30.671,
     "India": 0.178,
+    "Indonesia": 1.02,
     "Switzerland": 22.949,
     "United States": 22.893
   },
@@ -617,6 +685,7 @@
     "Argentina": 11.054,
     "China": 30.253,
     "India": 0.173,
+    "Indonesia": 1.019,
     "Switzerland": 22.596,
     "United States": 23.246
   },
@@ -626,6 +695,7 @@
     "Argentina": 11.374,
     "China": 24.367,
     "India": 0.169,
+    "Indonesia": 1.011,
     "Switzerland": 22.545,
     "United States": 24.002
   },
@@ -635,6 +705,7 @@
     "Argentina": 11.476,
     "China": 22.718,
     "India": 0.168,
+    "Indonesia": 1.008,
     "Switzerland": 22.46,
     "United States": 23.983
   },
@@ -644,6 +715,7 @@
     "Argentina": 11.542,
     "China": 23.679,
     "India": 0.165,
+    "Indonesia": 1.021,
     "Switzerland": 22.37,
     "United States": 23.878
   },
@@ -653,6 +725,7 @@
     "Argentina": 11.551,
     "China": 25.389,
     "India": 0.163,
+    "Indonesia": 1.03,
     "Switzerland": 22.247,
     "United States": 23.793
   },
@@ -662,6 +735,7 @@
     "Argentina": 11.537,
     "China": 26.94,
     "India": 0.16,
+    "Indonesia": 1.036,
     "Switzerland": 22.171,
     "United States": 23.725
   },
@@ -671,6 +745,7 @@
     "Argentina": 11.531,
     "China": 28.499,
     "India": 0.157,
+    "Indonesia": 1.043,
     "Switzerland": 22.076,
     "United States": 23.85
   },
@@ -680,6 +755,7 @@
     "Argentina": 11.557,
     "China": 30.072,
     "India": 0.155,
+    "Indonesia": 1.048,
     "Switzerland": 21.988,
     "United States": 23.924
   },
@@ -689,6 +765,7 @@
     "Argentina": 11.552,
     "China": 30.692,
     "India": 0.152,
+    "Indonesia": 1.052,
     "Switzerland": 21.905,
     "United States": 23.961
   },
@@ -698,6 +775,7 @@
     "Argentina": 11.568,
     "China": 30.807,
     "India": 0.149,
+    "Indonesia": 1.054,
     "Switzerland": 21.826,
     "United States": 23.903
   },
@@ -707,6 +785,7 @@
     "Argentina": 11.578,
     "China": 30.92,
     "India": 0.145,
+    "Indonesia": 1.056,
     "Switzerland": 21.747,
     "United States": 23.861
   },
@@ -716,6 +795,7 @@
     "Argentina": 11.6,
     "China": 31.052,
     "India": 0.142,
+    "Indonesia": 1.06,
     "Switzerland": 21.681,
     "United States": 23.833
   },
@@ -725,6 +805,7 @@
     "Argentina": 8.66,
     "China": 0,
     "India": 0.396,
+    "Indonesia": 2.468,
     "Switzerland": 9.741,
     "United States": 35.072
   },
@@ -734,6 +815,7 @@
     "Argentina": 8.88,
     "China": 2.898,
     "India": 0.518,
+    "Indonesia": 2.783,
     "Switzerland": 10.174,
     "United States": 36.524
   },
@@ -743,6 +825,7 @@
     "Argentina": 10.027,
     "China": 3.267,
     "India": 0.525,
+    "Indonesia": 2.567,
     "Switzerland": 9.821,
     "United States": 37.937
   },
@@ -752,6 +835,7 @@
     "Argentina": 15.442,
     "China": 4.131,
     "India": 0.579,
+    "Indonesia": 3.222,
     "Switzerland": 9.564,
     "United States": 38.599
   },
@@ -761,6 +845,7 @@
     "Argentina": 18.392,
     "China": 4.698,
     "India": 0.584,
+    "Indonesia": 3.704,
     "Switzerland": 10.116,
     "United States": 39.201
   },
@@ -770,6 +855,7 @@
     "Argentina": 18.662,
     "China": 5.943,
     "India": 0.588,
+    "Indonesia": 3.918,
     "Switzerland": 9.96,
     "United States": 39.055
   },
@@ -779,6 +865,7 @@
     "Argentina": 19.63,
     "China": 5.917,
     "India": 0.593,
+    "Indonesia": 4.178,
     "Switzerland": 10.723,
     "United States": 39.808
   },
@@ -788,6 +875,7 @@
     "Argentina": 19.005,
     "China": 6.748,
     "India": 0.586,
+    "Indonesia": 3.903,
     "Switzerland": 10.774,
     "United States": 40.049
   },
@@ -797,6 +885,7 @@
     "Argentina": 19.803,
     "China": 7.442,
     "India": 0.639,
+    "Indonesia": 2.645,
     "Switzerland": 10.967,
     "United States": 40.355
   },
@@ -806,6 +895,7 @@
     "Argentina": 23.041,
     "China": 7.739,
     "India": 0.689,
+    "Indonesia": 2.642,
     "Switzerland": 10.778,
     "United States": 42.8
   },
@@ -815,6 +905,7 @@
     "Argentina": 22.902,
     "China": 8.35,
     "India": 0.755,
+    "Indonesia": 3.46,
     "Switzerland": 11.807,
     "United States": 43.227
   },
@@ -824,6 +915,7 @@
     "Argentina": 22.024,
     "China": 8.089,
     "India": 0.791,
+    "Indonesia": 3.788,
     "Switzerland": 12.462,
     "United States": 43.229
   },
@@ -833,6 +925,7 @@
     "Argentina": 15.424,
     "China": 8.118,
     "India": 0.91,
+    "Indonesia": 4.461,
     "Switzerland": 12.751,
     "United States": 45.262
   },
@@ -842,6 +935,7 @@
     "Argentina": 16.121,
     "China": 8.436,
     "India": 0.987,
+    "Indonesia": 4.531,
     "Switzerland": 13.116,
     "United States": 45.632
   },
@@ -851,6 +945,7 @@
     "Argentina": 18.888,
     "China": 8.28,
     "India": 1.047,
+    "Indonesia": 4.779,
     "Switzerland": 13.004,
     "United States": 46.611
   },
@@ -860,6 +955,7 @@
     "Argentina": 21.145,
     "China": 8.856,
     "India": 1.107,
+    "Indonesia": 4.468,
     "Switzerland": 12.551,
     "United States": 47.288
   },
@@ -869,6 +965,7 @@
     "Argentina": 24.338,
     "China": 9.093,
     "India": 1.177,
+    "Indonesia": 4.934,
     "Switzerland": 11.922,
     "United States": 47.528
   },
@@ -878,6 +975,7 @@
     "Argentina": 25.742,
     "China": 9.755,
     "India": 1.335,
+    "Indonesia": 5.084,
     "Switzerland": 13.674,
     "United States": 46.769
   },
@@ -887,6 +985,7 @@
     "Argentina": 27.954,
     "China": 10.351,
     "India": 1.409,
+    "Indonesia": 5.166,
     "Switzerland": 14.563,
     "United States": 46.611
   },
@@ -896,6 +995,7 @@
     "Argentina": 29.733,
     "China": 10.631,
     "India": 1.536,
+    "Indonesia": 5.27,
     "Switzerland": 14.543,
     "United States": 44.523
   },
@@ -905,6 +1005,7 @@
     "Argentina": 31.511,
     "China": 10.771,
     "India": 1.589,
+    "Indonesia": 5.666,
     "Switzerland": 14.529,
     "United States": 45.536
   },
@@ -914,6 +1015,7 @@
     "Argentina": 35.01,
     "China": 10.924,
     "India": 1.768,
+    "Indonesia": 6.051,
     "Switzerland": 14.749,
     "United States": 46.52
   },
@@ -923,6 +1025,7 @@
     "Argentina": 36.864,
     "China": 11.64,
     "India": 1.886,
+    "Indonesia": 6.24,
     "Switzerland": 14.693,
     "United States": 44.522
   },
@@ -932,6 +1035,7 @@
     "Argentina": 35.685,
     "China": 11.452,
     "India": 1.977,
+    "Indonesia": 6.53,
     "Switzerland": 14.888,
     "United States": 44.33
   },
@@ -941,6 +1045,7 @@
     "Argentina": 36.692,
     "China": 11.018,
     "India": 2.085,
+    "Indonesia": 6.8,
     "Switzerland": 15.537,
     "United States": 45.05
   },
@@ -950,6 +1055,7 @@
     "Argentina": 39.253,
     "China": 11.424,
     "India": 2.207,
+    "Indonesia": 7.041,
     "Switzerland": 15.741,
     "United States": 47.783
   },
@@ -959,6 +1065,7 @@
     "Argentina": 38.925,
     "China": 11.89,
     "India": 2.278,
+    "Indonesia": 7.9,
     "Switzerland": 15.906,
     "United States": 48.421
   },
@@ -968,6 +1075,7 @@
     "Argentina": 38.343,
     "China": 11.765,
     "India": 2.327,
+    "Indonesia": 7.666,
     "Switzerland": 15.503,
     "United States": 48.901
   },
@@ -977,6 +1085,7 @@
     "Argentina": 38.464,
     "China": 12.323,
     "India": 2.405,
+    "Indonesia": 7.546,
     "Switzerland": 14.666,
     "United States": 49.439
   },
@@ -986,6 +1095,7 @@
     "Argentina": 37.921,
     "China": 14.022,
     "India": 2.403,
+    "Indonesia": 7.764,
     "Switzerland": 14.729,
     "United States": 50.098
   },
@@ -995,6 +1105,7 @@
     "Argentina": 38.088,
     "China": 14.191,
     "India": 2.517,
+    "Indonesia": 7.903,
     "Switzerland": 14.769,
     "United States": 50.963
   },
@@ -1004,6 +1115,7 @@
     "Argentina": 38.117,
     "China": 13.998,
     "India": 2.586,
+    "Indonesia": 8.052,
     "Switzerland": 14.841,
     "United States": 50.801
   },
@@ -1013,6 +1125,7 @@
     "Argentina": 38.157,
     "China": 13.821,
     "India": 2.652,
+    "Indonesia": 8.214,
     "Switzerland": 14.91,
     "United States": 50.897
   },
@@ -1022,6 +1135,7 @@
     "Argentina": 38.201,
     "China": 13.839,
     "India": 2.721,
+    "Indonesia": 8.375,
     "Switzerland": 15.017,
     "United States": 50.902
   },
@@ -1031,6 +1145,7 @@
     "Argentina": 38.247,
     "China": 13.868,
     "India": 2.786,
+    "Indonesia": 8.543,
     "Switzerland": 15.131,
     "United States": 50.911
   },
@@ -1040,6 +1155,7 @@
     "Argentina": 38.295,
     "China": 13.9,
     "India": 2.859,
+    "Indonesia": 8.702,
     "Switzerland": 15.243,
     "United States": 50.906
   },
@@ -1049,6 +1165,7 @@
     "Argentina": 38.348,
     "China": 13.963,
     "India": 2.934,
+    "Indonesia": 8.862,
     "Switzerland": 15.354,
     "United States": 50.902
   },
@@ -1058,6 +1175,7 @@
     "Argentina": 38.404,
     "China": 14.033,
     "India": 3.009,
+    "Indonesia": 9.005,
     "Switzerland": 15.465,
     "United States": 50.893
   },
@@ -1067,6 +1185,7 @@
     "Argentina": 38.464,
     "China": 14.107,
     "India": 3.086,
+    "Indonesia": 9.159,
     "Switzerland": 15.576,
     "United States": 50.894
   },
@@ -1076,6 +1195,7 @@
     "Argentina": 38.528,
     "China": 14.181,
     "India": 3.162,
+    "Indonesia": 9.317,
     "Switzerland": 15.689,
     "United States": 50.882
   },
@@ -1085,6 +1205,7 @@
     "Argentina": 2.282,
     "China": 0,
     "India": 0.61,
+    "Indonesia": 0.438,
     "Switzerland": 1.643,
     "United States": 0.63
   },
@@ -1094,6 +1215,7 @@
     "Argentina": 2.347,
     "China": 0.869,
     "India": 0.606,
+    "Indonesia": 0.452,
     "Switzerland": 1.608,
     "United States": 0.622
   },
@@ -1103,6 +1225,7 @@
     "Argentina": 1.894,
     "China": 0.91,
     "India": 0.601,
+    "Indonesia": 0.467,
     "Switzerland": 1.655,
     "United States": 0.603
   },
@@ -1112,6 +1235,7 @@
     "Argentina": 1.869,
     "China": 0.99,
     "India": 0.594,
+    "Indonesia": 0.515,
     "Switzerland": 1.614,
     "United States": 0.586
   },
@@ -1121,6 +1245,7 @@
     "Argentina": 2.374,
     "China": 1.058,
     "India": 0.585,
+    "Indonesia": 0.454,
     "Switzerland": 1.577,
     "United States": 0.527
   },
@@ -1130,6 +1255,7 @@
     "Argentina": 2.233,
     "China": 1.238,
     "India": 0.6,
+    "Indonesia": 0.425,
     "Switzerland": 1.562,
     "United States": 0.521
   },
@@ -1139,6 +1265,7 @@
     "Argentina": 1.787,
     "China": 1.274,
     "India": 0.596,
+    "Indonesia": 0.437,
     "Switzerland": 1.65,
     "United States": 0.496
   },
@@ -1148,6 +1275,7 @@
     "Argentina": 1.625,
     "China": 1.486,
     "India": 0.594,
+    "Indonesia": 0.468,
     "Switzerland": 1.707,
     "United States": 0.488
   },
@@ -1157,6 +1285,7 @@
     "Argentina": 1.421,
     "China": 1.627,
     "India": 0.588,
+    "Indonesia": 0.351,
     "Switzerland": 1.64,
     "United States": 0.522
   },
@@ -1166,6 +1295,7 @@
     "Argentina": 1.336,
     "China": 1.73,
     "India": 0.58,
+    "Indonesia": 0.33,
     "Switzerland": 1.578,
     "United States": 0.513
   },
@@ -1175,6 +1305,7 @@
     "Argentina": 1.412,
     "China": 1.816,
     "India": 0.567,
+    "Indonesia": 0.328,
     "Switzerland": 1.765,
     "United States": 0.502
   },
@@ -1184,6 +1315,7 @@
     "Argentina": 1.397,
     "China": 1.832,
     "India": 0.567,
+    "Indonesia": 0.386,
     "Switzerland": 1.611,
     "United States": 0.516
   },
@@ -1193,6 +1325,7 @@
     "Argentina": 1.363,
     "China": 1.905,
     "India": 0.559,
+    "Indonesia": 0.514,
     "Switzerland": 1.619,
     "United States": 0.529
   },
@@ -1202,6 +1335,7 @@
     "Argentina": 1.309,
     "China": 2.053,
     "India": 0.545,
+    "Indonesia": 0.578,
     "Switzerland": 1.633,
     "United States": 0.506
   },
@@ -1211,6 +1345,7 @@
     "Argentina": 1.26,
     "China": 2.189,
     "India": 0.559,
+    "Indonesia": 0.487,
     "Switzerland": 1.638,
     "United States": 0.509
   },
@@ -1220,6 +1355,7 @@
     "Argentina": 1.188,
     "China": 2.289,
     "India": 0.57,
+    "Indonesia": 0.383,
     "Switzerland": 1.557,
     "United States": 0.481
   },
@@ -1229,6 +1365,7 @@
     "Argentina": 1.157,
     "China": 2.363,
     "India": 0.581,
+    "Indonesia": 0.54,
     "Switzerland": 1.5,
     "United States": 0.477
   },
@@ -1238,6 +1375,7 @@
     "Argentina": 1.177,
     "China": 2.486,
     "India": 0.591,
+    "Indonesia": 0.457,
     "Switzerland": 1.425,
     "United States": 0.511
   },
@@ -1247,6 +1385,7 @@
     "Argentina": 1.102,
     "China": 2.466,
     "India": 0.568,
+    "Indonesia": 0.424,
     "Switzerland": 1.394,
     "United States": 0.451
   },
@@ -1256,6 +1395,7 @@
     "Argentina": 1.039,
     "China": 2.521,
     "India": 0.518,
+    "Indonesia": 0.474,
     "Switzerland": 1.34,
     "United States": 0.441
   },
@@ -1265,6 +1405,7 @@
     "Argentina": 1.032,
     "China": 2.595,
     "India": 0.543,
+    "Indonesia": 0.415,
     "Switzerland": 1.354,
     "United States": 0.409
   },
@@ -1274,6 +1415,7 @@
     "Argentina": 1.087,
     "China": 2.561,
     "India": 0.532,
+    "Indonesia": 0.409,
     "Switzerland": 1.349,
     "United States": 0.378
   },
@@ -1283,6 +1425,7 @@
     "Argentina": 1.182,
     "China": 2.625,
     "India": 0.518,
+    "Indonesia": 0.392,
     "Switzerland": 1.292,
     "United States": 0.381
   },
@@ -1292,6 +1435,7 @@
     "Argentina": 1.152,
     "China": 2.742,
     "India": 0.5,
+    "Indonesia": 0.377,
     "Switzerland": 1.226,
     "United States": 0.408
   },
@@ -1301,6 +1445,7 @@
     "Argentina": 1.22,
     "China": 2.868,
     "India": 0.488,
+    "Indonesia": 0.382,
     "Switzerland": 1.334,
     "United States": 0.437
   },
@@ -1310,6 +1455,7 @@
     "Argentina": 1.147,
     "China": 2.896,
     "India": 0.477,
+    "Indonesia": 0.383,
     "Switzerland": 1.309,
     "United States": 0.454
   },
@@ -1319,6 +1465,7 @@
     "Argentina": 1.012,
     "China": 2.995,
     "India": 0.48,
+    "Indonesia": 0.39,
     "Switzerland": 1.32,
     "United States": 0.452
   },
@@ -1328,6 +1475,7 @@
     "Argentina": 0.969,
     "China": 3.049,
     "India": 0.468,
+    "Indonesia": 0.425,
     "Switzerland": 1.203,
     "United States": 0.48
   },
@@ -1337,6 +1485,7 @@
     "Argentina": 0.969,
     "China": 3.101,
     "India": 0.464,
+    "Indonesia": 0.429,
     "Switzerland": 1.192,
     "United States": 0.509
   },
@@ -1346,6 +1495,7 @@
     "Argentina": 0.97,
     "China": 3.235,
     "India": 0.458,
+    "Indonesia": 0.432,
     "Switzerland": 1.183,
     "United States": 0.443
   },
@@ -1355,6 +1505,7 @@
     "Argentina": 0.973,
     "China": 3.305,
     "India": 0.458,
+    "Indonesia": 0.429,
     "Switzerland": 1.146,
     "United States": 0.431
   },
@@ -1364,6 +1515,7 @@
     "Argentina": 0.973,
     "China": 3.352,
     "India": 0.459,
+    "Indonesia": 0.429,
     "Switzerland": 1.142,
     "United States": 0.429
   },
@@ -1373,6 +1525,7 @@
     "Argentina": 0.974,
     "China": 3.402,
     "India": 0.459,
+    "Indonesia": 0.431,
     "Switzerland": 1.137,
     "United States": 0.432
   },
@@ -1382,6 +1535,7 @@
     "Argentina": 0.975,
     "China": 3.452,
     "India": 0.459,
+    "Indonesia": 0.434,
     "Switzerland": 1.133,
     "United States": 0.431
   },
@@ -1391,6 +1545,7 @@
     "Argentina": 0.976,
     "China": 3.502,
     "India": 0.459,
+    "Indonesia": 0.436,
     "Switzerland": 1.13,
     "United States": 0.431
   },
@@ -1400,6 +1555,7 @@
     "Argentina": 0.977,
     "China": 3.553,
     "India": 0.46,
+    "Indonesia": 0.438,
     "Switzerland": 1.126,
     "United States": 0.432
   },
@@ -1409,6 +1565,7 @@
     "Argentina": 0.979,
     "China": 3.566,
     "India": 0.46,
+    "Indonesia": 0.44,
     "Switzerland": 1.123,
     "United States": 0.431
   },
@@ -1418,6 +1575,7 @@
     "Argentina": 0.98,
     "China": 3.581,
     "India": 0.461,
+    "Indonesia": 0.442,
     "Switzerland": 1.12,
     "United States": 0.432
   },
@@ -1427,6 +1585,7 @@
     "Argentina": 0.982,
     "China": 3.598,
     "India": 0.462,
+    "Indonesia": 0.443,
     "Switzerland": 1.117,
     "United States": 0.432
   },
@@ -1436,6 +1595,7 @@
     "Argentina": 0.984,
     "China": 3.615,
     "India": 0.462,
+    "Indonesia": 0.444,
     "Switzerland": 1.114,
     "United States": 0.432
   }

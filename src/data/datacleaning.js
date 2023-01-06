@@ -211,6 +211,7 @@ const countrySelection = [
   "India",
   "China",
   "United States",
+  "Indonesia",
 ];
 
 // creating a separate data format for the small multiple meat types chart

@@ -5,7 +5,7 @@
   import { Delaunay } from "d3-delaunay";
   import { line } from "d3-shape";
   import AxisY from "./AxisY.svelte";
-  import {getFormattedValue, colorScale} from "./../helperFunctions.js"
+  import {getFormattedValue } from "./../helperFunctions.js"
 
 
   export let data;
@@ -55,6 +55,7 @@
 
   $: yScale = isLog ? yScaleLog : yScaleLinear;
 
+  $: colorScale = scaleOrdinal().domain(groupList).range(schemeTableau10);
 
   $: xScale = scaleLinear()
     .domain(extent(data, (d) => d.x))

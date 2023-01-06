@@ -5,10 +5,11 @@
 
   const countries = [
     "Argentina",
-    "Switzerland",
-    "India",
     "China",
+    "Switzerland",
     "United States",
+    "India",
+    "Indonesia",
   ];
   
   const types = [
