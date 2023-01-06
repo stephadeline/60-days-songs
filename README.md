@@ -1,14 +1,12 @@
-# Week 6 assignment — CSVs, arquero & JOINs
+# Group 2 Final project - Meat consumption
 
-This assignment is testing the concepts from class in week 6:
-* Working with CSV files in a Svelte project
-* Loading CSVs into arquero
-* Basic arquero data processing
-* Using library documentation
-* Svelte interactivity
-* Joining tables in arquero
+This repository contains the code for the Svelte project for the Cross-module final project in the Master's in Visual Tools to Empower Citizens program.
 
-[App.svelte](./src/App.svelte) is the starting point for the task. You can refer back to the class material (video recordings, [exercise/week6-1](https://github.com/fndvit/opendataengineering-materials/blob/main/exercises/week6-1/src/App.svelte)) for help with this, as much of the syntax and the API usage required for this assignment are covered there.
+[Link to final project](https://mvtec2022-final.vercel.app/)
+
+Prior to working on our final data visualizations in this repo, we started with exploratory notebooks in Observable.
+1. [First Notebook - Initial exploration of data](https://observablehq.com/d/1b27b0c79547839b)
+2. [2nd Notebook - D3 charts](https://observablehq.com/d/f9b6545ddbf85d55)
 
 ## Setup
 
@@ -19,26 +17,20 @@ npm i
 npm run dev
 ```
 
-## 1. Loading CSV data
+## Data processing
 
-- Load both CSV data files from this repo into `arquero`. The files can be found in this repo under `src/data`, e.g.:
+This repository also contains the a [`datacleaning.js`](https://github.com/stephadeline/mvtec2022-final/blob/main/src/data/datacleaning.js) we wrote for processing the data for our visualization.
+It is located inside the [`data`](https://github.com/stephadeline/mvtec2022-final/tree/main/src/data) folder, along with the final datasets in json that we use for the charts, which includes:
+- `joined.json` - for the line chart and scatterplot
+- `meatChart.json` - for the type of meat small multiple line chart
+- `totalMeatDifference.json` - for the difference bar chart
 
-    `src/data/Children that died before 5 years of age per woman - Gapminder (2017).csv`
-    
-    `src/data/Children that survived past 5 years of age per woman - Gapminder (2017).csv`
+In order to run the data cleaning script, simply run `npm start`.
 
-## 2. Join the datasets
 
-Join the two datasets together in a sensible way (keeping task #3 in mind). Read through the arquero docs and related links to get an undersanding of the difference between left, right and inner joins. You can find the documentation for the `join` function [here](https://uwdata.github.io/arquero/api/verbs#join).
+## Credits
 
-## 3. Display the data on a scatter plot
+Story, code and visualisation by Guifré Jordan, Marina Rovira Boix and Stephanie Adeline.
+The template of this project was cloned from a previous [assignment repo](https://github.com/mvtec2022/week-6-stephadeline).
+Special thanks to Anton Bardera and Matt Osborn for helping us with this project :)
 
-Use the provided `Scatter` component to display the joined data. Have the scatter points take both their x and y values from the value columns in the joined dataset.
-
-## 4. Interactivity
-
-Use the provided `selectedYear` variable to filter the data to a single year and have the year range slider / playback button control the scatter plot.
-
-## 5. Domains
-
-Calculate the domains for both the x and y axis (their min and max values) from the dataset and then use the result to fix the axis range on the `Scatter` component using its `xDomain` and `yDomain` props. This will stop the scale from moving around as the selectedYear changes.
