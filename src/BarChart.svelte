@@ -9,8 +9,8 @@
   //Bar chart with D3
 
   const margin = { top: 30, right: 20, bottom: 20, left: 40 }; //margin object
-  const width = 900; //width of SVG in pixels
-  const height = 400; //height of SVG in pixels
+  const width = 1300; //width of SVG in pixels
+  const height = 500; //height of SVG in pixels
 
   const svg = d3
     .select("#bar-chart")
@@ -20,6 +20,9 @@
     .attr("height", height)
     .attr("viewBox", [0, 0, width, height]);
 
+    total_meat_2018 = total_meat_2018.filter(
+  (d) => d.alpha3 !== 'UKR' && d.alpha3 !== 'RUS' && d.alpha3 !== 'KAZ' && d.alpha3 !== 'ETH'
+);
   total_meat_2018
     .sort((a, b) => b.continent.localeCompare(a.continent))
     .sort((a, b) => b.difference - a.difference);
@@ -71,7 +74,7 @@
         g
           .select(".tick:last-of-type text")
           .clone()
-          .attr("x", 10)
+          .attr("x", 0)
           .attr("y", -20)
           .attr("text-anchor", "end")
           .text("Frequency")
