@@ -5,6 +5,8 @@
   import { Delaunay } from "d3-delaunay";
   import { line } from "d3-shape";
   import AxisY from "./AxisY.svelte";
+  import {getFormattedValue} from "./../helperFunctions.js"
+
 
   export let data;
   export let label = "country_name";
@@ -24,12 +26,7 @@
   export let width = 600;
   export let height = 200;
 
-  export let hasSelectors = false;
   let hovered;
-
-  function formatNum(n) {
-    return n.toLocaleString()
-  }
 
   $: selected = selectedLabel.length > 0 || selectedGroup.length > 0
 
@@ -244,7 +241,7 @@
           y={tooltipProperties.y + 36}
           style="font-size:13px;"
           >
-          <tspan style="font-weight: bold;">{yKey}</tspan>: {formatNum(tooltipProperties
+          <tspan style="font-weight: bold;">Value</tspan>: {getFormattedValue(yKey, tooltipProperties
             .data.y)}</tspan
         >
         <tspan

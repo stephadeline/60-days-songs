@@ -143,6 +143,7 @@
       {zoom}
       {isLog}
       groupList={continents}
+      yKey={selectedIndicator}
     />
 
     <div class="line-chart-selector">
@@ -163,6 +164,8 @@
       groupList={continents}
       {zoom}
       {isLog}
+      yKey={selectedWealth}
+
     />
   </div>
 </div>

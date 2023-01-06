@@ -104,6 +104,7 @@
       groupList={continents}
       selectedLabel={selectedCountries}
       zoom={true}
+      yKey={i}
     />
   </div>
 {/each}
