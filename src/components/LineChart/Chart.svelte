@@ -26,6 +26,8 @@
   export let width = 600;
   export let height = 200;
 
+  export let projections = false;
+
   let hovered;
 
   $: selected = selectedLabel.length > 0 || selectedGroup.length > 0
@@ -72,13 +74,13 @@
     return maxOfLabel;
   }
 
-  $: drawLineNA = function (data) {
-    const noData = data.filter(drawLine.defined());
-    if (noData.length > 0) {
-      return drawLine(noData);
-    } else {
-      return null;
-    }
+  $: historicalData = data => data.filter(d => d.x <= 2020)
+
+  $: projectedData = data => data.filter(d => d.x >= 2020);
+
+  $: drawLineDashed = function (data) {
+    const dashedData = data.filter(drawLine.defined());
+  return drawLine(dashedData);
   };
 
   $: labeledData = data.filter(
@@ -160,6 +162,7 @@
 
 </script>
 
+
 <div
   class="line-chart-graphic"
   bind:clientWidth={width}
@@ -192,11 +195,32 @@
 
     <g class="line-chart-clipped">
       {#each groupedData as d}
+
+      {#if projections}
+        <path
+            class="line-undefined"
+            d={drawLine(projectedData(d[1]))}
+            stroke={colorScale(d[1][0][group])}
+            stroke-opacity={getStrokeProperties(d[0], d[1][0][group], true)[0]}
+            stroke-width={getStrokeProperties(d[0], d[1][0][group], true)[1]}
+            fill="none"
+            stroke-dasharray="5,5"
+          />
+      <path
+      d={drawLine(historicalData(d[1]))}
+      stroke={colorScale(d[1][0][group])}
+      stroke-opacity={getStrokeProperties(d[0], d[1][0][group], false)[0]}
+      stroke-width={getStrokeProperties(d[0], d[1][0][group], false)[1]}
+      fill="none"
+    />
+      {/if}
+      {#if projections === false}
+
         <!-- Draw dashed line for missing data if any -->
-        {#if drawLineNA(d[1])}
+        {#if drawLineDashed(d[1])}
           <path
             class="line-undefined"
-            d={drawLineNA(d[1])}
+            d={drawLineDashed(d[1])}
             stroke={colorScale(d[1][0][group])}
             stroke-opacity={getStrokeProperties(d[0], d[1][0][group], true)[0]}
             stroke-width={getStrokeProperties(d[0], d[1][0][group], true)[1]}
@@ -211,6 +235,8 @@
           stroke-width={getStrokeProperties(d[0], d[1][0][group], false)[1]}
           fill="none"
         />
+        {/if}
+
       {/each}
     </g>
     <g class="voronoi">
