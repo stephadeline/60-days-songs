@@ -114,9 +114,9 @@
     let strokeWidth;
     let opacity;
     let highlightStroke = 2;
-    let normalStroke = dashed ? 0 : 1;
+    let normalStroke = dashed ? 0.5 : 1;
     let highlightOpacity = 1;
-    let normalOpacity = 0.2;
+    let normalOpacity = dashed ? 0 : 0.2;
 
     if (hovered) {
       if (isHovered(l)) {
