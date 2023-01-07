@@ -16,9 +16,10 @@
   $: width = 1300; 
   $: height = 500; 
 
+
   ////--------------------------------- creating chart area ------------------------------------------------------------------
 
-  const svg = d3.create("svg")
+  $: svg = d3.create("svg")
     .attr("width", width)
     .attr("height", height)
     .attr("viewBox",[0, 0, width, height]);
@@ -54,14 +55,23 @@
 
 
   const continents = Array.from(new Set(data.map((d) => d.continent)));
+  let years = Array.from(new Set(data.map((d) => d.year)));
+
+  function handleOnChange(event) {
+    //console.log(event.target.value)
+    //console.log(filteredData)
+    selectedYear = event.target.value
+  }
 
   ////--------------------------------- Selectors ------------------------------------------------------------------
-
+  $: selectedYear = years[0];
   $: selectedX = indicatorsX[0];
   $: selectedY = indicatorsY[0];
   ////--------------------------------- Filtering data  ------------------------------------------------------------------
   //console.log("selectedX "+selectedX)
   //console.log("selectedY "+selectedY)
+  //console.log("years "+years)
+  //console.log("selectedYear "+years[0])
 
   $: filteredData = data
     //.filter((d) => d[selectedX])
@@ -71,10 +81,11 @@
         continent: d["continent"],
         x: d[selectedX],
         y: d[selectedY],
-        year: d["year"]
+        year: d[selectedYear]
       };
       return newData;
     });
+    
 
     //console.log(filteredData)
     //console.log(data)
@@ -86,8 +97,7 @@
   //scale the axis depending on the information for each axis
   $: xScale = scaleLog()//Log scales are similar to linear scales, except a logarithmic transform is applied to the input domain value before the output range value is computed. 
     .domain(d3.extent(data, d=>d[selectedX])).nice()
-    //.domain(d3.extent(data, d=>d[selectedX]))
-    .range([margin.left, width - margin.right])
+    .range([margin.left +10, width - margin.right])
 
   $: yScale = scaleLinear()
     .domain([0,d3.max(data, d=>d[selectedY])]).nice()
@@ -95,6 +105,7 @@
 
   $: yTicks = yScale.ticks()
   $: xTicks = xScale.ticks() 
+  //console.log(xTicks)
   ////---------------------------------set color scheme ------------------------------------------------------------------
 
   const color = scaleOrdinal() 
@@ -176,14 +187,17 @@
   // function resize() {
   //   ({ width, height } = svg.getBoundingClientRect());
   // }
+
+
+
 </script>
 
-<!-- <p>
+ <!-- <p>
   {selectedX}
-</p>
-<p>
+</p>-->
+<!-- <p> 
   {xScale(1000)}
-</p> -->
+</p>  -->
 
 <!-- <p>
   {xTicks}
@@ -192,6 +206,14 @@
   {yTicks}
 </p> -->
 
+<div>
+  <p>
+    <label>Year : 
+      <input type=range bind:value={years} min=1990 max=2022 on:change={handleOnChange}>
+    </label>
+    {selectedYear}
+  </p>
+</div>
 
 <div class=scatterplot>
   <h2>Scatterplot</h2>
@@ -223,31 +245,30 @@
 
 <div>
   <svg   viewBox="0 0 {width} {height}" {width}  {height}>
-  <!------------------- X axis -------------------------------------------------------------->
+  <!-- ----------------- X axis ------------------------------------------------------------ -->
     <!-- <g class='axis' transform='translate(0,{height - margin.bottom})'> -->
-    <g class='axis' transform='translate(0,{height - margin.bottom})'> 
+    <!--<g class='axis' transform='translate(0,{height - margin.bottom})'> -->
       {#each xTicks as tick}
-        <g class='axis x-axis' transform='translate({xScale(tick)},0)'>
-          <!-- <line x1='{xScale(tick)}' x2='{height - margin.bottom}'/> -->
+        <g class='axis x-axis' transform='translate({xScale(tick)}, 0)'>
+          <!--<line x1='{xScale(tick)}' x2='{height - margin.bottom}'/> -->
           <line 
-            x1="0"
+            x1="-1"
             y1={margin.top}
-            x2="0"
+            x2="-1"
             y2={height - margin.bottom}
-
             style="stroke: lightgrey"/>
           <text
             class="axis-text"
-            x="-5"
-            y="0"
-            text-anchor="end"
+            x="0"
+            y={height - 5}
+            text-anchor="middle"
             dominant-baseline="middle"
             >{tick}
           </text>
           <!-- <text x='{height - margin.bottom + 16}'>{tick}</text> -->
         </g>
       {/each}
-    </g>
+    <!--</g>-->
     <!-------------------------------- y axis -------------------------------------------------------->
     <g class='axis' transform='translate({margin.left},0)'>
       {#each yTicks as tick}
@@ -279,10 +300,10 @@
     <!-- data -->
     {#each filteredData as d}
       <circle 
-        cx='{xScale(d[selectedX])}' 
-        cy='{yScale(d[selectedY])}' 
-        r='{d.population}'
-        fill= '{color(d.continent)}'
+        cx={xScale(d[selectedX])}
+        cy={yScale(d[selectedY])}
+        r={rScale(d.population)}
+        fill= {color(d.continent)}
         fill-opacity= "1"
         stroke= "black"
         stroke-width= "1"
