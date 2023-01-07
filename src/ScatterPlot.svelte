@@ -75,30 +75,35 @@
   //console.log("years "+years)
   //console.log("selectedYear "+years[0])
 
-  $: filteredData = data
+  $: filteredData = data.filter(d=>d.country_name && d.year==selectedYear && d[selectedX] && d[selectedY])
     //.filter((d) => d[selectedX])
     .map((d) => {
       let newData = {
         country_name: d["country_name"],
         continent: d["continent"],
+        pop:d['Population'],
         x: d[selectedX],
         y: d[selectedY],
-        year: d[selectedYear]
+        year: d.year
       };
       return newData;
     });
     
-
-    //console.log(filteredData)
-    //console.log(data)
+    $:{
+      
+      console.log(filteredData)
+      console.info(selectedX,selectedY,selectedYear)
+    }
+    
   ////--------------------------------- circle scale depending on the variable population -------------------------------
   $: rScale = d3.scaleSqrt()
-    .domain([0,d3.max(data, d => d.population)])
+    //.domain([0,d3.max(data, d => d.population)])
+    .domain([0,d3.max(filteredData, d => d['pop'])])
     .range([0, 50]) //circles, la grandària en quant a rang, tenint en compte lo domini
 
   //scale the axis depending on the information for each axis
   $: xScale = scaleLog()//Log scales are similar to linear scales, except a logarithmic transform is applied to the input domain value before the output range value is computed. 
-    .domain(d3.extent(data, d=>d[selectedX])).nice()
+    .domain(d3.extent(data, d=>d[selectedX]))
     .range([margin.left, width - margin.right])
 
   $: yScale = scaleLinear()
@@ -225,7 +230,8 @@
 <div>
   <p>
     <label>Year : 
-      <input type=range bind:value={years} min=1990 max=2022 on:change={handleOnChange}>
+      <input type=number bind:value={years} min=1990 max=2018 on:change={handleOnChange}>
+      <input type=range bind:value={years} min=1990 max=2018 on:change={handleOnChange}>
     </label>
     {selectedYear}
   </p>
@@ -281,9 +287,9 @@
     <!-- data -->
     {#each filteredData as d}
       <circle 
-        cx={xScale(d[selectedX])}
-        cy={yScale(d[selectedY])}
-        r={rScale(d.population)}
+      cx='{xScale(d.x)}' 
+      cy='{yScale(d.y)}' 
+      r='{rScale(d['pop'])}'
         fill= {color(d.continent)}
         fill-opacity= "1"
         stroke= "black"
@@ -294,7 +300,9 @@
 </div>
 
 
+
 <!--<h2>Scatter plot by Marina</h2>
 <iframe width="100%" height="712" frameborder="0"
   src="https://observablehq.com/embed/f9b6545ddbf85d55@421?cells=viewof+selectedYear%2Cviewof+xVar%2Cviewof+yVar%2Ctaskplot"></iframe>
+  https://visualsvelte.com/d3/api/d3-axis
 -->
