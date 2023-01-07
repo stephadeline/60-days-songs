@@ -11,10 +11,27 @@
 
 
 
-  let svg;
-  export let margin = ({top: 10, right: 100, bottom: 20, left: 60});
-  $: width = 600; 
-  $: height = 200; 
+ 
+  export let margin = ({top: 60, right: 250, bottom: 40, left: 60 });
+  $: width = 1300; 
+  $: height = 500; 
+
+  ////--------------------------------- creating chart area ------------------------------------------------------------------
+
+  const svg = d3.create("svg")
+    .attr("width", width)
+    .attr("height", height)
+    .attr("viewBox",[0, 0, width, height]);
+    // const svg = d3
+    // .select("#bar-chart")
+    // .append("svg") // create svg in the div id bar-chart
+    // // .create("svg")
+    // .attr("width", width)
+    // .attr("height", height)
+    // .attr("viewBox", [0, 0, width, height]);
+
+  ////--------------------------------- creating dropdown lists ------------------------------------------------------------------
+
 
   const indicatorsX = [
     "GDP (expenditure, multiple price benchmarks)",
@@ -68,12 +85,12 @@
 
   //scale the axis depending on the information for each axis
   $: xScale = scaleLog()//Log scales are similar to linear scales, except a logarithmic transform is applied to the input domain value before the output range value is computed. 
-    .domain(d3.extent(data, d=>d[selectedX]))
+    .domain(d3.extent(data, d=>d[selectedX])).nice()
     //.domain(d3.extent(data, d=>d[selectedX]))
     .range([margin.left, width - margin.right])
 
   $: yScale = scaleLinear()
-    .domain([0,d3.max(data, d=>d[selectedY])])
+    .domain([0,d3.max(data, d=>d[selectedY])]).nice()
     .range([height-margin.bottom, margin.top])
 
   $: yTicks = yScale.ticks()
@@ -85,12 +102,6 @@
     .range(schemeCategory10)
 
 
-  ////--------------------------------- creating chart area ------------------------------------------------------------------
-
-   svg = d3.create("svg")
-    .attr("width", width)
-    .attr("height", height)
-    .attr("viewBox",[0, 0, width, height]);
 
 
   ////--------------------------------- text square with information ---------------------------------
@@ -211,56 +222,59 @@
 </div>-->
 
 <div>
-  <svg  height={height} width={width} viewBox="0 0 {width} {height}">
-    <!-- y axis -->
-<g class='axis' transform='translate({margin.left},0)'>
-    {#each yTicks as tick}
-      <g class='tick' transform='translate(0,{yScale(tick)})'>
-        <!-- <line y1='{yScale(tick)}' y2='{yScale(tick)}'/> -->
-        <!-- <text y='{margin.left - 8}' y='+4'>{tick}</text> -->
-        <line
-          class="y-axis-lines"
-          x1="0"
-          y1="0"
-          x2={width - margin.left - margin.right}
-          y2="0"
-          style="stroke: lightgrey"
-        />
-        <text
-          class="axis-text"
-          x="-5"
-          y="0"
-          text-anchor="end"
-          dominant-baseline="middle"
-          >{tick}
-        </text>
-      </g>
-    {/each}
-  </g>
+  <svg   viewBox="0 0 {width} {height}" {width}  {height}>
+  <!------------------- X axis -------------------------------------------------------------->
+    <!-- <g class='axis' transform='translate(0,{height - margin.bottom})'> -->
+    <g class='axis' transform='translate(0,{height - margin.bottom})'> 
+      {#each xTicks as tick}
+        <g class='axis x-axis' transform='translate({xScale(tick)},0)'>
+          <!-- <line x1='{xScale(tick)}' x2='{height - margin.bottom}'/> -->
+          <line 
+            x1="0"
+            y1={margin.top}
+            x2="0"
+            y2={height - margin.bottom}
 
-  <!-- <g class='axis' transform='translate(0,{height - margin.bottom})'> -->
-  <g class='axis' transform='translate({margin.left}, 0)'> 
-    <!-- x axis -->
-    {#each xTicks as tick}
-      <g class='axis x-axis' transform='translate({ xScale(tick)},0)'>
-        <!-- <line x1='{xScale(tick)}' x2='{height - margin.bottom}'/> -->
-        <line x1="0" 
-          x2="0"
-          y1 = {margin.top}
-          y2 = {height - margin.bottom}
-          style="stroke: lightgrey"/>
-        <text
-          class="axis-text"
-          x="-5"
-          y="0"
-          text-anchor="end"
-          dominant-baseline="middle"
-          >{tick}
-        </text>
-        <!-- <text x='{height - margin.bottom + 16}'>{tick}</text> -->
-      </g>
-    {/each}
-  </g>
+            style="stroke: lightgrey"/>
+          <text
+            class="axis-text"
+            x="-5"
+            y="0"
+            text-anchor="end"
+            dominant-baseline="middle"
+            >{tick}
+          </text>
+          <!-- <text x='{height - margin.bottom + 16}'>{tick}</text> -->
+        </g>
+      {/each}
+    </g>
+    <!-------------------------------- y axis -------------------------------------------------------->
+    <g class='axis' transform='translate({margin.left},0)'>
+      {#each yTicks as tick}
+        <g class='tick' transform='translate(0,{yScale(tick)})'>
+          <!-- <line y1='{yScale(tick)}' y2='{yScale(tick)}'/> -->
+          <!-- <text y='{margin.left - 8}' y='+4'>{tick}</text> -->
+          <line
+            class="y-axis-lines"
+            x1="0"
+            y1="0"
+            x2={width - margin.left - margin.right}
+            y2="0"
+            style="stroke: lightgrey"
+          />
+          <text
+            class="axis-text"
+            x="-5"
+            y="0"
+            text-anchor="end"
+            dominant-baseline="middle"
+            >{tick}
+          </text>
+        </g>
+      {/each}
+    </g>
+
+  
   
     <!-- data -->
     {#each filteredData as d}
