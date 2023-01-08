@@ -1,5 +1,4 @@
 <script>
-  //import ScatterPlot from "./components/charts/Scatter.svelte";
   import data from "./data/joined.json";
   import * as d3 from "d3";
   import Select from "svelte-select";
@@ -10,8 +9,6 @@
   import { onMount } from 'svelte';
   import { axisBottom, axisLeft } from "d3-axis";
   import { select } from "d3-selection";
-
-
 
 
  
@@ -26,13 +23,6 @@
     .attr("width", width)
     .attr("height", height)
     .attr("viewBox",[0, 0, width, height]);
-    // const svg = d3
-    // .select("#bar-chart")
-    // .append("svg") // create svg in the div id bar-chart
-    // // .create("svg")
-    // .attr("width", width)
-    // .attr("height", height)
-    // .attr("viewBox", [0, 0, width, height]);
 
   ////--------------------------------- creating dropdown lists ------------------------------------------------------------------
 
@@ -47,21 +37,16 @@
   const indicatorsY = [
     "Agriculture activity (meat): consumption",
     "Agriculture activity (total): consumption",
-    // "gas_share_primary_energy",
     "Electricity activity (per capita)",
-    // "oil_gas_production",
-    // "waste_generation_CTI",
-    // "waste_generation",
     "Consumption of households and government per capita"
   ]
 
 
   const continents = Array.from(new Set(data.map((d) => d.continent)));
   let years = Array.from(new Set(data.map((d) => d.year)));
+  const valuesToShow = [10000000, 100000000, 1000000000];
 
   function handleOnChange(event) {
-    //console.log(event.target.value)
-    //console.log(filteredData)
     selectedYear = event.target.value
   }
 
@@ -70,10 +55,7 @@
   $: selectedX = indicatorsX[0];
   $: selectedY = indicatorsY[0];
   ////--------------------------------- Filtering data  ------------------------------------------------------------------
-  //console.log("selectedX "+selectedX)
-  //console.log("selectedY "+selectedY)
-  //console.log("years "+years)
-  //console.log("selectedYear "+years[0])
+
 
   $: filteredData = data.filter(d=>d.country_name && d.year==selectedYear && d[selectedX] && d[selectedY])
     //.filter((d) => d[selectedX])
@@ -97,12 +79,14 @@
     
   ////--------------------------------- circle scale depending on the variable population -------------------------------
   $: rScale = d3.scaleSqrt()
-    //.domain([0,d3.max(data, d => d.population)])
     .domain([0,d3.max(filteredData, d => d['pop'])])
-    .range([0, 50]) //circles, la grandària en quant a rang, tenint en compte lo domini
+    .range([0, 50]) 
 
-  //scale the axis depending on the information for each axis
-  $: xScale = scaleLog()//Log scales are similar to linear scales, except a logarithmic transform is applied to the input domain value before the output range value is computed. 
+  const scale = d3.scaleSqrt()
+    .domain([0,d3.max(valuesToShow, d => d)])
+    .range([0, 50]) 
+
+  $: xScale = scaleLog() 
     .domain(d3.extent(data, d=>d[selectedX]))
     .range([margin.left, width - margin.right])
 
@@ -120,8 +104,6 @@
     .range(schemeCategory10)
 
 
-
-
   ////--------------------------------- text square with information ---------------------------------
   const tooltip = d3.select('body') 
       .append('div')
@@ -133,24 +115,7 @@
       .style('border-radius', '4px')
       .style('color', '#fff');
 
-  //creating the axis
-  /*const gx = svg.append("g")
-    .call(xAxis);
-  const gy = svg.append("g")
-    .call(yAxis);
-  */
 
-    /*
-    ////---------------------------------  Axis  ------------------------------------------------------------------
-    const xAxis = g => g
-      .attr("transform", `translate(0,${height - margin.bottom})`)
-      .call(d3.axisBottom(xScale))
-  
-    //Y axis based on the scale calculated before
-    const yAxis =  g => g
-      .attr("transform", `translate(${margin.left},0)`)
-      .call(d3.axisLeft(yScale))
-    */
   //--------------------------------- creating the circles ------------------------------------------------------------
   /*const selection = svg.selectAll("dot")
     .data(filteredData)
@@ -209,29 +174,13 @@
     );
   }
 
-
-
 </script>
-
- <!-- <p>
-  {selectedX}
-</p>-->
-<!-- <p> 
-  {xScale(1000)}
-</p>  -->
-
-<!-- <p>
-  {xTicks}
-</p>
-<p>
-  {yTicks}
-</p> -->
 
 <div>
   <p>
     <label>Year : 
-      <input type=number bind:value={years} min=1990 max=2018 on:change={handleOnChange}>
-      <input type=range bind:value={years} min=1990 max=2018 on:change={handleOnChange}>
+      <input type=number bind:value={selectedYear} min=1990 max=2018 on:change={handleOnChange}>
+      <input type=range bind:value={selectedYear} min=1990 max=2018 on:change={handleOnChange}>
     </label>
     {selectedYear}
   </p>
@@ -240,7 +189,7 @@
 <div class=scatterplot>
   <h2>Scatterplot</h2>
   <div class=scatterplotSelectors>
-    <h4>Select X inicator:</h4>
+    <h4>Select X indicator:</h4>
     <Select
       items={indicatorsX}
       value={indicatorsX[0]}
@@ -248,7 +197,7 @@
       clearable={false}
       showChevron
     />
-    <h4>Select Y inicator:</h4>
+    <h4>Select Y indicator:</h4>
     <Select
       items={indicatorsY}
       value={indicatorsY[0]}
@@ -258,33 +207,25 @@
     />
   </div>
 </div>
-  <!--<div> 
-    <Scatter
-      data={filteredData}
-      />
-  </div>
-</div>-->
+
 
 <div>
   <svg   viewBox="0 0 {width} {height}" {width}  {height}>
-  <!-- ----------------- X axis ------------------------------------------------------------ -->
-    <!-- <g class='axis' transform='translate(0,{height - margin.bottom})'> -->
-    <!--<g class='axis' transform='translate(0,{height - margin.bottom})'> -->
-
-      <g
+  <!-- ------------------------ axis ----------------------------------->
+    <g
       class="xAxis"
       bind:this={pinXAxis}
       transform="translate(0,{height-margin.bottom})"
     />
 
     <g
-    class="yAxis"
-    bind:this={pinYAxis}
-    transform="translate({margin.left},0)"
-  />
+      class="yAxis"
+      bind:this={pinYAxis}
+      transform="translate({margin.left},0)"
+    />
   
   
-    <!-- data -->
+    <!------------------------- data ---------------------------------->
     {#each filteredData as d}
       <circle 
       cx='{xScale(d.x)}' 
@@ -296,13 +237,47 @@
         stroke-width= "1"
       />
     {/each}
+
+    <!------------------- cotinents legend ----------------------------->
+    <g transform={`translate(${width - 150}, ${margin.top})`}>
+      {#each color.domain() as continent, i}
+        <g transform={`translate(0, ${i * 20})`}>
+          <circle 
+            cx="15" 
+            cy="8" 
+            r="6"
+            fill= "{color(continent)}"
+          />
+          <text x="24" y="9" dy="0.35em">{continent}</text>
+        </g>
+      {/each}
+    </g>
+
+    <!------------------- population legend --------------------------->
+    <g transform={`translate(${width - 150}, ${margin.bottom})`}>
+      {#each valuesToShow as value, i}
+        <g transform={`translate(0, ${i * 20})`}>
+          <circle 
+            cx="10" 
+            cy="340" 
+            r='{scale(value)}'
+            fill= "none"
+            stroke= "black"
+            stroke-width= "1"
+          />
+          <text x="60" y="340"  alignment-baseline="middle" font-size="10">{value}</text>
+          <line 
+            x1="60" 
+            x2="20"
+            y1="340"
+            y2="340" 
+            stroke="grey"
+            stroke-dasharray="2,2"></line>
+        </g>
+      {/each}
+    </g>
+    
+
   </svg>
+
 </div>
-
-
-
-<!--<h2>Scatter plot by Marina</h2>
-<iframe width="100%" height="712" frameborder="0"
-  src="https://observablehq.com/embed/f9b6545ddbf85d55@421?cells=viewof+selectedYear%2Cviewof+xVar%2Cviewof+yVar%2Ctaskplot"></iframe>
-  https://visualsvelte.com/d3/api/d3-axis
--->

@@ -3,9 +3,20 @@
   import { onMount } from "svelte";
   import data from "./data/totalMeatDifference.json";
   import AxisBar from "./components/AxisBar.svelte";
-  import {colorScale} from "./components/helperFunctions.js";
+  import { colorScale } from "./components/helperFunctions.js";
 
-  let total_meat_2018 = data;
+  // Filtering out countries with no data and sorting
+
+  let total_meat_2018 = data
+    .filter(
+      (d) =>
+        d.alpha3 !== "UKR" &&
+        d.alpha3 !== "RUS" &&
+        d.alpha3 !== "KAZ" &&
+        d.alpha3 !== "ETH"
+    )
+    .sort((a, b) => b.continent.localeCompare(a.continent))
+    .sort((a, b) => b.difference - a.difference);
 
   //Bar chart with D3
 
@@ -16,17 +27,9 @@
   const svg = d3
     .select("#bar-chart")
     .append("svg") // create svg in the div id bar-chart
-    // .create("svg")
     .attr("width", width)
     .attr("height", height)
     .attr("viewBox", [0, 0, width, height]);
-
-    total_meat_2018 = total_meat_2018.filter(
-  (d) => d.alpha3 !== 'UKR' && d.alpha3 !== 'RUS' && d.alpha3 !== 'KAZ' && d.alpha3 !== 'ETH'
-);
-  total_meat_2018
-    .sort((a, b) => b.continent.localeCompare(a.continent))
-    .sort((a, b) => b.difference - a.difference);
 
   const yScale = d3
     .scaleLinear()
@@ -43,20 +46,6 @@
     .padding(0.2);
 
   const selection = svg.selectAll("rect");
-
-  // const colorScale = d3
-  //   .scaleOrdinal()
-  //   .domain(total_meat_2018.map((d) => d.continent))
-  //   .range(d3.schemeCategory10);
-
-  // selection
-  //   .data(total_meat_2018)
-  //   .join("rect")
-  //   .attr("x", (d) => xScale(d.alpha3))
-  //   .attr("y", (d) => (d.difference < 0 ? yScale(0) : yScale(d.difference)))
-  //   .attr("width", xScale.bandwidth() * 0.9)
-  //   .attr("height", (d) => Math.abs(yScale(0) - yScale(d.difference)))
-  //   .style("fill", (d) => colorScale(d.continent));
 
   const xAxis = (g) =>
     g.attr("transform", `translate(0,${height - margin.bottom})`).call(
@@ -77,61 +66,15 @@
           .clone()
           .attr("x", 0)
           .attr("y", -20)
-          .attr("text-anchor", "end")
-          .text("Frequency")
+          .attr("text-anchor", "start")
+          .text("Percentage change")
       );
 
   svg.append("g").call(xAxis);
 
   svg.append("g").call(yAxis);
-
-  // const legend = svg
-  //   .append("g")
-  //   .attr(
-  //     "transform",
-  //     `translate(${width - margin.right - 120}, ${margin.top})`
-  //   );
-
-  // const legendItems = legend
-  //   .selectAll("g")
-  //   .data(colorScale.domain())
-  //   .join("g")
-  //   .attr("transform", (d, i) => `translate(0, ${i * 20})`);
-
-  // legendItems
-  //   .append("rect")
-  //   .attr("width", 18)
-  //   .attr("height", 18)
-  //   .style("fill", colorScale);
-
-  // legendItems
-  //   .append("text")
-  //   .attr("x", 24)
-  //   .attr("y", 9)
-  //   .attr("dy", "0.35em")
-  //   .text((d) => d);
-
-  // legend
-  //   .append("text")
-  //   .attr("x", 0)
-  //   .attr("y", -6)
-  //   .attr("font-weight", "bold")
-  //   .text("Continent");
-
-  console.log(data);
 </script>
 
-<!-- <div id="bar-chart">
-  <svg>
-    {#each total_meat_2018 as d}
-    <rect x="10" y="10" width="10" height="10" fill="red"></rect>
-    {/each}
-  </svg>
-</div>
- -->
-
-<!-- <div class="bar-chart" bind:clientWidth={width} bind:clientHeight={height}> -->
-<!-- {#if width} -->
 <svg
   xmlns:svg="https://www.w3.org/2000/svg"
   viewBox="0 0 {width} {height}"
@@ -141,7 +84,7 @@
   <!-- <AxisY {yScale} {margin} {width} {height} ordinal={true}/> -->
   <AxisBar scale={yScale} {width} {margin} />
 
-  {#each data as d}
+  {#each total_meat_2018 as d}
     <rect
       height={Math.abs(yScale(0) - yScale(d.difference))}
       width={xScale.bandwidth()}
@@ -171,6 +114,11 @@
       </g>
     {/each}
   </g>
+
+  <text x="0" y="10" font-size="10">
+    <tspan x="0" dy="1.2em">Percentage</tspan>
+    <tspan x="0" dy="1.2em">change</tspan>
+  </text>
 </svg>
 <!-- {/if} -->
 
