@@ -177,6 +177,7 @@
 </script>
 
 <div>
+  <h2>Scatterplot</h2>
   <p>
     <label>Year : 
       <input type=number bind:value={selectedYear} min=1990 max=2018 on:change={handleOnChange}>
@@ -187,7 +188,6 @@
 </div>
 
 <div class=scatterplot>
-  <h2>Scatterplot</h2>
   <div class=scatterplotSelectors>
     <h4>Select X inicator:</h4>
     <Select
