@@ -57,6 +57,7 @@
   $: selectedY = indicatorsY[0];
   $: unitX = getUnitsFromIndicator(selectedX)
   $: unitY = getUnitsFromIndicator(selectedY)
+  //$: selectedContinent = null
 
   ////--------------------------------- Filtering data  ------------------------------------------------------------------
   $: filteredData = data.filter(d=>d.country_name && d.year==selectedYear && d[selectedX] && d[selectedY])
@@ -78,7 +79,20 @@
       console.log(filteredData)
       console.info(selectedX,selectedY,selectedYear)
     }
-    
+   
+    // $: isSelected = false
+    // function filterLegend(e, cont) {
+    //   selectedContinent = cont
+    //   if(isSelected = true) {
+    //     isSelected = false
+    //   }else{
+    //     isSelected = true
+    //   }
+    // }
+    // function filterLegend(arg) {
+    //   selectedContinent = arg
+    // }
+
   ////----------------------- scales depending on the variable ----------------------
   $: rScale = d3.scaleSqrt()
     .domain([0,d3.max(filteredData, d => d['pop'])])
@@ -220,28 +234,39 @@
   
     <!------------------------- data ---------------------------------->
     {#each filteredData as d}
-      <circle 
-        cx='{xScale(d.x)}' 
-        cy='{yScale(d.y)}' 
-        r='{rScale(d['pop'])}'
-        fill= {color(d.continent)}
-        fill-opacity= "1"
-        stroke= "black"
-        stroke-width= "1"
-      
-        on:mouseover={(e) => {mouseovered = d; onMouseover(e,d)}}
-        on:mousemove={(e)=>{ 
-          const tooltipWidth = tooltip.node().offsetWidth;
-          const tooltipHeight = tooltip.node().offsetHeight;
-        tooltip
-           .style("left", e.pageX - tooltipWidth/2 +'px')
-          .style("top", e.pageY-tooltipHeight - 10+'px')
-        }}
-         on:mouseout={(e)=>{ 
-          tooltip.style('visibility', 'hidden')
-         }
-        }
-      />
+      <!-- {#if d.continent == selectedContinent} -->
+        <circle 
+          cx='{xScale(d.x)}' 
+          cy='{yScale(d.y)}' 
+          r='{rScale(d['pop'])}'
+          fill= {color(d.continent)}
+          fill-opacity= "1"
+          stroke= "black"
+          stroke-width= "1"
+        
+          on:mouseover={(e) => {mouseovered = d; onMouseover(e,d)}}
+          on:mousemove={(e)=>{ 
+            const tooltipWidth = tooltip.node().offsetWidth;
+            const tooltipHeight = tooltip.node().offsetHeight;
+          tooltip
+            .style("left", e.pageX - tooltipWidth/2 +'px')
+            .style("top", e.pageY-tooltipHeight - 10+'px')
+          }}
+          on:mouseout={(e)=>{ 
+            tooltip.style('visibility', 'hidden')
+          }
+          }
+        />
+      <!-- {/if}
+      {#if d.continent != selectedContinent}
+        <circle 
+          cx='{xScale(d.x)}' 
+          cy='{yScale(d.y)}' 
+          r='{rScale(d['pop'])}'
+          fill= {color(d.continent)}
+          fill-opacity= "0.4"
+        />
+      {/if} -->
     {/each}
 
     <!------------------- cotinents legend ----------------------------->
@@ -254,11 +279,18 @@
             r="6"
             fill= "{color(continent)}"
           />
-          <!-- <button on:click={(e) =>} -->
-            <text x="24" y="9" dy="0.35em">{continent}</text>
+           <text x="24" y="9" dy="0.35em">{continent}</text> 
+          <!-- <text x="24" y="9" dy="0.35em">
+             <button on:click={(e) => filterLegend(e)}> 
+              {continent}
+             </button> 
+          </text> -->
         </g>
       {/each}
     </g>
+
+
+   
 
     <!------------------- selected year ----------------------------->
     <g>
