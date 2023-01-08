@@ -94,6 +94,9 @@
     downward trend now.
   </p>
 
+  <ScatterPlot />
+
+
   <p>
     Other interesting general correlations can be spotted, between electricity
     or electric vehicle consumption and GDP per capita, or between productivity
@@ -107,8 +110,6 @@
     or which two very northern and not very warm countries are in the global
     lead in electricity consumption.
   </p>
-
-  <ScatterPlot />
 
   <LineChartInteractive />
 </main>
