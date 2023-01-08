@@ -189,7 +189,7 @@
 
 <div class=scatterplot>
   <div class=scatterplotSelectors>
-    <h4>Select X inicator:</h4>
+    <h4>Select X indicator:</h4>
     <Select
       items={indicatorsX}
       value={indicatorsX[0]}
@@ -197,7 +197,7 @@
       clearable={false}
       showChevron
     />
-    <h4>Select Y inicator:</h4>
+    <h4>Select Y indicator:</h4>
     <Select
       items={indicatorsY}
       value={indicatorsY[0]}
