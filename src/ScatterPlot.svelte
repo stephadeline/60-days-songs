@@ -11,7 +11,7 @@
   import { select } from "d3-selection";
 
 
- 
+
   export let margin = ({top: 60, right: 250, bottom: 40, left: 60 });
   $: width = 1300; 
   $: height = 500; 
@@ -106,7 +106,7 @@
 
   ////--------------------------------- text square with information ---------------------------------
 
-  let isHovered = false;
+  let mouseovered;
 
   const tooltip = d3.select('body') 
       .append('div')
@@ -117,12 +117,12 @@
       .style('background', 'rgba(0,0,0,0.6)')
       .style('border-radius', '4px')
       .style('color', '#fff');
-      function onMouseover(i, d) {
+      function onMouseover(e, d) {
         const tooltipWidth = tooltip.node().offsetWidth;
         const tooltipHeight = tooltip.node().offsetHeight;
         tooltip
-          .style("left", i.pageX - tooltipWidth +'px')
-          .style("top", i.pageY-tooltipHeight - 10+'px') //això és per controlar lo gran que és lo requadre. Distància entre la pàgina i el ratolí
+          .style("left", e.pageX - tooltipWidth +'px')
+          .style("top", e.pageY-tooltipHeight - 10+'px') //això és per controlar lo gran que és lo requadre. Distància entre la pàgina i el ratolí
           .style('visibility', 'visible') //aquí el fem visible, en lo fromat que li hem dit abans
           .html(`<b>Country</b>: ${d.country_name} <br/>
                 <b>${[selectedY]}</b>: ${d.y.toLocaleString()} <br />  
@@ -176,7 +176,7 @@
   // }
 
   let pinXAxis;
-  let pinYAxis
+  let pinYAxis;
   $: if (pinXAxis) {
     select(pinXAxis).call(
       axisBottom(xScale)
@@ -250,11 +250,18 @@
         fill-opacity= "1"
         stroke= "black"
         stroke-width= "1"
-
-        on:mouseover={(e) => {isHovered = d; onMouseover(e,d)}}
-        on:mouseout={(e)=>{ 
-            tooltip.style('visibility', 'hidden')
-          }
+      
+        on:mouseover={(e) => {mouseovered = d; onMouseover(e,d)}}
+        on:mousemove={(e)=>{ 
+          const tooltipWidth = tooltip.node().offsetWidth;
+          const tooltipHeight = tooltip.node().offsetHeight;
+        tooltip
+           .style("left", e.pageX - tooltipWidth/2 +'px')
+          .style("top", e.pageY-tooltipHeight - 10+'px')
+        }}
+         on:mouseout={(e)=>{ 
+          tooltip.style('visibility', 'hidden')
+         }
         }
       />
     {/each}
