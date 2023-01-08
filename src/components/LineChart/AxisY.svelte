@@ -1,5 +1,4 @@
 <script>
-  // import { format } from "d3-format"
   export let yScale;
   export let margin;
   export let width;
@@ -10,10 +9,22 @@
   export let isMobile = false;
   export let nTicksX = 10;
   export let xFormatted = true;
+  export let yKey;
+  import {
+    getUnitsFromIndicator
+  } from "./../helperFunctions.js";
+
+  $: unit = getUnitsFromIndicator(yKey)
+
 
   $: setnTicksX = isMobile ? 3 : nTicksX;
   $: yTicks = yScale.ticks(nTicksY)
   $: xTicks = xScale.ticks(setnTicksX)
+
+  $: yTickMax = Math.max(...yTicks)
+
+  $: formatTick = (tick) => 
+    unit === "$" && tick === yTickMax ? unit + formatNum(tick) : formatNum(tick)
   
 
 
@@ -37,32 +48,6 @@ function formatNum(num) {
 
 </script>
 
-<g class="axis" transform="translate({margin.left}, 0)">
-  {#each yTicks as tick}
-    <g class="axis" transform="translate(0, {yScale(tick)})">
-      {#if grid}
-        <line
-          class="y-axis-lines"
-          x1="0"
-          y1="0"
-          x2={width - margin.left - margin.right}
-          y2="0"
-          style="stroke: lightgrey"
-        />
-      {/if}
-      <text
-        class="axis-text"
-        x="-5"
-        y="0"
-        text-anchor="end"
-        dominant-baseline="middle"
-        >{formatNum(tick)}
-      </text>
-    </g>
-  {/each}
-</g>
-
-<!-- <g class="axis" transform="translate({margin.left}, 0)"> -->
   {#each xTicks as tick}
     <g class="axis" transform="translate({xScale(tick)}, 0)">
       {#if grid}
@@ -85,8 +70,45 @@ function formatNum(num) {
       </text>
     </g>
   {/each}
-  <!-- </g> -->
 
+  <g class="axis" transform="translate({margin.left}, 0)">
+    {#each yTicks as tick}
+      <g class="axis" transform="translate(0, {yScale(tick)})">
+        {#if grid}
+          <line
+            class="y-axis-lines"
+            x1="0"
+            y1="0"
+            x2={width - margin.left - margin.right}
+            y2="0"
+            style="stroke: lightgrey"
+          />
+        {/if}
+        <text
+          class="axis-text"
+          x="-5"
+          y="0"
+          text-anchor="end"
+          dominant-baseline="middle"
+          >{formatTick(tick)}
+        </text>
+
+
+        {#if unit && unit !== "$" && tick === yTickMax }
+        <text
+          class="axis-text"
+          style="stroke:#ffffff;stroke-width:3px;paint-order: stroke;"
+          x="-3"
+          y="0"
+          text-anchor="start"
+          dominant-baseline="middle"
+          >{unit}
+        </text>
+
+        {/if}
+      </g>
+    {/each}
+  </g>
 
 <style>
   text.axis-text {
