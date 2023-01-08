@@ -9,6 +9,10 @@
   import { onMount } from 'svelte';
   import { axisBottom, axisLeft } from "d3-axis";
   import { select } from "d3-selection";
+  export let yKey;
+  import {
+    getUnitsFromIndicator
+  } from "./components/helperFunctions.js";
 
 
 
@@ -18,15 +22,12 @@
 
 
   ////--------------------------------- creating chart area ------------------------------------------------------------------
-
   $: svg = d3.create("svg")
     .attr("width", width)
     .attr("height", height)
     .attr("viewBox",[0, 0, width, height]);
 
   ////--------------------------------- creating dropdown lists ------------------------------------------------------------------
-
-
   const indicatorsX = [
     "GDP (expenditure, multiple price benchmarks)",
     "GDP per capita (expenditure, multiple price benchmarks)",
@@ -54,9 +55,10 @@
   $: selectedYear = years[0];
   $: selectedX = indicatorsX[0];
   $: selectedY = indicatorsY[0];
+  $: unitX = getUnitsFromIndicator(selectedX)
+  $: unitY = getUnitsFromIndicator(selectedY)
+
   ////--------------------------------- Filtering data  ------------------------------------------------------------------
-
-
   $: filteredData = data.filter(d=>d.country_name && d.year==selectedYear && d[selectedX] && d[selectedY])
     //.filter((d) => d[selectedX])
     .map((d) => {
@@ -77,7 +79,7 @@
       console.info(selectedX,selectedY,selectedYear)
     }
     
-  ////--------------------------------- circle scale depending on the variable population -------------------------------
+  ////----------------------- scales depending on the variable ----------------------
   $: rScale = d3.scaleSqrt()
     .domain([0,d3.max(filteredData, d => d['pop'])])
     .range([0, 50]) 
@@ -95,16 +97,17 @@
     .range([height-margin.bottom, margin.top])
 
   $: yTicks = yScale.ticks()
-  $: xTicks = xScale.ticks(5) 
+  $: xTicks = xScale.ticks(5)
+  $: yTickMax = Math.max(...yTicks)
   //console.log(xTicks)
-  ////---------------------------------set color scheme ------------------------------------------------------------------
+  ////---------------------------------set color scheme -----------------------------------
 
   const color = scaleOrdinal() 
     .domain(continents)
     .range(schemeCategory10)
 
 
-  ////--------------------------------- text square with information ---------------------------------
+  ////------------------------ text square with information ---------------------------------
 
   let mouseovered;
 
@@ -122,58 +125,15 @@
         const tooltipHeight = tooltip.node().offsetHeight;
         tooltip
           .style("left", e.pageX - tooltipWidth +'px')
-          .style("top", e.pageY-tooltipHeight - 10+'px') //això és per controlar lo gran que és lo requadre. Distància entre la pàgina i el ratolí
-          .style('visibility', 'visible') //aquí el fem visible, en lo fromat que li hem dit abans
+          .style("top", e.pageY-tooltipHeight - 10+'px')
+          .style('visibility', 'visible') 
           .html(`<b>Country</b>: ${d.country_name} <br/>
                 <b>${[selectedY]}</b>: ${d.y.toLocaleString()} <br />  
                 <b>Population</b>: ${d.pop.toLocaleString('en-US', {maximumSignificantDigits: 3})}</br>
                 <b>${[selectedX]}</b>: ${d.x.toLocaleString('en-US', {maximumSignificantDigits: 3})}`);
       }
 
-
-  //--------------------------------- creating the circles ------------------------------------------------------------
-  /*const selection = svg.selectAll("dot")
-    .data(filteredData)
-    .enter()
-    .append("circle")
-      .attr("class", function(d) { return "bubbles" + d.continent })
-      /*.attr('cx', d => xScale(d[selectedX]))
-      .attr('cy', d => yScale(d[selectedY]))
-      .attr('r', d => rScale(d.population))
-      .style('fill', d=> color(d.continent))
-      .style('opacity', 1)
-      .style('stroke', "black")
-      .style('stroke-width', '1')
-    //interaccions en lo cursor
-    .on("mouseover", function(d, i) {
-      // change the selection style
-      d3.select(this)
-        .style('stroke-width', '4')
-        .style('fill', "steelblue");
-      const tooltipWidth = tooltip.node().offsetWidth;
-      const tooltipHeight = tooltip.node().offsetHeight;
-      tooltip
-        .style("left", d.pageX - tooltipWidth +'px')
-        .style("top", d.pageY-tooltipHeight - 10+'px') //això és per controlar lo gran que és lo requadre. Distància entre la pàgina i el ratolí
-        .style('visibility', 'visible') //aquí el fem visible, en lo fromat que li hem dit abans
-        .html(`<b>Country</b>: ${i.country} <br/>
-              <b>${[selectedY]}</b>: ${i[selectedY].toLocaleString()} <br />  
-              <b>Population</b>: ${i.population.toLocaleString('en-US', {maximumSignificantDigits: 3})}</br>
-              <b>${[selectedX]}</b>: ${i[selectedX].toLocaleString('en-US', {maximumSignificantDigits: 3})}`);
-    })
-    .on("mouseout", function(d,i) {
-      d3.select(this)
-        .style('fill', d=> color(d.continent))
-        .style('stroke-width', '1')
-      tooltip.style('visibility', 'hidden')
-    })
-*/
-
-  //onMount(resize);
-
-  // function resize() {
-  //   ({ width, height } = svg.getBoundingClientRect());
-  // }
+  ////--------------------------------- axis ---------------------------------
 
   let pinXAxis;
   let pinYAxis;
@@ -198,7 +158,7 @@
       <input type=number bind:value={selectedYear} min=1990 max=2018 on:change={handleOnChange}>
       <input type=range bind:value={selectedYear} min=1990 max=2018 on:change={handleOnChange}>
     </label>
-    {selectedYear}
+    <!-- {selectedYear} -->
   </p>
 </div>
 
@@ -231,14 +191,32 @@
       class="xAxis"
       bind:this={pinXAxis}
       transform="translate(0,{height-margin.bottom})"
-    />
+      >
+      <text
+      alignment-baseline="middle"
+      font-size="15"
+      fill="black"
+      stroke-width="0.8px"
+      x="1050"
+      y="30"
+      text-anchor="start"
+      dominant-baseline="middle">{unitX}</text>
+    </g>
 
     <g
       class="yAxis"
       bind:this={pinYAxis}
       transform="translate({margin.left},0)"
-    />
-  
+      ><text
+        alignment-baseline="middle"
+        font-size="15"
+        fill="black"
+        stroke-width="0.8px"
+        x="-30"
+        y="40"
+        text-anchor="start"
+        dominant-baseline="middle">{unitY}</text>
+    </g>
   
     <!------------------------- data ---------------------------------->
     {#each filteredData as d}
@@ -276,9 +254,28 @@
             r="6"
             fill= "{color(continent)}"
           />
-          <text x="24" y="9" dy="0.35em">{continent}</text>
+          <!-- <button on:click={(e) =>} -->
+            <text x="24" y="9" dy="0.35em">{continent}</text>
         </g>
       {/each}
+    </g>
+
+    <!------------------- selected year ----------------------------->
+    <g>
+      <text  
+        x="{width - 145}" 
+        y="220"
+        alignment-baseline="middle" 
+        font-size="20"
+        fill="grey"
+      >Selected Year: </text>
+      <text  
+        x="{width - 145}" 
+        y="260"
+        alignment-baseline="middle" 
+        font-size="50"
+        fill="grey"
+      >{selectedYear}</text>
     </g>
 
     <!------------------- population legend --------------------------->
@@ -310,3 +307,17 @@
   </svg>
 
 </div>
+
+<style type="text/css">
+
+text.selected {
+  opacity:.4;
+}
+text:hover{
+  cursor:pointer;
+}
+text.non_selected {
+  opacity:1;
+}
+
+</style>
