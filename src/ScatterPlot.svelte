@@ -105,6 +105,9 @@
 
 
   ////--------------------------------- text square with information ---------------------------------
+
+  let isHovered = false;
+
   const tooltip = d3.select('body') 
       .append('div')
       .style('position', 'absolute')
@@ -114,6 +117,18 @@
       .style('background', 'rgba(0,0,0,0.6)')
       .style('border-radius', '4px')
       .style('color', '#fff');
+      function onMouseover(i, d) {
+        const tooltipWidth = tooltip.node().offsetWidth;
+        const tooltipHeight = tooltip.node().offsetHeight;
+        tooltip
+          .style("left", i.pageX - tooltipWidth +'px')
+          .style("top", i.pageY-tooltipHeight - 10+'px') //això és per controlar lo gran que és lo requadre. Distància entre la pàgina i el ratolí
+          .style('visibility', 'visible') //aquí el fem visible, en lo fromat que li hem dit abans
+          .html(`<b>Country</b>: ${d.country_name} <br/>
+                <b>${[selectedY]}</b>: ${d.y.toLocaleString()} <br />  
+                <b>Population</b>: ${d.pop.toLocaleString('en-US', {maximumSignificantDigits: 3})}</br>
+                <b>${[selectedX]}</b>: ${d.x.toLocaleString('en-US', {maximumSignificantDigits: 3})}`);
+      }
 
 
   //--------------------------------- creating the circles ------------------------------------------------------------
@@ -228,18 +243,24 @@
     <!------------------------- data ---------------------------------->
     {#each filteredData as d}
       <circle 
-      cx='{xScale(d.x)}' 
-      cy='{yScale(d.y)}' 
-      r='{rScale(d['pop'])}'
+        cx='{xScale(d.x)}' 
+        cy='{yScale(d.y)}' 
+        r='{rScale(d['pop'])}'
         fill= {color(d.continent)}
         fill-opacity= "1"
         stroke= "black"
         stroke-width= "1"
+
+        on:mouseover={(e) => {isHovered = d; onMouseover(e,d)}}
+        on:mouseout={(e)=>{ 
+            tooltip.style('visibility', 'hidden')
+          }
+        }
       />
     {/each}
 
     <!------------------- cotinents legend ----------------------------->
-    <g transform={`translate(${width - 150}, ${margin.top})`}>
+    <g transform={`translate(${width - 140}, ${margin.top})`}>
       {#each color.domain() as continent, i}
         <g transform={`translate(0, ${i * 20})`}>
           <circle 
@@ -254,7 +275,7 @@
     </g>
 
     <!------------------- population legend --------------------------->
-    <g transform={`translate(${width - 150}, ${margin.bottom})`}>
+    <g transform={`translate(${width - 100}, ${margin.bottom})`}>
       {#each valuesToShow as value, i}
         <g transform={`translate(0, ${i * 20})`}>
           <circle 
@@ -265,9 +286,9 @@
             stroke= "black"
             stroke-width= "1"
           />
-          <text x="60" y="340"  alignment-baseline="middle" font-size="10">{value}</text>
+          <text x="70" y="340"  alignment-baseline="middle" font-size="10">{value/1000000}</text>
           <line 
-            x1="60" 
+            x1="70" 
             x2="20"
             y1="340"
             y2="340" 
@@ -275,6 +296,7 @@
             stroke-dasharray="2,2"></line>
         </g>
       {/each}
+    <text x="-30" y="450"  alignment-baseline="middle" font-size="15">Population (M)</text>
     </g>
     
 
