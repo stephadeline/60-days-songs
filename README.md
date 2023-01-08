@@ -27,6 +27,11 @@ It is located inside the [`data`](https://github.com/stephadeline/mvtec2022-fina
 
 In order to run the data cleaning script, simply run `npm start`.
 
+## Potential improvements
+1. Improve the mobile version of the graphics. Currently it is only suitable for viewing on desktop.
+2. Improve the dark mode compatibility.
+3. Optimizing the dataset even more.
+4. Improve UI/UX interactivity.
 
 ## Credits
 
