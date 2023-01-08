@@ -35,6 +35,21 @@ export const getFormattedValue = function (indicator, value) {
   }
 };
 
+export const getFormattedTick = function (indicator, value) {
+  let unit = units[indicator];
+  if (unit === null) {
+    return value;
+  } else if (unit === "$") {
+    return unit + value;
+  } else {
+    return value + " " + unit;
+  }
+};
+
+export const getUnitsFromIndicator = function (indicator) {
+  return units[indicator];
+};
+
 export const colorScale = scaleOrdinal()
   .domain(["Asia", "Americas", "Europe", "Africa", "Oceania"])
   .range(schemeTableau10);

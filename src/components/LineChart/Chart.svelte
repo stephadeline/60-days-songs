@@ -5,8 +5,10 @@
   import { Delaunay } from "d3-delaunay";
   import { line } from "d3-shape";
   import AxisY from "./AxisY.svelte";
-  import {getFormattedValue } from "./../helperFunctions.js"
-
+  import {
+    getFormattedValue,
+    getUnitsFromIndicator,
+  } from "./../helperFunctions.js";
 
   export let data;
   export let label = "country_name";
@@ -30,7 +32,7 @@
 
   let hovered;
 
-  $: selected = selectedLabel.length > 0 || selectedGroup.length > 0
+  $: selected = selectedLabel.length > 0 || selectedGroup.length > 0;
 
   $: groupedData = groups(data, (d) => d[label]);
   $: dataForScale =
@@ -48,11 +50,11 @@
     zoom && selected ? extent(dataForScale, (d) => d.y) : [minY, maxY];
 
   $: yScaleLinear = scaleLinear()
-    .domain(yDomain)
+    .domain(yDomain).nice()
     .range([height - margin.bottom, margin.top]);
 
   $: yScaleLog = scaleLog()
-    .domain(yDomain)
+    .domain(yDomain).nice()
     .range([height - margin.bottom, margin.top]);
 
   $: yScale = isLog ? yScaleLog : yScaleLinear;
@@ -68,19 +70,19 @@
     .x((d) => xScale(d.x))
     .y((d) => yScale(d.y));
 
-    function getMaxofLabel(c) {
+  function getMaxofLabel(c) {
     const thisLabel = data.filter((d) => d[label] === c && d.y);
     const maxOfLabel = Math.max(...thisLabel.map((d) => d.x));
     return maxOfLabel;
   }
 
-  $: historicalData = data => data.filter(d => d.x <= 2020)
+  $: historicalData = (data) => data.filter((d) => d.x <= 2020);
 
-  $: projectedData = data => data.filter(d => d.x >= 2020);
+  $: projectedData = (data) => data.filter((d) => d.x >= 2020);
 
   $: drawLineDashed = function (data) {
     const dashedData = data.filter(drawLine.defined());
-  return drawLine(dashedData);
+    return drawLine(dashedData);
   };
 
   $: labeledData = data.filter(
@@ -159,9 +161,7 @@
   };
 
   $: isMobile = width <= 500;
-
 </script>
-
 
 <div
   class="line-chart-graphic"
@@ -178,8 +178,11 @@
       {height}
       {isMobile}
       {nTicksY}
+      {yKey}
       xFormatted={false}
     />
+    <!-- <text transform="translate({margin.left}, {margin.top})" class="unit" style="font-size: 12px"  text-anchor="start">{getUnitsFromIndicator(yKey)}</text> -->
+
 
     {#each labeledData as d}
       <text
@@ -195,9 +198,8 @@
 
     <g class="line-chart-clipped">
       {#each groupedData as d}
-
-      {#if projections}
-        <path
+        {#if projections}
+          <path
             class="line-undefined"
             d={drawLine(projectedData(d[1]))}
             stroke={colorScale(d[1][0][group])}
@@ -206,37 +208,39 @@
             fill="none"
             stroke-dasharray="5,5"
           />
-      <path
-      d={drawLine(historicalData(d[1]))}
-      stroke={colorScale(d[1][0][group])}
-      stroke-opacity={getStrokeProperties(d[0], d[1][0][group], false)[0]}
-      stroke-width={getStrokeProperties(d[0], d[1][0][group], false)[1]}
-      fill="none"
-    />
-      {/if}
-      {#if projections === false}
-
-        <!-- Draw dashed line for missing data if any -->
-        {#if drawLineDashed(d[1])}
           <path
-            class="line-undefined"
-            d={drawLineDashed(d[1])}
+            d={drawLine(historicalData(d[1]))}
             stroke={colorScale(d[1][0][group])}
-            stroke-opacity={getStrokeProperties(d[0], d[1][0][group], true)[0]}
-            stroke-width={getStrokeProperties(d[0], d[1][0][group], true)[1]}
+            stroke-opacity={getStrokeProperties(d[0], d[1][0][group], false)[0]}
+            stroke-width={getStrokeProperties(d[0], d[1][0][group], false)[1]}
             fill="none"
-            stroke-dasharray="5,5"
           />
         {/if}
-        <path
-          d={drawLine(d[1])}
-          stroke={colorScale(d[1][0][group])}
-          stroke-opacity={getStrokeProperties(d[0], d[1][0][group], false)[0]}
-          stroke-width={getStrokeProperties(d[0], d[1][0][group], false)[1]}
-          fill="none"
-        />
+        {#if projections === false}
+          <!-- Draw dashed line for missing data if any -->
+          {#if drawLineDashed(d[1])}
+            <path
+              class="line-undefined"
+              d={drawLineDashed(d[1])}
+              stroke={colorScale(d[1][0][group])}
+              stroke-opacity={getStrokeProperties(
+                d[0],
+                d[1][0][group],
+                true
+              )[0]}
+              stroke-width={getStrokeProperties(d[0], d[1][0][group], true)[1]}
+              fill="none"
+              stroke-dasharray="5,5"
+            />
+          {/if}
+          <path
+            d={drawLine(d[1])}
+            stroke={colorScale(d[1][0][group])}
+            stroke-opacity={getStrokeProperties(d[0], d[1][0][group], false)[0]}
+            stroke-width={getStrokeProperties(d[0], d[1][0][group], false)[1]}
+            fill="none"
+          />
         {/if}
-
       {/each}
     </g>
     <g class="voronoi">
@@ -253,32 +257,44 @@
     </g>
 
     {#if tooltipProperties.data.y}
-    <g
-      class="linechart-tooltip"
-      style="visibility: {tooltipProperties.visibility}"
-    >
-      <circle cx={tooltipProperties.x} cy={tooltipProperties.y} r={3} fill={colorScale(tooltipProperties.data[group])} ></circle>
-      <text x={tooltipProperties.x} y={tooltipProperties.y + 18} style="stroke:#ffffff;stroke-width:1px;paint-order: stroke;" text-anchor="middle">
-        <tspan style="font-weight: bold; font-size:15px;"
-          >{tooltipProperties.data[label]}</tspan
-        >
-        <tspan
+      <g
+        class="linechart-tooltip"
+        style="visibility: {tooltipProperties.visibility}"
+      >
+        <circle
+          cx={tooltipProperties.x}
+          cy={tooltipProperties.y}
+          r={3}
+          fill={colorScale(tooltipProperties.data[group])}
+        />
+        <text
           x={tooltipProperties.x}
-          y={tooltipProperties.y + 36}
-          style="font-size:13px;"
+          y={tooltipProperties.y + 18}
+          style="stroke:#ffffff;stroke-width:1px;paint-order: stroke;"
+          text-anchor="middle"
+        >
+          <tspan style="font-weight: bold; font-size:15px;"
+            >{tooltipProperties.data[label]}</tspan
           >
-          <tspan style="font-weight: bold;">Value</tspan>: {getFormattedValue(yKey, tooltipProperties
-            .data.y)}</tspan
-        >
-        <tspan
-          x={tooltipProperties.x}
-          y={tooltipProperties.y + 36 + 18}
-          style="font-size:13px;"
-          ><tspan style="font-weight: bold;">{xKey}</tspan>: {tooltipProperties
-            .data.x}</tspan
-        >
-      </text>
-    </g>
+          <tspan
+            x={tooltipProperties.x}
+            y={tooltipProperties.y + 36}
+            style="font-size:13px;"
+          >
+            <tspan style="font-weight: bold;">Value</tspan>: {getFormattedValue(
+              yKey,
+              tooltipProperties.data.y
+            )}</tspan
+          >
+          <tspan
+            x={tooltipProperties.x}
+            y={tooltipProperties.y + 36 + 18}
+            style="font-size:13px;"
+            ><tspan style="font-weight: bold;">{xKey}</tspan>: {tooltipProperties
+              .data.x}</tspan
+          >
+        </text>
+      </g>
     {/if}
   </svg>
 </div>
