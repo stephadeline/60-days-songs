@@ -15,7 +15,7 @@ export const units = {
   "GDP (expenditure, multiple price benchmarks)": "$",
   "GDP per capita (expenditure, multiple price benchmarks)": "$",
   "Productivity: output per hour worked": "$",
-  "Gini coefficient": null,
+  "Gini coefficient": "(coef. 0 = perfect equality)",
   "Palma ratio (S90/S40 ratio)": null,
 };
 

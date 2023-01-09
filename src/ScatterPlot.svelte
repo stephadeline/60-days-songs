@@ -32,8 +32,8 @@
     "Consumption of households and government per capita",
     "Beef consumption",
     "Poultry consumption",
-    "Sheep consumption",
-    "Pig consumption"
+    "Lamb consumption",
+    "Pork consumption"
   ];
 
   const continents = Array.from(new Set(data.map((d) => d.continent)));
@@ -134,6 +134,15 @@
                 <b>${[selectedX]}</b>: ${getFormattedValue(selectedX, d.x)}`);
   }
 
+  function onMouseMove(e,d) {
+        const tooltipWidth = tooltip.node().offsetWidth;
+        const tooltipHeight = tooltip.node().offsetHeight;
+        tooltip
+          .style("left", e.pageX - tooltipWidth/2 +'px')
+          .style("top", e.pageY-tooltipHeight - 10+'px')
+          .style('visibility', 'visible');
+  }
+
   ////--------------------------------- axis ---------------------------------
 
   let pinXAxis;
@@ -221,7 +230,7 @@
           font-size="15"
           fill="black"
           stroke-width="0.8px"
-          x={width - margin.right}
+          x={width - margin.right - 10}
           y="30"
           text-anchor="start"
           dominant-baseline="middle">{unitX}</text
@@ -257,6 +266,9 @@
           stroke-width="1"
           on:mouseover={(e) => {
             onMouseover(e, d);
+          }}
+          on:mousemove={(e) => {
+            onMouseMove(e,d);
           }}
           on:mouseout={(e) => {
             e.target.style.strokeWidth = "1";
@@ -303,7 +315,7 @@
       </g>
 
       <!------------------- population legend --------------------------->
-      <g transform={`translate(${width - 100}, ${margin.bottom})`}>
+      <g transform={`translate(${width - 100}, ${margin.bottom - 30})`}>
         {#each valuesToShow as value, i}
           <g>
             <circle
