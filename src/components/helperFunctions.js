@@ -11,6 +11,7 @@ export const units = {
   "Poultry consumption": "kg/cap",
   "Sheep consumption": "kg/cap",
   "Pig consumption": "kg/cap",
+  "Population": "people"
   "GDP (expenditure, multiple price benchmarks)": "$",
   "GDP per capita (expenditure, multiple price benchmarks)": "$",
   "Productivity: output per hour worked": "$",
