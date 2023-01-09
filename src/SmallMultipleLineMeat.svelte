@@ -56,7 +56,7 @@ These small multiple line charts show how much of each type of meat several coun
       <line x1="0" y1="5" x2="20" y2="5" stroke-width="2" stroke="grey" stroke-dasharray="5,5">
       </line>
     </svg>
-    indicates projection data
+    indicate projection data
   </label>
   
   </div>
