@@ -5,19 +5,19 @@
   import { scaleOrdinal } from "d3-scale";
   import { scaleLinear } from "d3-scale";
   import { scaleLog } from "d3-scale";
-  import { schemeCategory10 } from "d3-scale-chromatic";
+  import { schemeTableau10 } from "d3-scale-chromatic";
   import { onMount } from 'svelte';
   import { axisBottom, axisLeft } from "d3-axis";
   import { select } from "d3-selection";
   export let yKey;
   import {
-    getUnitsFromIndicator
+    getUnitsFromIndicator, getFormattedValue
   } from "./components/helperFunctions.js";
 
 
 
   export let margin = ({top: 60, right: 250, bottom: 40, left: 60 });
-  $: width = 1300; 
+  $: width = 1200; 
   $: height = 500; 
 
 
@@ -118,7 +118,7 @@
 
   const color = scaleOrdinal() 
     .domain(continents)
-    .range(schemeCategory10)
+    .range(schemeTableau10)
 
 
   ////------------------------ text square with information ---------------------------------
@@ -134,17 +134,22 @@
       .style('background', 'rgba(0,0,0,0.6)')
       .style('border-radius', '4px')
       .style('color', '#fff');
+
       function onMouseover(e, d) {
         const tooltipWidth = tooltip.node().offsetWidth;
         const tooltipHeight = tooltip.node().offsetHeight;
+
+        e.target.style.strokeWidth = "3"
+        e.target.style.fillOpacity = "1"
+
         tooltip
           .style("left", e.pageX - tooltipWidth +'px')
           .style("top", e.pageY-tooltipHeight - 10+'px')
           .style('visibility', 'visible') 
           .html(`<b>Country</b>: ${d.country_name} <br/>
-                <b>${[selectedY]}</b>: ${d.y.toLocaleString()} <br />  
-                <b>Population</b>: ${d.pop.toLocaleString('en-US', {maximumSignificantDigits: 3})}</br>
-                <b>${[selectedX]}</b>: ${d.x.toLocaleString('en-US', {maximumSignificantDigits: 3})}`);
+                <b>${[selectedY]}</b>: ${getFormattedValue(selectedY, d.y)} <br />  
+                <b>Population</b>: ${getFormattedValue("Population", d.pop)}</br>
+                <b>${[selectedX]}</b>: ${getFormattedValue(selectedX, d.x)}`);
       }
 
   ////--------------------------------- axis ---------------------------------
@@ -165,20 +170,19 @@
 
 </script>
 
-<div>
-  <h2>Scatterplot</h2>
-  <p>
-    <label>Year : 
-      <input type=number bind:value={selectedYear} min=1990 max=2018 on:change={handleOnChange}>
-      <input type=range bind:value={selectedYear} min=1990 max=2018 on:change={handleOnChange}>
-    </label>
-    <!-- {selectedYear} -->
-  </p>
-</div>
-
-<div class=scatterplot>
+<div
+  class="scatterplot"
+>
   <div class=scatterplotSelectors>
-    <h4>Select X indicator:</h4>
+    <h2>Scatterplot</h2>
+    <p>
+      <label>Year : 
+        <input type=number bind:value={selectedYear} min=1990 max=2018 on:change={handleOnChange}>
+        <input type=range bind:value={selectedYear} min=1990 max=2018 on:change={handleOnChange}>
+      </label>
+      <!-- {selectedYear} -->
+    </p>
+    <h4>Select wealth or inequality indicator (X):</h4>
     <Select
       items={indicatorsX}
       value={indicatorsX[0]}
@@ -186,7 +190,7 @@
       clearable={false}
       showChevron
     />
-    <h4>Select Y indicator:</h4>
+    <h4>Select consumption indicator (Y):</h4>
     <Select
       items={indicatorsY}
       value={indicatorsY[0]}
@@ -195,10 +199,9 @@
       showChevron
     />
   </div>
-</div>
 
 
-<div>
+<div class="scatterplot-chart">
   <svg   viewBox="0 0 {width} {height}" {width}  {height}>
   <!-- ------------------------ axis ----------------------------------->
     <g
@@ -211,7 +214,7 @@
       font-size="15"
       fill="black"
       stroke-width="0.8px"
-      x="1050"
+      x={width - margin.right}
       y="30"
       text-anchor="start"
       dominant-baseline="middle">{unitX}</text>
@@ -240,19 +243,14 @@
           cy='{yScale(d.y)}' 
           r='{rScale(d['pop'])}'
           fill= {color(d.continent)}
-          fill-opacity= "1"
+          fill-opacity= "0.8"
           stroke= "black"
           stroke-width= "1"
         
           on:mouseover={(e) => {mouseovered = d; onMouseover(e,d)}}
-          on:mousemove={(e)=>{ 
-            const tooltipWidth = tooltip.node().offsetWidth;
-            const tooltipHeight = tooltip.node().offsetHeight;
-          tooltip
-            .style("left", e.pageX - tooltipWidth/2 +'px')
-            .style("top", e.pageY-tooltipHeight - 10+'px')
-          }}
           on:mouseout={(e)=>{ 
+            e.target.style.strokeWidth="1"
+            e.target.style.fillOpacity="0.8"
             tooltip.style('visibility', 'hidden')
           }
           }
@@ -313,21 +311,22 @@
     <!------------------- population legend --------------------------->
     <g transform={`translate(${width - 100}, ${margin.bottom})`}>
       {#each valuesToShow as value, i}
-        <g transform={`translate(0, ${i * 20})`}>
+        <g>
           <circle 
             cx="10" 
-            cy="340" 
+            cy={height - 70 - scale(value)}
             r='{scale(value)}'
             fill= "none"
             stroke= "black"
             stroke-width= "1"
           />
-          <text x="70" y="340"  alignment-baseline="middle" font-size="10">{value/1000000}</text>
+          <text x="70" y={height - 70 - rScale(value)}
+          alignment-baseline="middle" font-size="10">{value/1000000}</text>
           <line 
             x1="70" 
             x2="20"
-            y1="340"
-            y2="340" 
+            y1={height - 70 - scale(value)}
+            y2={height - 70 - scale(value)}
             stroke="grey"
             stroke-dasharray="2,2"></line>
         </g>
@@ -339,17 +338,27 @@
   </svg>
 
 </div>
+</div>
 
 <style type="text/css">
 
 text.selected {
   opacity:.4;
 }
-text:hover{
+/* text:hover{
   cursor:pointer;
-}
+} */
 text.non_selected {
   opacity:1;
 }
+
+.scatterplotSelectors {
+    max-width: 700px;
+    margin: auto
+  }
+
+  .scatterplot {
+    display: inline-block;
+  }
 
 </style>

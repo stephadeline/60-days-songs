@@ -16,6 +16,7 @@ export const units = {
   "Productivity: output per hour worked": "$",
   "Gini coefficient": null,
   "Palma ratio (S90/S40 ratio)": null,
+  Population: "people",
 };
 
 export const formatNum = function (n) {
