@@ -16,9 +16,9 @@
   
   const types = [
     "BEEF",
-    "SHEEP",
+    "LAMB",
     "POULTRY",
-    "PIG"
+    "PORK"
   ]
 
   $: filterData = function(c) {
@@ -73,7 +73,7 @@ These small multiple line charts show how much of each type of meat several coun
       selectedLabel={types}
       selectedGroup={types}
       maxYOverride={maxYOverride}
-      yKey="Pig consumption"
+      yKey="Pork consumption"
       {projections}
     />
   </div>

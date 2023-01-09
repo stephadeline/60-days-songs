@@ -14,8 +14,8 @@
     "Consumption of households and government per capita",
     "Beef consumption",
     "Poultry consumption",
-    "Sheep consumption",
-    "Pig consumption"
+    "Lamb consumption",
+    "Pork consumption"
   ];
 
   const wealthIndicators = [
