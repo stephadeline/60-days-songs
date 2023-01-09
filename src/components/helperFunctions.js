@@ -7,16 +7,15 @@ export const units = {
   "Electricity activity (per capita)": "kWh/cap",
   "New EV sales per million capita": "sales / M cap",
   "Consumption of households and government per capita": "$",
-  BEEF: "kg/cap",
-  PIG: "kg/cap",
-  POULTRY: "kg/cap",
-  SHEEP: "kg/cap",
+  "Beef consumption": "kg/cap",
+  "Poultry consumption": "kg/cap",
+  "Sheep consumption": "kg/cap",
+  "Pig consumption": "kg/cap",
   "GDP (expenditure, multiple price benchmarks)": "$",
   "GDP per capita (expenditure, multiple price benchmarks)": "$",
   "Productivity: output per hour worked": "$",
   "Gini coefficient": null,
   "Palma ratio (S90/S40 ratio)": null,
-  Population: "people",
 };
 
 export const formatNum = function (n) {
