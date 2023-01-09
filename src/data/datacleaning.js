@@ -121,7 +121,13 @@ const meatForJoining = meatTable
       country_name: aq.escape((d) => clm.getCountryNameByAlpha3(d.alpha3)),
     },
     { before: "year" }
-  );
+  )
+  .rename({
+    PIG: "Pig consumption",
+    SHEEP: "Sheep consumption",
+    BEEF: "Beef consumption",
+    POULTRY: "Poultry consumption",
+  });
 
 // joining the datasets
 const cleanJoined = pennworldTable

@@ -12,10 +12,10 @@
     "Electricity activity (per capita)",
     "New EV sales per million capita",
     "Consumption of households and government per capita",
-    "BEEF",
-    "PIG",
-    "POULTRY", 
-    "SHEEP"
+    "Beef consumption",
+    "Poultry consumption",
+    "Sheep consumption",
+    "Pig consumption"
   ];
 
   const wealthIndicators = [
