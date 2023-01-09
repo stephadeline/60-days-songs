@@ -123,8 +123,8 @@ const meatForJoining = meatTable
     { before: "year" }
   )
   .rename({
-    PIG: "Pig consumption",
-    SHEEP: "Sheep consumption",
+    PIG: "Pork consumption",
+    SHEEP: "Lamb consumption",
     BEEF: "Beef consumption",
     POULTRY: "Poultry consumption",
   });
@@ -213,11 +213,18 @@ const forMeatChart = meatTable
   .derive(
     {
       country_name: aq.escape((d) => clm.getCountryNameByAlpha3(d.alpha3)),
+      type: (d) => {
+        if (d.type === "PIG") {
+          return "PORK";
+        } else if (d.type === "SHEEP") {
+          return "LAMB";
+        } else return d.type;
+      },
     },
     { before: "year" }
   )
   .filter(aq.escape((d) => countrySelection.includes(d.country_name)))
-  // grouping by year and using the country as the column name.
+  // grouping by year and using the country as the column name;
   .groupby("type", "year")
   .pivot("country_name", "value");
 
