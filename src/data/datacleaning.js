@@ -200,6 +200,9 @@ const finalData = joinedData.objects().map((obj) => {
   return obj;
 });
 
+// writing the json file
+fs.writeFileSync("src/data/joined.json", JSON.stringify(finalData, null, 2));
+
 const countrySelection = [
   "Argentina",
   "Switzerland",
@@ -228,8 +231,6 @@ const forMeatChart = meatTable
   // grouping by year and using the country as the column name;
   .groupby("type", "year")
   .pivot("country_name", "value");
-
-fs.writeFileSync("src/data/joined.json", JSON.stringify(finalData, null, 2));
 
 fs.writeFileSync(
   "src/data/meatChart.json",
