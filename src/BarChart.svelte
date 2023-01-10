@@ -32,7 +32,7 @@
 
 </script>
 
-<div class="bar-chart" bind:clientWidth={width} bind:clientHeight={height}>
+<div class="bar-chart" bind:clientWidth={width}>
 <svg
   xmlns:svg="https://www.w3.org/2000/svg"
   viewBox="0 0 {width} {height}"
@@ -75,4 +75,8 @@
 
 </div>
 <style>
+
+  .bar-chart {
+    height: 500px;
+  }
 </style>
