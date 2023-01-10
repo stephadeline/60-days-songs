@@ -11,7 +11,7 @@
   export let xFormatted = true;
   export let yKey;
   import {
-    getUnitsFromIndicator
+    getUnitsFromIndicator, formatAxisTick
   } from "./../helperFunctions.js";
 
   $: unit = getUnitsFromIndicator(yKey)
@@ -24,26 +24,8 @@
   $: yTickMax = Math.max(...yTicks)
 
   $: formatTick = (tick) => 
-    unit === "$" && tick === yTickMax ? unit + formatNum(tick) : formatNum(tick)
+    unit === "$" && tick === yTickMax ? unit + formatAxisTick(tick) : formatAxisTick(tick)
   
-
-
-function formatNum(num) {
-    if (num >= 1000000000000) {
-        return (num / 1000000000000).toFixed(1).replace(/\.0$/, '') + 'T';
-     }
-     if (num >= 1000000000) {
-        return (num / 1000000000).toFixed(1).replace(/\.0$/, '') + 'B';
-     }
-     if (num >= 1000000) {
-        return (num / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
-     }
-     if (num >= 1000) {
-        return (num / 1000).toFixed(1).replace(/\.0$/, '') + 'K';
-     }
-     return num;
-}
-
 
 
 </script>
@@ -66,7 +48,7 @@ function formatNum(num) {
         y={height - 5}
         text-anchor="middle"
         dominant-baseline="middle"
-        >{xFormatted ? formatNum(tick) : tick}
+        >{xFormatted ? formatAxisTick(tick) : tick}
       </text>
     </g>
   {/each}
@@ -114,5 +96,10 @@ function formatNum(num) {
   text.axis-text {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 0.8em;
+  }
+
+  g.axis {
+  transition-property: transform;
+  transition-duration: 0.5s;
   }
 </style>

@@ -147,8 +147,10 @@
 
   let pinXAxis;
   let pinYAxis;
+  $: xAxis = selectedX === "Gini coefficient" ? axisBottom(xScale).tickFormat(x => x.toFixed(1)) : axisBottom(xScale);
+
   $: if (pinXAxis) {
-    select(pinXAxis).call(axisBottom(xScale));
+    select(pinXAxis).call(xAxis);
   }
 
   $: if (pinYAxis) {
