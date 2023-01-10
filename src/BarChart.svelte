@@ -71,6 +71,11 @@
       </g>
     {/each}
   </g>
+
+  <text x="0" y="10" font-size="10">
+    <tspan x="0" dy="1.2em">Percentage</tspan>
+    <tspan x="0" dy="1.2em">change</tspan>
+  </text>
 </svg>
 
 </div>
