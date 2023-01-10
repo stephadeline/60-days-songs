@@ -7,7 +7,6 @@
   import AxisY from "./AxisY.svelte";
   import {
     getFormattedValue,
-    getUnitsFromIndicator,
   } from "./../helperFunctions.js";
 
   export let data;
@@ -181,8 +180,6 @@
       {yKey}
       xFormatted={false}
     />
-    <!-- <text transform="translate({margin.left}, {margin.top})" class="unit" style="font-size: 12px"  text-anchor="start">{getUnitsFromIndicator(yKey)}</text> -->
-
 
     {#each labeledData as d}
       <text
@@ -303,5 +300,8 @@
   .line-chart-graphic {
     height: 200px;
     max-width: 100vw;
+  }
+  .linechart-tooltip {
+    pointer-events: none;
   }
 </style>
