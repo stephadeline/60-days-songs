@@ -33,6 +33,11 @@ In order to run the data cleaning script, simply run `npm start`.
 3. Optimizing the dataset even more.
 4. Improve UI/UX interactivity.
 
+**Line chart:**
+
+1. Fix the ticks of the Y axis for log scale
+2. Add a clipping mask for the line
+
 ## Credits
 
 Story, code and visualisation by Guifré Jordan, Marina Rovira Boix and Stephanie Adeline.
