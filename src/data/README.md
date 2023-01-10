@@ -12,18 +12,18 @@ The script will generate these datasets:
 
 ## Description of tasks - what do we need to do to clean the data?
 
-1) Standardise country names
+**1) Standardise country names:**
 At first look at the data, we found that the 4 datasets we use all have different columns that refer to the country. Some use the country name, some use the Alpha 2 code and some use the Alpha 3 code. We'll also need to filter to remove data points that are not countries, such as regions, continents or global data.
 
-2) Get all indicators into columns
+**2) Get all indicators into columns**:
 The datasets are also in different formats. The Penn World dataset and the inequality dataset both have the indicators as column names. The Climate Action Tracker dataset and meat consumption dataset has the name/key of the indicator in a column, and the value in another. We'll want them all to be in columns.
 
-3) Filter/select to just the indicators we want
+**3) Filter/select to just the indicators we want**:
 We've discussed the indicators that we want to include in the visualization that's relevant to our topic. The list is here in the [exploratory Observable notebook](https://observablehq.com/d/1b27b0c79547839b).
 
 We'll also want to scope it to just 1990 to 2018, years when most of the data is available.
 
-4) Joining the datasets into one dataset for the interactive, and generate the datasets for the other charts as necessary.
+**4) Joining the datasets into one dataset for the interactive**, and generate the datasets for the other charts as necessary.
 
 We'll create one json file with all of the data we need. 
 We'll also create another json file that contains the meat consumption data for the meat consumption line chart, and perform calculations on percentage changes for the bar chart.
@@ -48,7 +48,7 @@ Based on the above, the script is broken down to:
 *CAT data*
 1. Filter the indicators column to the indicators we have listed.
 2. Filter to just the historic data (we are not visualizing projections here)
-3. Grouping by country and year, then pivoting so that the indicators are in the columns.
+3. Grouping by country and year, then pivoting so that the indicators are in the column names.
 4. Since this dataset uses Alpha2 codes, we derive and create a new column with the alpha3 code and the country name, and we rename the `country` column to `alpha2`.
 5. Then we filter to the country list we created.
 

@@ -3,6 +3,7 @@ import * as aq from "arquero";
 import clm from "country-locale-map";
 const { op } = aq;
 
+// load CSVs
 const catCsv = fs.readFileSync(
   "src/data/raw-data/climateactiontracker.csv",
   "utf8"
