@@ -1,32 +1,96 @@
 <script>
-
+	import Scroller from '@sveltejs/svelte-scroller';
+	import LoremIpsum from './LoremIpsum.svelte';
+	// import DraggableLabel from './DraggableLabel.svelte';
+	import Visual from "./SvgVisual.svelte"
+	let count;
+	let index;
+	let offset = 0;
+	let progress;
+	let top = 0.1;
+	let threshold = 0.5;
+	let bottom = 0.9;
 </script>
 
-<main>
-  <h1>HELLO WORLD!</h1>
-</main>
+<div class='demo'>
+	<!-- <LoremIpsum/>  -->
+
+	<Scroller
+		{top}
+		{threshold}
+		{bottom}
+		bind:count
+		bind:index
+		bind:offset
+		bind:progress
+	>
+		<div slot="background">
+			<!-- <p>current section: <strong>{index + 1}/{count}</strong></p>
+			<progress value="{count ? (index + 1) / count : 0}"></progress>
+
+			<p>offset in current section</p>
+			<progress value={offset || 0}></progress>
+
+			<p>total progress</p>
+			<progress value={progress || 0}></progress> -->
+      <Visual {index}/>
+		</div>
+
+		<div slot="foreground" style="padding: 0 0 0 50%;">
+			<section><p class="scrolly-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.{index + 1}</p></section>
+			<section><p class="scrolly-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.{index + 1}</p></section>
+			<section><p class="scrolly-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.{index + 1}</p></section>
+			<section><p class="scrolly-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.{index + 1}</p></section>
+
+		</div>
+	</Scroller>
+
+	<!-- <LoremIpsum/> -->
+
+</div>
 
 <style>
-  p,
-  h1,
-  h4,
-  h3 {
+	.demo {
+		/* background-color: #7FB1CB; */
+		width: 100%;
+
+	}
+	
+	[slot="background"] {
+		/* background-color: rgba(255,62,0,0.05);
+		border-top: 2px solid #ff3e00;
+		border-bottom: 2px solid #ff3e00; */
+		font-size: 1.4em;
+		overflow: hidden;
+		padding: 1em;
+	}
+	
+	[slot="background"] p {
+		margin: 0;
+	}
+	
+	[slot="foreground"] {
+		pointer-events: none;
+	}
+	
+	[slot="foreground"] section {
+		pointer-events: all;
+	}
+	
+	section {
+		height: 120vh;
+		/* background-color: rgba(0,0,0,0.5);
+		color: white; */
+		padding: 1em;
+		margin: 0 0 2em 0;
+	}
+
+  .scrolly-text {
+    margin-top: 50vh;
+    background-color: #fff;
+    color: #000;
     text-align: left;
-    margin: 10px auto 10px auto;
-    max-width: 700px;
-  }
-
-  @media screen and (max-width: 700px) {
-    p {
-      max-width: 100vw;
-      margin: 10px auto 10px auto;
-    }
-  }
-  h1 span {
-    font-size: 35px;
-  }
-
-  p.byline {
-    padding-bottom: 30px;
+    padding: 10px;
+    max-width: 400px;
   }
 </style>

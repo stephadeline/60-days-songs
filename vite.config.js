@@ -1,5 +1,7 @@
 import { defineConfig } from "vite";
 import { svelte } from "@sveltejs/vite-plugin-svelte";
+import autoPreprocess from "svelte-preprocess";
+// import { scss } from "svelte-preprocess";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -13,5 +15,9 @@ export default defineConfig({
     outDir: "dist",
     target: "es2020",
   },
-  plugins: [svelte()],
+  plugins: [
+    svelte({
+      preprocess: autoPreprocess(),
+    }),
+  ],
 });

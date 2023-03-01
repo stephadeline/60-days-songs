@@ -29,6 +29,10 @@ body {
   min-width: 550px;
   min-height: 100vh;
   display: flex;
+  /* background-color: #7FB1CB; */
+  background: rgb(127,177,203);
+  background: linear-gradient(0deg, rgba(127,177,203,1) 83%, rgba(67,92,117,1) 100%);
+
 }
 
 h1 {
@@ -43,13 +47,14 @@ p {
 }
 
 #app {
-  max-width: 1280px;
+  width: 100vw;
   margin: 0 auto;
-  padding: 2rem;
+  /* padding: 2rem; */
   text-align: center;
   display: flex;
   place-items: center;
   flex-direction: column;
+
 }
 
 button {
@@ -85,15 +90,15 @@ button:focus-visible {
 }
 
 
-body:before {
+/* body:before {
   content: '📊';
   display: block;
   position: absolute;
   top: 20px;
   left: 20px;
   font-size: 18px;
-}
-
+} */
+/* 
 body:after {
   content: 'MVTEC Final Project';
   display: block;
@@ -101,4 +106,4 @@ body:after {
   top: 20px;
   left: 45px;
   font-size: 15px;
-}
+} */
