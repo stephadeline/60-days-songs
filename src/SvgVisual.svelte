@@ -3,6 +3,8 @@
     import Clouds from './assets/Clouds.svelte';
     import Rays from './assets/Rays.svelte';
     import data from "./data/data.json"
+    import { fade, fly } from 'svelte/transition';
+
 
   // export let rootFolder = "src/assets"
   // export let platform = 'sunshine-icons-final'
@@ -38,15 +40,20 @@
 
 </script>
 
-{#if index <= 1} 
-<svg height={screen.height/2} width={screen.width/2} viewBox="0 0 {screen.width/2} {screen.height/2}">
+{#if index === 0}
+<h2 out:fade style="font-size: 100px">08:00</h2>
+<button out:fade class="alarm-button">Wake up!</button>
+
+
+{:else if index > 0 && index === 1} 
+<svg in:fly="{{ y: 1000, duration: 2000 }}" height={screen.height/2} width={screen.width/2} viewBox="0 0 {screen.width/2} {screen.height/2}">
   <circle cx={screen.width/4} cy={screen.height/4} r={200} fill="#FFCB04"></circle>
   <!-- <Rays {dimension}  {index}/> -->
   <Clouds dimension={500} before={2} after={4}/>
 </svg>
 
 {:else if index > 1}
-<div class="grid-container" style={"height: " + (screen.height)}>
+<div transition:fade class="grid-container" style={"height: " + (screen.height)}>
 {#each data as d, i} 
 <div class="grid-item">
 <svg height={dimension} width={dimension} viewBox="0 0 {dimension} {dimension}">
@@ -68,6 +75,23 @@
     gap: 20px;
 
   }
+
+}
+
+.alarm-button {
+
+  position: absolute;
+margin-left: auto;
+margin-right: auto;
+left: 0;
+right: 0;
+top: 70vh;
+text-align: center;
+ width: 200px;
+ border-radius: 50px;
+ background: orange;
+ color: white;
+ 
 
 }
 </style>

@@ -36,11 +36,14 @@
       <Visual {index}/>
 		</div>
 
-		<div slot="foreground" style="padding: 0 0 0 50%;">
+		<div slot="foreground">
+			<section><p class="scrolly-text intro">Mornings are the worst.</p></section>
 			<section><p class="scrolly-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.{index + 1}</p></section>
 			<section><p class="scrolly-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.{index + 1}</p></section>
 			<section><p class="scrolly-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.{index + 1}</p></section>
 			<section><p class="scrolly-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.{index + 1}</p></section>
+			<section><p class="scrolly-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.{index + 1}</p></section>
+
 
 		</div>
 	</Scroller>
@@ -82,7 +85,8 @@
 		/* background-color: rgba(0,0,0,0.5);
 		color: white; */
 		padding: 1em;
-		margin: 0 0 2em 0;
+		margin: 0 auto;
+		max-width: 400px;
 	}
 
   .scrolly-text {
@@ -93,4 +97,10 @@
     padding: 10px;
     max-width: 400px;
   }
+	.intro {
+		background: none;
+		color: white;
+		text-align: center;
+		font-weight: bold;
+	}
 </style>

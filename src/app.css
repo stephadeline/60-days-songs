@@ -26,12 +26,12 @@ a:hover {
 
 body {
   margin: 0;
-  min-width: 550px;
+  /* min-width: 550px; */
   min-height: 100vh;
   display: flex;
   /* background-color: #7FB1CB; */
   background: rgb(127,177,203);
-  background: linear-gradient(0deg, rgba(127,177,203,1) 83%, rgba(67,92,117,1) 100%);
+  background: linear-gradient(0deg, rgba(127,177,203,1) 50%, rgba(67,92,117,1) 100%);
 
 }
 
@@ -42,7 +42,7 @@ h1 {
 }
 
 p {
-  font-family:'PT Serif', Times, serif;
+  font-family:'Open Sans', Times, serif;
 
 }
 
