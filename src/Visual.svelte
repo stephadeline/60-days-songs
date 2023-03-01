@@ -1,5 +1,6 @@
 <script>
   import * as d3 from 'd3';
+  
 
   import { onMount, createEventDispatcher } from 'svelte'
   export let rootFolder = "src/assets"

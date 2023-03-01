@@ -38,10 +38,10 @@ body {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
-  font-family:'PT Serif', Times, serif;
+  font-family:'Open Sans', Times, serif;
 }
 
-p {
+p, h2, h3, h4, button {
   font-family:'Open Sans', Times, serif;
 
 }
