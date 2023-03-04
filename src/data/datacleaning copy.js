@@ -1,59 +1,14 @@
 import fs from "fs";
 import * as aq from "arquero";
-import clm from "country-locale-map";
 const { op } = aq;
 
 // load CSVs
-const catCsv = fs.readFileSync(
-  "src/data/raw-data/climateactiontracker.csv",
-  "utf8"
-);
-const inequalityCsv = fs.readFileSync(
-  "src/data/raw-data/inequality.csv",
-  "utf8"
-);
-const pennworldCsv = fs.readFileSync(
-  "src/data/raw-data/pennworlddata.csv",
-  "utf8"
-);
-const meatConsumptionCsv = fs.readFileSync(
-  "src/data/raw-data/meatconsumption.csv",
-  "utf8"
-);
-
-// list of all country names (to exclude regions, continents etc)
-const allCountries = clm.getAllCountries();
-const allAlpha2 = allCountries.map((country) => country.alpha2);
-const allAlpha3 = allCountries.map((country) => country.alpha3);
-
-// shortlisted indicators from the CAT data
-const catIndicators = [
-  "Agriculture activity (total): consumption",
-  "Agriculture activity (meat): consumption",
-  "Electricity activity (per capita)",
-  "New EV sales per million capita",
-];
-
-// name overrides for those that have different country names
-const NAME_OVERRIDES = {
-  Brunei: "Brunei Darussalam",
-  "Cape Verde": "Cabo Verde",
-  "Cote d'Ivoire": "Côte d'Ivoire",
-  "Democratic Republic of Congo": "Democratic Republic of the Congo",
-  Laos: "Lao People's Democratic Republic",
-  Syria: "Syrian Arab Republic",
-  Timor: "Timor-Leste",
-  Vietnam: "Viet Nam",
-  "British Virgin Islands": "Virgin Islands (British)",
-  Curacao: "Curaçao",
-  "Micronesia (country)": "Micronesia",
-  "Sint Maarten (Dutch part)": "Sint Maarten",
-};
+const csv = fs.readFileSync("src/data/60daystestdata.csv", "utf8");
 
 // reading the climate action tracker data into arquero
-const catTable = aq
-  .fromCSV(catCsv)
-  // filtering the table to just the indicators we listed above
+const data = aq
+  .fromCSV(csv)
+  // filtering c table to just the indicators we listed above
   .filter(aq.escape((d) => catIndicators.includes(d.indicator)))
   // filtering to just the historic data because we choose not to visualise the projections
   .filter((d) => d.variable === "historic")
