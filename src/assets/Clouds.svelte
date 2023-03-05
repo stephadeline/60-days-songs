@@ -38,7 +38,6 @@
    return (x/100 * dimension) + "," + (y/100 * dimension)
   }
 
-  console.log(dimension);
   // data part
   export let before = 2
   export let after = 4
@@ -50,7 +49,6 @@
 
   $: currentCondition = key.filter(d => d.before === before && d.after === after)
 
-  $: console.log(currentCondition);
 
   // function that fills based on index
   $: getCloudClass = function(index) {

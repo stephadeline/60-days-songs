@@ -52,13 +52,13 @@
 
 {#if index === 0}
   <h2 out:fade style="font-size: 100px">08:00</h2>
-  <button out:fade class="alarm-button">Wake up!</button>
 {:else if index > 0 && index <= 4}
 <div class="intro-viz">
   <svg
     height={introDim}
     width={introDim}
     viewBox="0 0 {introDim} {introDim}"
+    in:fly={{ duration: 5000 }}
   >
     <circle
     in:fly={{ y: 1000, duration: 2000 }}
@@ -111,20 +111,6 @@
       grid-template-columns: repeat(10, 1fr);
       gap: 20px;
     }
-  }
-
-  .alarm-button {
-    position: absolute;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-    top: 70vh;
-    text-align: center;
-    width: 200px;
-    border-radius: 50px;
-    background: orange;
-    color: white;
   }
 
   .intro-viz svg {

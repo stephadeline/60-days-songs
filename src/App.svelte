@@ -3,6 +3,17 @@
 	import LoremIpsum from './LoremIpsum.svelte';
 	// import DraggableLabel from './DraggableLabel.svelte';
 	import Visual from "./SvgVisual.svelte"
+
+	import { fade, fly, blur } from "svelte/transition";
+  import { timeSaturday, treemapBinary, treemapSliceDice } from 'd3';
+
+function scrollIntoView({ target }) {
+	const el = document.getElementById("section-2");
+	if (!el) return;
+	el.scrollIntoView({
+		behavior: 'smooth'
+	});
+}
 	let count;
 	let index;
 	let offset = 0;
@@ -37,9 +48,13 @@
 		</div>
 
 		<div slot="foreground">
-			<section><p class="scrolly-text intro">Mornings are the worst.</p></section>
-			<section><p class="scrolly-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.{index + 1}</p></section>
-			<section><p class="scrolly-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.{index + 1}</p></section>
+			<section><p class="scrolly-text intro">Mornings are <b>the worst.</b></p>
+			  <a href="#section-2" on:click|preventDefault={scrollIntoView}>
+					<button out:fade class="alarm-button">Wake up!</button>
+					</a> 
+				</section>
+			<section id="section-2"><p class="scrolly-text">No matter how much I've tried, I could never be a morning person. {index + 1}</p></section>
+			<section><p class="scrolly-text">And oftentimes, the bustle of mornings just prevent me from seeing the sun. {index + 1}</p></section>
 			<section><p class="scrolly-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.{index + 1}</p></section>
 			<section><p class="scrolly-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.{index + 1}</p></section>
 			<section><p class="scrolly-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.{index + 1}</p></section>
@@ -101,8 +116,8 @@
 
   .scrolly-text {
     margin-top: 50vh;
-    background-color: #fff;
-    color: #000;
+    background-color: rgba(255,255,255,0.7);
+    color: black;
     text-align: left;
     padding: 10px;
     max-width: 400px;
@@ -111,6 +126,20 @@
 		background: none;
 		color: white;
 		text-align: center;
-		font-weight: bold;
 	}
+
+	.alarm-button {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 70vh;
+    text-align: center;
+    width: 200px;
+    border-radius: 50px;
+    background: orange;
+    color: white;
+  }
+
 </style>
