@@ -53,11 +53,21 @@ function scrollIntoView({ target }) {
 					<button out:fade class="alarm-button">Wake up!</button>
 					</a> 
 				</section>
-			<section id="section-2"><p class="scrolly-text">No matter how much I've tried, I could never be a morning person. {index + 1}</p></section>
-			<section><p class="scrolly-text">And oftentimes, the bustle of mornings just prevent me from seeing the sun. {index + 1}</p></section>
-			<section><p class="scrolly-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.{index + 1}</p></section>
-			<section><p class="scrolly-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.{index + 1}</p></section>
-			<section><p class="scrolly-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.{index + 1}</p></section>
+			<section id="section-2"><p class="scrolly-text">No matter how much I've tried, I could never be a morning person. </p></section>
+			<section><p class="scrolly-text">Most days I wake up greeted by so much noise, which clouds my day and prevent me from seeing the sun.</p></section>
+			<section><p class="scrolly-text">But listening to music helps. Most days, it can help to make some of the clouds go away. </p></section>
+			<section><p class="scrolly-text">And it definitely has made the last 60 days <strong>a little less crappy</strong>.</p></section>
+
+			<section class="headline"><h1><strong>#60DaysOf</strong> Songs that start my day</h1><p>By Stephanie Adeline</p></section>
+
+			<section><p class="scrolly-text">The last 60 days, I tracked my mood on a scale of 1 to 5 and the first song I listened to each day. [insert explanation on mood]</p></section>
+
+			<section><p class="scrolly-text">This is how I felt when I woke up.</p></section>
+
+
+			<section><p class="scrolly-text">This is how listening to music helped</p></section>
+
+			<section><p class="scrolly-text">Hover over the suns to hear the song I listened to that day.</p></section>
 
 			<section><p class="scrolly-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.{index + 1}</p></section>
 
@@ -68,6 +78,14 @@ function scrollIntoView({ target }) {
 			<section><p class="scrolly-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.{index + 1}</p></section>
 
 			<section><p class="scrolly-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.{index + 1}</p></section>
+
+			<section><p class="scrolly-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.{index + 1}</p></section>
+
+			<section><p class="scrolly-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.{index + 1}</p></section>
+
+			<section><p class="scrolly-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.{index + 1}</p></section>
+			<section><p class="scrolly-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.{index + 1}</p></section>
+
 
 
 		</div>
@@ -141,5 +159,7 @@ function scrollIntoView({ target }) {
     background: orange;
     color: white;
   }
+
+
 
 </style>

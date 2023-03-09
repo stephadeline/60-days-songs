@@ -1,6 +1,8 @@
 <script>
 
   import key from "./../data/key.json";
+  import { fade, fly, blur } from "svelte/transition";
+
 
   // placements
   export let width = 100;
@@ -41,13 +43,16 @@
   // data part
   export let before = 2
   export let after = 4
+  export let index = 0
 
   // let cloudProps = { fill: "#f1f1f2", stroke: "none"}
 
   // let fill="#f1f1f2";
   // let stroke="none";
 
-  $: currentCondition = key.filter(d => d.before === before && d.after === after)
+  $:  afterUse = index === 7 ? before : after;
+
+  $: currentCondition = key.filter(d => d.before === before && d.after === afterUse)
 
 
   // function that fills based on index
@@ -61,9 +66,10 @@
 </script>
 
 {#each nClouds as c, index} 
-<g class={getCloudClass(index + 1)} transform={"translate(" + arrangeClouds(index) + ")"}><path d={cloudPath} transform={"scale(" + scale + ")"}/>
+<g transition:fade class={getCloudClass(index + 1)} transform={"translate(" + arrangeClouds(index) + ")"}><path d={cloudPath} transform={"scale(" + scale + ")"}/>
 </g>
 {/each}
+
 
 <style>
   .invisible path {

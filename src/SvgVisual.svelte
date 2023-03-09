@@ -58,10 +58,10 @@
     height={introDim}
     width={introDim}
     viewBox="0 0 {introDim} {introDim}"
-    in:fly={{ duration: 5000 }}
+    in:fade={{ duration: 500, delay: 500 }}
   >
     <circle
-    in:fly={{ y: 1000, duration: 2000 }}
+    in:fly={{ y: 1000, duration: 1500 }}
     out:fade
       cx={introCx}
       cy={introCy}
@@ -84,7 +84,7 @@
 {:else if index > 4}
   <div
     transition:fade
-    class="grid-container"
+    class="grid-container"    
     style={"height: " + screen.height}
   >
     {#each data as d, i}
@@ -94,9 +94,13 @@
           width={dimension}
           viewBox="0 0 {dimension} {dimension}"
         >
+        <g class:overlay={index === 5} transition:fade >
           <circle {cx} {cy} r={sunR} fill="#FFCB04" />
           <Rays gender={d.gender} {index} {dimension} rotating={d.sing_along === "Yes"}/>
-          <Clouds height={dimension} width={dimension} before={d.before} after={d.after} />
+          {#if index > 6}
+          <Clouds height={dimension} width={dimension} before={d.before} after={d.after} index={index} />
+          {/if}
+        </g>
         </svg>
       </div>
     {/each}
@@ -125,4 +129,8 @@
     // width: 100vw;
     // height: 100vh;
   }
+
+g.overlay {
+  opacity: 30%
+}
 </style>
