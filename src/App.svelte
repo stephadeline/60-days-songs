@@ -26,11 +26,14 @@
   let allowAudio = false;
   let alertWindow = true;
   let alarmAudio;
+	let answer;
 
   function enableAudio() {
     alertWindow = false;
     allowAudio = true;
+		if (index <= 0) {
     alarmAudio.play();
+		}
   }
 
 
@@ -42,29 +45,28 @@
     alarmAudio.pause();
   }
 
-  $: if (alertWindow === true) {
-    window.onscroll = function () {
-      window.scrollTo(0, 0);
-    };
-    document.body.style.overflow = "hidden";
-  } else {
-    document.body.style.overflow = "scroll";
-    window.onscroll = function () {};
-  }
+  // $: if (alertWindow === true) {
+  //   window.onscroll = function () {
+  //     window.scrollTo(0, 0);
+  //   };
+  //   document.body.style.overflow = "hidden";
+  // } else {
+  //   document.body.style.overflow = "scroll";
+  //   window.onscroll = function () {};
+  // }
 
 
 </script>
 
 {#if alertWindow === true}
   <div class="alert-audio">
-    <p>Hi!</p>
-    <p>Before we begin, this experience is better with audio.</p>
+    <p>This experience is better with audio.</p>
     <button on:click={enableAudio}>Click to enable audio</button>
-    <p><a on:click={disableAudio}>No audio please!</a></p>
+    <!-- <p><a on:click={disableAudio}>No audio please!</a></p> -->
   </div>
 {/if}
 
-<div class="demo" class:disableforeground={index === 9}>
+<div class="demo" class:disableforeground={index === 9 || index === 14}>
 
   <Scroller
     {top}
@@ -160,41 +162,41 @@
         <p class="scrolly-text">
           One artist in particular stood out the most. Can you guess which one?
         </p>
-				<button>Miley Cyrus</button>
-				<button>Taylor Swift</button>
-				<button>NIKI</button>
+				<button on:click={() => answer = "Miley Cyrus"}>Miley Cyrus</button>
+				<button on:click={() => answer = "Taylor Swift"}>Taylor Swift</button>
+				<button on:click={() => answer = "NIKI"}>NIKI</button>
+				{#if answer}
+				<p>You guessed <strong>{answer}</strong>. Scroll to see if you got that right!</p>
+				{/if}
       </section>
 
       <section>
         <p class="scrolly-text">
-         It was <strong>NIKI</strong>! Fun fact: she was also my top artist on last year's Spotify wrapped.{index + 1}
+					<AudioText
+					audioIndex={11}
+					{index}
+					{allowAudio}
+					src="https://p.scdn.co/mp3-preview/3e9b012da3f78d1f1a54c96db15d27335b28d985?cid=774b29d4f13844c495f206cafdad9c86"
+					text="It was NIKI!"
+				/> Fun fact: she was also my top artist on last year's Spotify wrapped. But Miley and Taylor were close! [insert chart]
         </p>
       </section>
 
       <section>
         <p class="scrolly-text">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.{index + 1}
+          Here's another little pleasant surprise. Most of the songs I listened to in the morning were sung by female vocalists. [key here]
         </p>
       </section>
 
       <section>
         <p class="scrolly-text">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.{index + 1}
+          Singing along is also helps to improve my mood! It's on those days where I sang along did I feel my best.
         </p>
       </section>
 
       <section>
         <p class="scrolly-text">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.{index + 1}
+          I'm usually self-conscious about my early-morning singing voice, but... hover over the suns to listen to get a glimpse of my mornings :)
         </p>
       </section>
 
@@ -240,16 +242,19 @@
 
 <style lang="scss">
   div.alert-audio {
-    background: rgba(0, 0, 0, 0.8);
+    // background: rgba(0, 0, 0, 0.8);
     color: white;
     position: fixed;
-    top: 50%;
+    top: 0;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, 0);
     z-index: 1000;
     max-width: 400px;
-    padding: 200px;
-    border-radius: 10px;
+    // padding: 200px;
+		font-size: 12px;
+		button {
+			padding: 5px 10px;;
+		}
   }
 
   .alert-audio a {

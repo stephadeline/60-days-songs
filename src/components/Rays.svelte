@@ -9,8 +9,8 @@
 
 </script>
 
-{#if index > 12}
-<g class:rotating="{index > 14 && rotating === true}">
+{#if index > 11}
+<g class:rotating="{index > 12 && rotating === true}">
 {#if gender === "Female"}
 <g id="triangles" transform={"scale(" + scale + ")"} in:fade >
   <polygon points="50.0237 .2865 44.3043 15.0021 55.7431 15.0021 50.0237 .2865" fill="#ffcb04" />
