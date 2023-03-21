@@ -5,20 +5,11 @@
   import data from "./data/data.json";
   import { fade, fly, blur } from "svelte/transition";
 
-  // export let rootFolder = "src/assets"
-  // export let platform = 'sunshine-icons-final'
-  //   d3.xml(`${rootFolder}/${platform}.svg`)
-  //   .then(data => {
-  //     d3.select("#svg-container").node().append(data.documentElement)
-  //   });
+  export let allowAudio = false;
 
-  // export let days = Array(60);
-  // export let height = 50;
-  // export let width = 50;
+  let audioCollection = Array.from(data.length)
 
   let isMobile = screen.width <= 500;
-
-  // let gap = 30;
 
   let row = isMobile ? 12 : 6;
 
@@ -47,7 +38,27 @@
   $: introCloudDim = introHeight
 
   $: introTransform = isMobile ? "translate(0, -45)" : "translate(0, -90)"
+
+  // $: if (allowAudio === true) {
+  //     if (index === 4) {
+  //     songSample.play();
+  //   }
+  // }
   export let index = 1;
+
+  $: playAudio = function(i) {
+    if(allowAudio === true && audioCollection[i]) {
+      audioCollection[i].play()
+    }
+  }
+
+  $: stopAudio = function(i) {
+    if(!audioCollection[i].paused) {
+      audioCollection[i].pause()
+    }
+  }
+
+
 </script>
 
 {#if index === 0}
@@ -88,7 +99,7 @@
     style={"height: " + screen.height}
   >
     {#each data as d, i}
-      <div class="grid-item">
+      <div class={"grid-item-" + index} on:mouseenter={playAudio(i)} on:mouseleave={stopAudio(i)}>
         <svg
           height={dimension}
           width={dimension}
@@ -103,6 +114,15 @@
         </g>
         </svg>
       </div>
+      {#if index === 9}
+        <audio
+        src={d.preview}
+        bind:this={audioCollection[i]}
+        >
+      </audio>
+      
+      <!-- <p>{d.title} - {d.artist}</p> -->
+      {/if}
     {/each}
   </div>
 {/if}
@@ -132,5 +152,12 @@
 
 g.overlay {
   opacity: 30%
+}
+[class^='grid-item-9'] {
+  opacity: 80%;
+
+  &:hover {
+    opacity: 100%;
+  }
 }
 </style>

@@ -1,152 +1,328 @@
 <script>
-	import Scroller from '@sveltejs/svelte-scroller';
-	import LoremIpsum from './LoremIpsum.svelte';
-	// import DraggableLabel from './DraggableLabel.svelte';
-	import Visual from "./SvgVisual.svelte"
+  import Scroller from "@sveltejs/svelte-scroller";
+  import LoremIpsum from "./LoremIpsum.svelte";
+  // import DraggableLabel from './DraggableLabel.svelte';
+  import Visual from "./SvgVisual.svelte";
+  import AudioText from "./components/AudioText.svelte";
 
-	import { fade, fly, blur } from "svelte/transition";
-  import { timeSaturday, treemapBinary, treemapSliceDice } from 'd3';
+  import { fade, fly, blur } from "svelte/transition";
+  import { timeSaturday, treemapBinary, treemapSliceDice } from "d3";
 
-function scrollIntoView({ target }) {
-	const el = document.getElementById("section-2");
-	if (!el) return;
-	el.scrollIntoView({
-		behavior: 'smooth'
-	});
-}
-	let count;
-	let index;
-	let offset = 0;
-	let progress;
-	let top = 0.1;
-	let threshold = 0.5;
-	let bottom = 0.9;
+  function scrollIntoView({ target }) {
+    const el = document.getElementById("section-2");
+    if (!el) return;
+    el.scrollIntoView({
+      behavior: "smooth",
+    });
+  }
+  let count;
+  let index;
+  let offset = 0;
+  let progress;
+  let top = 0.1;
+  let threshold = 0.5;
+  let bottom = 0.9;
+
+  let allowAudio = false;
+  let alertWindow = true;
+  let alarmAudio;
+	
+  function enableAudio() {
+    alertWindow = false;
+    allowAudio = true;
+    alarmAudio.play();
+  }
+
+
+  function disableAudio() {
+    alertWindow = false;
+  }
+
+  $: if (index && index > 0) {
+    alarmAudio.pause();
+  }
+
+  $: if (alertWindow === true) {
+    window.onscroll = function () {
+      window.scrollTo(0, 0);
+    };
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "scroll";
+    window.onscroll = function () {};
+  }
+
+  // $: if (index && index !== 3) {
+  // 	songSample.pause()
+  // 	symbol = '▶️'
+  // }
 </script>
 
-<div class='demo'>
-	<!-- <LoremIpsum/>  -->
+{#if alertWindow === true}
+  <div class="alert-audio">
+    <p>Hi!</p>
+    <p>Before we begin, this experience is better with audio.</p>
+    <button on:click={enableAudio}>Click to enable audio</button>
+    <p><a on:click={disableAudio}>No audio please!</a></p>
+  </div>
+{/if}
 
-	<Scroller
-		{top}
-		{threshold}
-		{bottom}
-		bind:count
-		bind:index
-		bind:offset
-		bind:progress
-	>
-		<div slot="background">
-			<!-- <p>current section: <strong>{index + 1}/{count}</strong></p>
-			<progress value="{count ? (index + 1) / count : 0}"></progress>
+<div class="demo" class:disableforeground={index === 9}>
+  <!-- <LoremIpsum/>  -->
 
-			<p>offset in current section</p>
-			<progress value={offset || 0}></progress>
+  <Scroller
+    {top}
+    {threshold}
+    {bottom}
+    bind:count
+    bind:index
+    bind:offset
+    bind:progress
+  >
+    <div slot="background">
+      <Visual {index} {allowAudio} />
+    </div>
 
-			<p>total progress</p>
-			<progress value={progress || 0}></progress> -->
-      <Visual {index}/>
-		</div>
+    <div slot="foreground" class={"foreground-" + index}>
+      <section>
+        <p class="scrolly-text intro">Mornings are <b>the worst.</b></p>
+        <a href="#section-2" on:click|preventDefault={scrollIntoView}>
+          <button out:fade class="alarm-button" on:click={alarmAudio.pause()}
+            >Wake up!</button
+          >
+        </a>
+        <audio
+          src="src/assets/audio/alarm.mp3"
+          id="alarm-mp3"
+          bind:this={alarmAudio}
+        >
+          Your browser does not support the HTML5 Audio element.
+        </audio>
+      </section>
+      <section id="section-2">
+        <p class="scrolly-text">
+          No matter how much I've tried, I could never be a morning person.
+        </p>
+      </section>
+      <section>
+        <p class="scrolly-text">
+          Most days I wake up greeted by <AudioText
+            audioIndex={2}
+            {index}
+            {allowAudio}
+            src="src/assets/audio/noise2.mp4"
+            text="so much noise"
+          />, which clouds my day and prevent me from seeing the sun.
+        </p>
+      </section>
+      <section>
+        <p class="scrolly-text">
+          But <AudioText
+            audioIndex={3}
+            {index}
+            {allowAudio}
+            src="https://p.scdn.co/mp3-preview/2cdf5bc166d9d6231af6c5e00d2f2e35e78e2851?cid=774b29d4f13844c495f206cafdad9c86"
+            text="listening to music"
+          /> helps. Most days, it can help to make some of the clouds go away.
+        </p>
+      </section>
+      <section>
+        <p class="scrolly-text">
+          And it definitely has made the last 60 days <strong
+            >a little less crappy</strong
+          >.
+        </p>
+      </section>
 
-		<div slot="foreground">
-			<section><p class="scrolly-text intro">Mornings are <b>the worst.</b></p>
-			  <a href="#section-2" on:click|preventDefault={scrollIntoView}>
-					<button out:fade class="alarm-button">Wake up!</button>
-					</a> 
-				</section>
-			<section id="section-2"><p class="scrolly-text">No matter how much I've tried, I could never be a morning person. </p></section>
-			<section><p class="scrolly-text">Most days I wake up greeted by so much noise, which clouds my day and prevent me from seeing the sun.</p></section>
-			<section><p class="scrolly-text">But listening to music helps. Most days, it can help to make some of the clouds go away. </p></section>
-			<section><p class="scrolly-text">And it definitely has made the last 60 days <strong>a little less crappy</strong>.</p></section>
+      <section class="headline">
+        <h1><strong>#60DaysOf</strong> Songs that start my day</h1>
+        <p>By Stephanie Adeline</p>
+      </section>
 
-			<section class="headline"><h1><strong>#60DaysOf</strong> Songs that start my day</h1><p>By Stephanie Adeline</p></section>
+      <section>
+        <p class="scrolly-text">
+          The last 60 days, I tracked my mood on a scale of 1 to 5 and the first
+          song I listened to each day. [insert explanation on mood]
+        </p>
+      </section>
 
-			<section><p class="scrolly-text">The last 60 days, I tracked my mood on a scale of 1 to 5 and the first song I listened to each day. [insert explanation on mood]</p></section>
+      <section>
+        <p class="scrolly-text">This is how I felt when I woke up.</p>
+      </section>
 
-			<section><p class="scrolly-text">This is how I felt when I woke up.</p></section>
+      <section>
+        <p class="scrolly-text">This is how listening to music helped</p>
+      </section>
 
+      <section>
+        <p class="scrolly-text">
+          Hover over the suns to hear the song I listened to that day. {index}
+        </p>
+      </section>
 
-			<section><p class="scrolly-text">This is how listening to music helped</p></section>
+      <section>
+        <p class="scrolly-text">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat.{index + 1}
+        </p>
+      </section>
 
-			<section><p class="scrolly-text">Hover over the suns to hear the song I listened to that day.</p></section>
+      <section>
+        <p class="scrolly-text">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat.{index + 1}
+        </p>
+      </section>
 
-			<section><p class="scrolly-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.{index + 1}</p></section>
+      <section>
+        <p class="scrolly-text">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat.{index + 1}
+        </p>
+      </section>
 
-			<section><p class="scrolly-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.{index + 1}</p></section>
+      <section>
+        <p class="scrolly-text">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat.{index + 1}
+        </p>
+      </section>
 
-			<section><p class="scrolly-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.{index + 1}</p></section>
+      <section>
+        <p class="scrolly-text">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat.{index + 1}
+        </p>
+      </section>
 
-			<section><p class="scrolly-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.{index + 1}</p></section>
+      <section>
+        <p class="scrolly-text">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat.{index + 1}
+        </p>
+      </section>
 
-			<section><p class="scrolly-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.{index + 1}</p></section>
+      <section>
+        <p class="scrolly-text">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat.{index + 1}
+        </p>
+      </section>
 
-			<section><p class="scrolly-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.{index + 1}</p></section>
+      <section>
+        <p class="scrolly-text">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat.{index + 1}
+        </p>
+      </section>
+      <section>
+        <p class="scrolly-text">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat.{index + 1}
+        </p>
+      </section>
+    </div>
+  </Scroller>
 
-			<section><p class="scrolly-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.{index + 1}</p></section>
-
-			<section><p class="scrolly-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.{index + 1}</p></section>
-			<section><p class="scrolly-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.{index + 1}</p></section>
-
-
-
-		</div>
-	</Scroller>
-
-	<!-- <LoremIpsum/> -->
-
+  <!-- <LoremIpsum/> -->
 </div>
 
-<style>
-	.demo {
-		/* background-color: #7FB1CB; */
-		width: 100%;
+<style lang="scss">
+  div.alert-audio {
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    max-width: 400px;
+    padding: 200px;
+    border-radius: 10px;
+  }
 
-	}
-	
-	[slot="background"] {
-		/* background-color: rgba(255,62,0,0.05);
+  .alert-audio a {
+    text-decoration: underline dotted;
+    color: white;
+  }
+  .demo {
+    /* background-color: #7FB1CB; */
+    width: 100%;
+  }
+
+  [slot="background"] {
+    /* background-color: rgba(255,62,0,0.05);
 		border-top: 2px solid #ff3e00;
 		border-bottom: 2px solid #ff3e00; */
-		font-size: 1.4em;
-		overflow: hidden;
-		padding: 1em;
-	}
-	
-	[slot="background"] p {
-		margin: 0;
-	}
-	
-	[slot="foreground"] {
-		pointer-events: none;
-	}
-	
-	[slot="foreground"] section {
-		pointer-events: all;
-	}
-	
-	section {
-		height: 120vh;
-		/* background-color: rgba(0,0,0,0.5);
+    font-size: 1.4em;
+    overflow: hidden;
+    padding: 1em;
+    pointer-events: all !important;
+  }
+
+  section {
+    height: 120vh;
+    /* background-color: rgba(0,0,0,0.5);
 		color: white; */
-		padding: 1em;
-		margin: 0 auto;
-		max-width: 400px;
-	}
+    padding: 1em;
+    margin: 0 auto;
+    max-width: 400px;
+  }
 
   .scrolly-text {
     margin-top: 50vh;
-    background-color: rgba(255,255,255,0.7);
+    background-color: rgba(255, 255, 255, 0.7);
     color: black;
     text-align: left;
     padding: 10px;
     max-width: 400px;
   }
-	.intro {
-		background: none;
-		color: white;
-		text-align: center;
-	}
+  .intro {
+    background: none;
+    color: white;
+    text-align: center;
+  }
 
-	.alarm-button {
+  [slot="background"] {
+    pointer-events: none;
+  }
+
+  [slot="foreground"] {
+    pointer-events: all;
+  }
+  .demo {
+    pointer-events: none;
+  }
+
+  .disableforeground {
+    [slot="background"] {
+      pointer-events: all;
+    }
+
+    [slot="foreground"] {
+      pointer-events: none;
+    }
+  }
+
+  .alarm-button {
     position: absolute;
     margin-left: auto;
     margin-right: auto;
@@ -159,7 +335,4 @@ function scrollIntoView({ target }) {
     background: orange;
     color: white;
   }
-
-
-
 </style>
