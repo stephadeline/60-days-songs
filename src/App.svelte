@@ -2,11 +2,11 @@
   import Scroller from "@sveltejs/svelte-scroller";
   import LoremIpsum from "./LoremIpsum.svelte";
   // import DraggableLabel from './DraggableLabel.svelte';
-  import Visual from "./SvgVisual.svelte";
+  import Visual from "./components/SvgVisual.svelte";
   import AudioText from "./components/AudioText.svelte";
 
   import { fade, fly, blur } from "svelte/transition";
-  import { timeSaturday, treemapBinary, treemapSliceDice } from "d3";
+
 
   function scrollIntoView({ target }) {
     const el = document.getElementById("section-2");
@@ -26,7 +26,7 @@
   let allowAudio = false;
   let alertWindow = true;
   let alarmAudio;
-	
+
   function enableAudio() {
     alertWindow = false;
     allowAudio = true;
@@ -52,10 +52,7 @@
     window.onscroll = function () {};
   }
 
-  // $: if (index && index !== 3) {
-  // 	songSample.pause()
-  // 	symbol = '▶️'
-  // }
+
 </script>
 
 {#if alertWindow === true}
@@ -68,7 +65,6 @@
 {/if}
 
 <div class="demo" class:disableforeground={index === 9}>
-  <!-- <LoremIpsum/>  -->
 
   <Scroller
     {top}
@@ -162,19 +158,16 @@
 
       <section>
         <p class="scrolly-text">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.{index + 1}
+          One artist in particular stood out the most. Can you guess which one?
         </p>
+				<button>Miley Cyrus</button>
+				<button>Taylor Swift</button>
+				<button>NIKI</button>
       </section>
 
       <section>
         <p class="scrolly-text">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.{index + 1}
+         It was <strong>NIKI</strong>! Fun fact: she was also my top artist on last year's Spotify wrapped.{index + 1}
         </p>
       </section>
 
