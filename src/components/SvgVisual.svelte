@@ -113,6 +113,8 @@
         class={"grid-item-" + index}
         on:mouseenter={playAudio(i)}
         on:mouseleave={stopAudio(i)}
+        on:touchstart={playAudio(i)}
+        on:touchend={stopAudio(i)}
         class:nosingalong={index === 14 && d.sing_along !== "Yes"}
       >
         <svg
@@ -138,7 +140,6 @@
               />
             {/if}
           </g>
-          <!-- <text x={dimension / 2} y={dimension/2} text-anchor="middle" font-size="10">{d.title}</text> -->
         </svg>
         <div class="song-title" bind:this={songTitle[i]}>
           <p>{d.title}</p>
@@ -172,8 +173,6 @@
     @media screen and (max-width: 500px) {
       transform: translate(-50%, 50%);
     }
-    // width: 100vw;
-    // height: 100vh;
   }
 
   g.overlay {
