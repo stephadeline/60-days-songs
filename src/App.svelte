@@ -7,13 +7,14 @@
 
   import { fade, fly, blur } from "svelte/transition";
 
-
   function scrollIntoView({ target }) {
-    const el = document.getElementById("section-2");
+    const el = section3;
     if (!el) return;
     el.scrollIntoView({
       behavior: "smooth",
     });
+
+    alarmAudio.pause();
   }
   let count;
   let index;
@@ -22,52 +23,92 @@
   let top = 0.1;
   let threshold = 0.5;
   let bottom = 0.9;
+  let section3;
 
   let allowAudio = false;
   let alertWindow = true;
   let alarmAudio;
-	let answer;
+  let noiseAudio;
+  let mileyAudio;
+  let taylorAudio;
+  let answer;
+  $: audioIcon = allowAudio ? "src/assets/icon_audio-on.svg" : "src/assets/icon_audio-off.svg"
 
   function enableAudio() {
     alertWindow = false;
     allowAudio = true;
-		if (index <= 0) {
-    alarmAudio.play();
-		}
+    // if (index <= 0) {
+    // alarmAudio.play();
+    // }
   }
 
+  $: audioToggle = () => {
+    if (allowAudio === true) {
+      allowAudio = false;
+      audios.forEach(a=>a.pause())
+    } else if (allowAudio === false) {
+      allowAudio = true;
+    } else {
+      allowAudio = false;
+      audios.forEach(a=>a.pause())
+
+    }
+  }
 
   function disableAudio() {
     alertWindow = false;
   }
 
-  $: if (index && index > 0) {
-    alarmAudio.pause();
-  }
-
-  // $: if (alertWindow === true) {
-  //   window.onscroll = function () {
-  //     window.scrollTo(0, 0);
-  //   };
-  //   document.body.style.overflow = "hidden";
-  // } else {
-  //   document.body.style.overflow = "scroll";
-  //   window.onscroll = function () {};
+  // $: if (index && index > 0) {
+  //   alarmAudio.pause();
   // }
 
+  $: audios = [alarmAudio, noiseAudio, mileyAudio, taylorAudio]; // add audio objects
 
+  $: if (allowAudio === true) {
+    switch (index) {
+      case 1:
+        playAudio(alarmAudio);
+        break;
+      case 2:
+        playAudio(noiseAudio);
+        break;
+      case 3:
+        playAudio(mileyAudio);
+        break;
+      case 4:
+        playAudio(taylorAudio);
+        break;
+      default:
+        audios.forEach((a) => a.pause());
+    }
+  } 
+
+  // another function with if else
+
+  const playAudio = (audio) => {
+    let notPlaying = audios.filter((a) => audio !== a);
+    notPlaying.forEach((a) => a.pause());
+    audio.currentTime = 0;
+    audio.play();
+  };
 </script>
 
 {#if alertWindow === true}
   <div class="alert-audio">
     <p>This experience is better with audio.</p>
     <button on:click={enableAudio}>Click to enable audio</button>
-    <!-- <p><a on:click={disableAudio}>No audio please!</a></p> -->
   </div>
+{:else if alertWindow === false}
+<div class="audio-button">
+  <button on:click={audioToggle}>
+  <img src={audioIcon} width="40px" height="40px"/>
+</button>
+</div>
 {/if}
 
-<div class="demo" class:disableforeground={index === 9 || index === 14}>
 
+<div class="demo" class:disableforeground={index === 9 || index === 14}>
   <Scroller
     {top}
     {threshold}
@@ -78,17 +119,11 @@
     bind:progress
   >
     <div slot="background">
-      <Visual {index} {allowAudio} />
+      <Visual {index} {allowAudio} {scrollIntoView} />
     </div>
 
     <div slot="foreground" class={"foreground-" + index}>
       <section>
-        <p class="scrolly-text intro">Mornings are <b>the worst.</b></p>
-        <a href="#section-2" on:click|preventDefault={scrollIntoView}>
-          <button out:fade class="alarm-button" on:click={alarmAudio.pause()}
-            >Wake up!</button
-          >
-        </a>
         <audio
           src="src/assets/audio/alarm.mp3"
           id="alarm-mp3"
@@ -98,13 +133,17 @@
         </audio>
       </section>
       <section id="section-2">
-        <p class="scrolly-text">
-          No matter how much I've tried, I could never be a morning person.
-        </p>
+        <!-- <a href="#section-3" on:click|preventDefault={scrollIntoView}> -->
+        <!-- <button out:fade class="alarm-button" on:click={alarmAudio.pause()}
+            >Wake up!</button
+          > -->
+        <!-- </a> -->
+        <audio src="src/assets/audio/noise2.mp4" bind:this={noiseAudio} />
       </section>
-      <section>
+      <section id="section-3" bind:this={section3}>
         <p class="scrolly-text">
-          Most days I wake up greeted by <AudioText
+          No matter how much I've tried, I could never be a morning person. Most
+          days I wake up greeted by <AudioText
             audioIndex={2}
             {index}
             {allowAudio}
@@ -122,6 +161,13 @@
             src="https://p.scdn.co/mp3-preview/2cdf5bc166d9d6231af6c5e00d2f2e35e78e2851?cid=774b29d4f13844c495f206cafdad9c86"
             text="listening to music"
           /> helps. Most days, it can help to make some of the clouds go away.
+          <audio
+            src="https://p.scdn.co/mp3-preview/9fbe346e805ed219204f53324f94557ab557b6d3?cid=774b29d4f13844c495f206cafdad9c86"
+            id="miley-mp3"
+            bind:this={mileyAudio}
+          >
+            Your browser does not support the HTML5 Audio element.
+          </audio>
         </p>
       </section>
       <section>
@@ -130,6 +176,13 @@
             >a little less crappy</strong
           >.
         </p>
+        <audio
+          src="https://p.scdn.co/mp3-preview/8d949db76b94c73e48890b86a7e5d559531cd965?cid=774b29d4f13844c495f206cafdad9c86"
+          id="taylor-mp3"
+          bind:this={taylorAudio}
+        >
+          Your browser does not support the HTML5 Audio element.
+        </audio>
       </section>
 
       <section class="headline">
@@ -162,41 +215,49 @@
         <p class="scrolly-text">
           One artist in particular stood out the most. Can you guess which one?
         </p>
-				<button on:click={() => answer = "Miley Cyrus"}>Miley Cyrus</button>
-				<button on:click={() => answer = "Taylor Swift"}>Taylor Swift</button>
-				<button on:click={() => answer = "NIKI"}>NIKI</button>
-				{#if answer}
-				<p>You guessed <strong>{answer}</strong>. Scroll to see if you got that right!</p>
-				{/if}
+        <button on:click={() => (answer = "Miley Cyrus")}>Miley Cyrus</button>
+        <button on:click={() => (answer = "Taylor Swift")}>Taylor Swift</button>
+        <button on:click={() => (answer = "NIKI")}>NIKI</button>
+        {#if answer}
+          <p>
+            You guessed <strong>{answer}</strong>. Scroll to see if you got that
+            right!
+          </p>
+        {/if}
       </section>
 
       <section>
         <p class="scrolly-text">
-					<AudioText
-					audioIndex={11}
-					{index}
-					{allowAudio}
-					src="https://p.scdn.co/mp3-preview/3e9b012da3f78d1f1a54c96db15d27335b28d985?cid=774b29d4f13844c495f206cafdad9c86"
-					text="It was NIKI!"
-				/> Fun fact: she was also my top artist on last year's Spotify wrapped. But Miley and Taylor were close! [insert chart]
+          <AudioText
+            audioIndex={11}
+            {index}
+            {allowAudio}
+            src="https://p.scdn.co/mp3-preview/3e9b012da3f78d1f1a54c96db15d27335b28d985?cid=774b29d4f13844c495f206cafdad9c86"
+            text="It was NIKI!"
+          /> Fun fact: she was also my top artist on last year's Spotify wrapped.
+          But Miley and Taylor were close! [insert chart]
         </p>
       </section>
 
       <section>
         <p class="scrolly-text">
-          Here's another little pleasant surprise. Most of the songs I listened to in the morning were sung by female vocalists. [key here]
+          Here's another little pleasant surprise. Most of the songs I listened
+          to in the morning were sung by female vocalists. [key here]
         </p>
       </section>
 
       <section>
         <p class="scrolly-text">
-          Singing along is also helps to improve my mood! It's on those days where I sang along did I feel my best.
+          Singing along is also helps to improve my mood! It's on those days
+          where I sang along did I feel my best.
         </p>
       </section>
 
       <section>
         <p class="scrolly-text">
-          I'm usually self-conscious about my early-morning singing voice, but... hover over the suns to listen to get a glimpse of my mornings :)
+          I'm usually self-conscious about my early-morning singing voice,
+          but... hover over the suns to listen to get a glimpse of my mornings
+          :)
         </p>
       </section>
 
@@ -251,10 +312,30 @@
     z-index: 1000;
     max-width: 400px;
     // padding: 200px;
-		font-size: 12px;
-		button {
-			padding: 5px 10px;;
-		}
+    font-size: 12px;
+    button {
+      padding: 5px 10px;
+    }
+  }
+
+  div.audio-button {
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin: 10px;
+    button {
+      background: none;
+      pointer-events: all;
+      border: none;
+
+      &:focus {
+        border: none;
+        outline: none;
+      }
+      &:hover {
+        opacity: 0.7;
+      }
+    }
   }
 
   .alert-audio a {
@@ -283,6 +364,10 @@
     padding: 1em;
     margin: 0 auto;
     max-width: 400px;
+    p,
+    button {
+      pointer-events: all;
+    }
   }
 
   .scrolly-text {
@@ -304,29 +389,20 @@
   }
 
   [slot="foreground"] {
-    pointer-events: all;
+    pointer-events: none;
   }
   .demo {
     pointer-events: none;
   }
 
-  .disableforeground {
-    [slot="background"] {
-      pointer-events: all;
-    }
-
-    [slot="foreground"] {
-      pointer-events: none;
-    }
-  }
 
   .alarm-button {
-    position: absolute;
+    // position: absolute;
     margin-left: auto;
     margin-right: auto;
-    left: 0;
-    right: 0;
-    top: 70vh;
+    // left: 0;
+    // right: 0;
+    // top: 70vh;
     text-align: center;
     width: 200px;
     border-radius: 50px;

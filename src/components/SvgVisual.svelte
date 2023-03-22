@@ -7,6 +7,8 @@
 
   export let allowAudio = false;
 
+  export let scrollIntoView;
+
   let audioCollection = Array.from(data.length);
   let songTitle = Array.from(data.length);
 
@@ -70,9 +72,32 @@
   };
 </script>
 
-{#if index === 0}
-  <h2 out:fade style="font-size: 100px; padding: 50px;">08:00</h2>
-{:else if index > 0 && index <= 4}
+{#if index <= 1}
+
+<div class="intro">
+  <h2 out:fade style="font-size: 100px; padding: 50px;">07:00</h2>
+  <p>Mornings are <b>the worst.</b></p>
+</div>
+
+  {#if index === 0}
+
+<div class="scroll-down" transition:fade>
+  <div class="mouse-body">
+    <div class="mouse-wheel"></div>
+  </div>
+  <p>SCROLL DOWN</p>
+</div>
+  {/if}
+
+{#if index === 1}
+<a href="#section-3" on:click|preventDefault={scrollIntoView}>
+
+    <button transition:fade class="alarm-button"
+    >Wake up!</button
+    >
+    </a>
+    {/if}
+{:else if index > 1 && index <= 4}
   <div class="intro-viz">
     <svg
       height={introDim}
@@ -88,12 +113,12 @@
         r={introR}
         fill="#FFCB04"
       />
-      {#if index >= 2 && index <= 3}
-        <g in:blur out:blur transform={introTransform}>
+      {#if index === 2}
+        <g in:blur={{delay: 2000, duration: 1000}} out:blur transform={introTransform}>
           <Clouds height={introDim} width={introDim} before={2} after={2} />
         </g>
       {/if}
-      {#if index === 4}
+      {#if index === 3 || index === 4}
         <g out:blur transform={introTransform}>
           <Clouds height={introDim} width={introDim} before={2} after={4} />
         </g>
@@ -101,7 +126,6 @@
     </svg>
   </div>
 {:else if index > 4}
-  <!-- <h3>Now playing</h3> -->
 
   <div
     transition:fade
@@ -141,9 +165,11 @@
             {/if}
           </g>
         </svg>
+        {#if index >= 9 && d.preview}
         <div class="song-title" bind:this={songTitle[i]}>
           <p>{d.title}</p>
         </div>
+        {/if}
       </div>
       {#if index === 9 && d.preview}
         <audio src={d.preview} bind:this={audioCollection[i]} />
@@ -181,6 +207,12 @@
 
   [class^="grid-item"] {
     position: relative;
+    svg {
+    pointer-events: all;
+    }
+    p {
+      pointer-events: none;
+    }
   }
   .grid-item-9 {
     opacity: 80%;
@@ -210,4 +242,94 @@
   .nosingalong {
     opacity: 0.2;
   }
+
+  .alarm-button {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 60vh;
+    text-align: center;
+    width: 200px;
+    border-radius: 50px;
+    background: orange;
+    color: white;
+    animation: shake-animation 3s ease infinite;
+  transform-origin: 50% 50%;
+  }
+
+  @keyframes shake-animation {
+   0% { transform:translate(0,0) }
+  1.78571% { transform:translate(10px,0) }
+  3.57143% { transform:translate(0,0) }
+  5.35714% { transform:translate(10px,0) }
+  7.14286% { transform:translate(0,0) }
+  8.92857% { transform:translate(10px,0) }
+  10.71429% { transform:translate(0,0) }
+  12.92857% { transform:translate(10px,0) }
+  14.71429% { transform:translate(0,0) }
+  15.92857% { transform:translate(10px,0) }
+  17.71429% { transform:translate(0,0) }
+  100% { transform:translate(0,0) }
+}
+  .scroll-down {
+    font-size: 12px;
+    color: white;
+    position: absolute;
+    top: 70vh;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+
+
+  }
+
+  .mouse-body{
+    border-style: solid;
+    border-width: 1px;
+    border-color: white;
+    border-radius: 32px;
+    z-index: 9;
+    height: 30px;
+    width: 16px;
+    margin: 0 auto 10px;
+
+    .mouse-wheel {
+      border-width: 1px;
+    border-color: #333;
+    border-radius: 50%;
+    background-color: white;
+    position: relative;
+    height: 2px;
+    width: 2px;
+    margin: 0 auto;
+    -webkit-animation: wheel_animation 1.5s linear infinite;
+    animation: wheel_animation 1.5s linear infinite;
+    }
+    }
+
+    @keyframes wheel_animation {
+      0% {
+    opacity: 0;
+    top: 2px;
+}
+50% {
+    opacity: 1;
+    top: 50%;
+}
+100% {
+    opacity: 0;
+    top: 23px;
+}
+    }
+
+    .intro {
+      color: white;
+      font-size: 16px;
+      pointer-events: none;
+    
+    }
+
 </style>
