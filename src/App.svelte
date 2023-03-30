@@ -1,21 +1,9 @@
 <script>
   import Scroller from "@sveltejs/svelte-scroller";
-  import LoremIpsum from "./LoremIpsum.svelte";
-  // import DraggableLabel from './DraggableLabel.svelte';
   import Visual from "./components/SvgVisual.svelte";
   import AudioText from "./components/AudioText.svelte";
 
   import { fade, fly, blur } from "svelte/transition";
-
-  function scrollIntoView({ target }) {
-    const el = section3;
-    if (!el) return;
-    el.scrollIntoView({
-      behavior: "smooth",
-    });
-
-    alarmAudio.pause();
-  }
   let count;
   let index;
   let offset = 0;
@@ -32,8 +20,19 @@
   let mileyAudio;
   let taylorAudio;
   let answer;
-  $: audioIcon = allowAudio ? "src/assets/icon_audio-on.svg" : "src/assets/icon_audio-off.svg"
+  $: audioIcon = allowAudio
+    ? "src/assets/icon_audio-on.svg"
+    : "src/assets/icon_audio-off.svg";
 
+  function scrollIntoView({ target }) {
+    const el = section3;
+    if (!el) return;
+    el.scrollIntoView({
+      behavior: "smooth",
+    });
+
+    alarmAudio.pause();
+  }
   function enableAudio() {
     alertWindow = false;
     allowAudio = true;
@@ -42,26 +41,21 @@
     // }
   }
 
-  $: audioToggle = () => {
-    if (allowAudio === true) {
-      allowAudio = false;
-      audios.forEach(a=>a.pause())
-    } else if (allowAudio === false) {
-      allowAudio = true;
-    } else {
-      allowAudio = false;
-      audios.forEach(a=>a.pause())
-
-    }
-  }
-
   function disableAudio() {
     alertWindow = false;
   }
 
-  // $: if (index && index > 0) {
-  //   alarmAudio.pause();
-  // }
+  $: audioToggle = () => {
+    if (allowAudio === true) {
+      allowAudio = false;
+      audios.forEach((a) => a.pause());
+    } else if (allowAudio === false) {
+      allowAudio = true;
+    } else {
+      allowAudio = false;
+      audios.forEach((a) => a.pause());
+    }
+  };
 
   $: audios = [alarmAudio, noiseAudio, mileyAudio, taylorAudio]; // add audio objects
 
@@ -82,7 +76,7 @@
       default:
         audios.forEach((a) => a.pause());
     }
-  } 
+  }
 
   // another function with if else
 
@@ -100,13 +94,12 @@
     <button on:click={enableAudio}>Click to enable audio</button>
   </div>
 {:else if alertWindow === false}
-<div class="audio-button">
-  <button on:click={audioToggle}>
-  <img src={audioIcon} width="40px" height="40px"/>
-</button>
-</div>
+  <div class="audio-button">
+    <button on:click={audioToggle}>
+      <img src={audioIcon} width="40px" height="40px" />
+    </button>
+  </div>
 {/if}
-
 
 <div class="demo" class:disableforeground={index === 9 || index === 14}>
   <Scroller
@@ -394,7 +387,6 @@
   .demo {
     pointer-events: none;
   }
-
 
   .alarm-button {
     // position: absolute;
