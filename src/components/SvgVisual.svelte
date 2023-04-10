@@ -153,7 +153,7 @@
           width={dimension}
           viewBox="0 0 {dimension} {dimension}"
         >
-          <g class:overlay={index === 5} transition:fade>
+          <g class:overlay={index === 5 || index === 6} transition:fade>
             <circle {cx} {cy} r={sunR} fill="#FFCB04" />
             <Rays
               gender={d.gender}
@@ -161,7 +161,7 @@
               {dimension}
               rotating={d.sing_along === "Yes"}
             />
-            {#if index > 6}
+            {#if index > 5}
               <Clouds
                 height={dimension}
                 width={dimension}

@@ -185,17 +185,18 @@
 
       <section>
         <p class="scrolly-text">
-          The last 60 days, I tracked my mood on a scale of 1 to 5 and the first
-          song I listened to each day. [insert explanation on mood]
+          The last 60 days, I tracked my mood in the morning on a scale of 1 to 5. The more clouds there are, the worst I felt.
         </p>
+        <img src="src/assets/viskey.png" class="inline-image" />
+
       </section>
 
       <section>
-        <p class="scrolly-text">This is how I felt when I woke up.</p>
+        <p class="scrolly-text">This is how I felt when I woke up. Some days are better than others.</p>
       </section>
 
       <section>
-        <p class="scrolly-text">This is how listening to music helped</p>
+        <p class="scrolly-text">This is how listening to music helped to cast some of the clouds away. As you can see, on many of the days, music had the power to boost my mood from a 1 to a 5.</p>
       </section>
 
       <section>
@@ -225,10 +226,10 @@
             audioIndex={11}
             {index}
             {allowAudio}
-            src="https://p.scdn.co/mp3-preview/3e9b012da3f78d1f1a54c96db15d27335b28d985?cid=774b29d4f13844c495f206cafdad9c86"
-            text="It was NIKI!"
+            src="https://p.scdn.co/mp3-preview/57b5f697db04a6f463de366927093882cfd5a00b?cid=cfe923b2d660439caf2b557b21f31221"
+            text="It was Taylor!"
           /> Fun fact: she was also my top artist on last year's Spotify wrapped.
-          But Miley and Taylor were close! [insert chart]
+          But Miley and Niki were SO close! [insert chart]
         </p>
       </section>
 
@@ -400,5 +401,9 @@
     border-radius: 50px;
     background: orange;
     color: white;
+  }
+
+  .inline-image {
+    max-width: 400px;
   }
 </style>
