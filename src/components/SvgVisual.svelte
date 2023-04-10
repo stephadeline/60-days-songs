@@ -14,7 +14,6 @@
 
   let singAlongCollection = Array.from(data.length);
 
-
   let isMobile = screen.width <= 500;
 
   let row = isMobile ? 12 : 6;
@@ -55,16 +54,26 @@
   $: playAudio = function (i) {
     songTitle[i].style.opacity = 1;
 
-    var song = index === 9 ? audioCollection[i] : index === 14 ? singAlongCollection[i] : null
+    var song =
+      index === 9
+        ? audioCollection[i]
+        : index === 14
+        ? singAlongCollection[i]
+        : null;
 
     if (allowAudio === true) {
-     song.play()
+      song.play();
     }
   };
 
   $: stopAudio = function (i) {
     songTitle[i].style.opacity = 0;
-    var song = index === 9 ? audioCollection[i] : index === 14 ? singAlongCollection[i] : null
+    var song =
+      index === 9
+        ? audioCollection[i]
+        : index === 14
+        ? singAlongCollection[i]
+        : null;
 
     if (!song.paused) {
       song.pause();
@@ -73,30 +82,25 @@
 </script>
 
 {#if index <= 1}
-
-<div class="intro">
-  <h2 out:fade style="font-size: 100px; padding: 50px;">07:00</h2>
-  <p>Mornings are <b>the worst.</b></p>
-</div>
+  <div class="intro">
+    <h2 out:fade style="font-size: 100px; padding: 50px;">07:00</h2>
+    <p>Mornings are <b>the worst.</b></p>
+  </div>
 
   {#if index === 0}
-
-<div class="scroll-down" transition:fade>
-  <div class="mouse-body">
-    <div class="mouse-wheel"></div>
-  </div>
-  <p>SCROLL DOWN</p>
-</div>
+    <div class="scroll-down" transition:fade>
+      <div class="mouse-body">
+        <div class="mouse-wheel" />
+      </div>
+      <p>SCROLL DOWN</p>
+    </div>
   {/if}
 
-{#if index === 1}
-<a href="#section-3" on:click|preventDefault={scrollIntoView}>
-
-    <button transition:fade class="alarm-button"
-    >Wake up!</button
-    >
+  {#if index === 1}
+    <a href="#section-3" on:click|preventDefault={scrollIntoView}>
+      <button transition:fade class="alarm-button">Wake up!</button>
     </a>
-    {/if}
+  {/if}
 {:else if index > 1 && index <= 4}
   <div class="intro-viz">
     <svg
@@ -114,7 +118,11 @@
         fill="#FFCB04"
       />
       {#if index === 2}
-        <g in:blur={{delay: 2000, duration: 1000}} out:blur transform={introTransform}>
+        <g
+          in:blur={{ delay: 2000, duration: 1000 }}
+          out:blur
+          transform={introTransform}
+        >
           <Clouds height={introDim} width={introDim} before={2} after={2} />
         </g>
       {/if}
@@ -126,7 +134,6 @@
     </svg>
   </div>
 {:else if index > 4}
-
   <div
     transition:fade
     class="grid-container"
@@ -166,17 +173,20 @@
           </g>
         </svg>
         {#if index >= 9 && d.preview}
-        <div class="song-title" bind:this={songTitle[i]}>
-          <p>{d.title}</p>
-        </div>
+          <div class="song-title" bind:this={songTitle[i]}>
+            <p>{d.title}</p>
+          </div>
         {/if}
       </div>
       {#if index === 9 && d.preview}
         <audio src={d.preview} bind:this={audioCollection[i]} />
       {/if}
       {#if index === 14 && d.sing_along}
-      <audio src={"src/assets/audio/" + d.sing_along_track + ".mp3"} bind:this={singAlongCollection[i]} />
-    {/if}
+        <audio
+          src={"src/assets/audio/" + d.sing_along_track + ".mp3"}
+          bind:this={singAlongCollection[i]}
+        />
+      {/if}
     {/each}
   </div>
 {/if}
@@ -208,7 +218,7 @@
   [class^="grid-item"] {
     position: relative;
     svg {
-    pointer-events: all;
+      pointer-events: all;
     }
     p {
       pointer-events: none;
@@ -256,23 +266,47 @@
     background: orange;
     color: white;
     animation: shake-animation 3s ease infinite;
-  transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
   }
 
   @keyframes shake-animation {
-   0% { transform:translate(0,0) }
-  1.78571% { transform:translate(10px,0) }
-  3.57143% { transform:translate(0,0) }
-  5.35714% { transform:translate(10px,0) }
-  7.14286% { transform:translate(0,0) }
-  8.92857% { transform:translate(10px,0) }
-  10.71429% { transform:translate(0,0) }
-  12.92857% { transform:translate(10px,0) }
-  14.71429% { transform:translate(0,0) }
-  15.92857% { transform:translate(10px,0) }
-  17.71429% { transform:translate(0,0) }
-  100% { transform:translate(0,0) }
-}
+    0% {
+      transform: translate(0, 0);
+    }
+    1.78571% {
+      transform: translate(10px, 0);
+    }
+    3.57143% {
+      transform: translate(0, 0);
+    }
+    5.35714% {
+      transform: translate(10px, 0);
+    }
+    7.14286% {
+      transform: translate(0, 0);
+    }
+    8.92857% {
+      transform: translate(10px, 0);
+    }
+    10.71429% {
+      transform: translate(0, 0);
+    }
+    12.92857% {
+      transform: translate(10px, 0);
+    }
+    14.71429% {
+      transform: translate(0, 0);
+    }
+    15.92857% {
+      transform: translate(10px, 0);
+    }
+    17.71429% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
   .scroll-down {
     font-size: 12px;
     color: white;
@@ -282,11 +316,9 @@
     margin-right: auto;
     left: 0;
     right: 0;
-
-
   }
 
-  .mouse-body{
+  .mouse-body {
     border-style: solid;
     border-width: 1px;
     border-color: white;
@@ -298,38 +330,36 @@
 
     .mouse-wheel {
       border-width: 1px;
-    border-color: #333;
-    border-radius: 50%;
-    background-color: white;
-    position: relative;
-    height: 2px;
-    width: 2px;
-    margin: 0 auto;
-    -webkit-animation: wheel_animation 1.5s linear infinite;
-    animation: wheel_animation 1.5s linear infinite;
+      border-color: #333;
+      border-radius: 50%;
+      background-color: white;
+      position: relative;
+      height: 2px;
+      width: 2px;
+      margin: 0 auto;
+      -webkit-animation: wheel_animation 1.5s linear infinite;
+      animation: wheel_animation 1.5s linear infinite;
     }
-    }
+  }
 
-    @keyframes wheel_animation {
-      0% {
-    opacity: 0;
-    top: 2px;
-}
-50% {
-    opacity: 1;
-    top: 50%;
-}
-100% {
-    opacity: 0;
-    top: 23px;
-}
+  @keyframes wheel_animation {
+    0% {
+      opacity: 0;
+      top: 2px;
     }
-
-    .intro {
-      color: white;
-      font-size: 16px;
-      pointer-events: none;
-    
+    50% {
+      opacity: 1;
+      top: 50%;
     }
+    100% {
+      opacity: 0;
+      top: 23px;
+    }
+  }
 
+  .intro {
+    color: white;
+    font-size: 16px;
+    pointer-events: none;
+  }
 </style>
