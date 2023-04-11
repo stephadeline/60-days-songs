@@ -16,6 +16,7 @@
   let noiseAudio;
   let mileyAudio;
   let taylorAudio;
+  let nikiAudio;
   let answer;
   $: audioIcon = allowAudio
     ? "src/assets/icon_audio-on.svg"
@@ -51,7 +52,7 @@
     }
   };
 
-  $: audios = [alarmAudio, noiseAudio, mileyAudio, taylorAudio]; // add audio objects
+  $: audios = [alarmAudio, noiseAudio, mileyAudio, taylorAudio, nikiAudio]; // add audio objects
 
   $: if (allowAudio === true) {
     switch (index) {
@@ -66,6 +67,9 @@
         break;
       case 4:
         playAudio(taylorAudio);
+        break;
+      case 5:
+        playAudio(nikiAudio);
         break;
       default:
         audios.forEach((a) => a.pause());
@@ -137,7 +141,7 @@
       </section>
       <section id="section-4">
         <p class="scrolly-text">
-          But <strong>listening to music</strong> helps. Most days, it can help
+          But <strong>listening to music 🎵</strong> helps. Most days, it can help
           to make some of the clouds go away.
           <audio
             src="https://p.scdn.co/mp3-preview/9fbe346e805ed219204f53324f94557ab557b6d3?cid=774b29d4f13844c495f206cafdad9c86"
@@ -164,14 +168,23 @@
       </section>
 
       <section class="headline" id="section-6">
-        <h1><strong>#60DaysOf</strong> Songs that start my day</h1>
+        <h1><strong>#60DaysOfMyLife</strong>: These are the songs that start my day</h1>
         <p>BY STEPHANIE ADELINE</p>
+
+        
+        <audio
+        src="https://p.scdn.co/mp3-preview/3e9b012da3f78d1f1a54c96db15d27335b28d985?cid=774b29d4f13844c495f206cafdad9c86"
+        id="niki-mp3"
+        bind:this={nikiAudio}
+      >
+        Your browser does not support the HTML5 Audio element.
+      </audio>
       </section>
 
       <section class="side">
         <div class="scrolly-text">
           <p>
-            The last 60 days, I tracked how crappy I felt in the morning on <strong
+            The from Jan 26 through March 26, I tracked how crappy I felt in the morning on <strong
               >a scale of 0 to 4 clouds</strong
             >. The more clouds there are, the worst I felt.
           </p>
@@ -220,12 +233,10 @@
           <h3>Listening to music helped to cast some of the clouds
             away.</h3>
           <p>
-             On many days, music even had the power to <strong
-              >boost my mood and get rid of all 4 clouds</strong
-            >.
+             On many days, music even had the power to boost my mood and get rid of all 4 clouds.
           </p>
           <p>
-            You can hover over the suns to hear the song I listened to that day. <em
+            You can <strong>hover over the suns</strong> to hear the song I listened to that day. <em
               ><strong>P.S.:</strong> I know I am basic, but this is a judgment-free zone 😂</em
             >
           </p>
@@ -256,7 +267,7 @@
       <section class="side">
 
         <div  class="scrolly-text">
-        <h3>It was Taylor!</h3>
+        <h3>It was Taylor! ❤️</h3>
 
         <p>
           On 7 of the 60 days, Taylor helped me get through my mornings.
@@ -271,7 +282,7 @@
 
       <section class="side">
         <div class="scrolly-text">
-          <h3>Female singers</h3>
+          <h3>Female singers 👩🏻 ‍🎤</h3>
           <p>
             Here's another little pleasant surprise. I found that most of the
             songs I felt like listening too in the morning were sung by female

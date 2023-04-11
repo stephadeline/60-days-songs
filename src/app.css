@@ -38,13 +38,13 @@ body {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
-  font-family:'Open Sans', Times, serif;
+  font-family:'Open Sans', Arial, sans-serif;
   font-weight: 400;
   color: white;
 }
 
 p, h2, h3, h4, button {
-  font-family:'Open Sans', Times, serif;
+  font-family:'Open Sans', Arial, sans-serif;
 }
 
 #app {
