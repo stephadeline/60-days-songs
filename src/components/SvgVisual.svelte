@@ -55,9 +55,9 @@
     songTitle[i].style.opacity = 1;
 
     var song =
-      index === 9
+      index === 7 || index === 8 || index === 9 || index === 10 || index === 12 || index === 13
         ? audioCollection[i]
-        : index === 14
+        : index === 11
         ? singAlongCollection[i]
         : null;
 
@@ -69,9 +69,8 @@
   $: stopAudio = function (i) {
     songTitle[i].style.opacity = 0;
     var song =
-      index === 9
-        ? audioCollection[i]
-        : index === 14
+    index === 7 || index === 8 || index === 9 || index === 10 || index === 12 || index === 13                ? audioCollection[i]
+        : index === 11
         ? singAlongCollection[i]
         : null;
 
@@ -101,7 +100,7 @@
       <button transition:fade class="alarm-button">Wake up!</button>
     </a>
   {/if}
-{:else if index > 1 && index <= 4}
+{:else if index > 1 && index <= 5}
   <div class="intro-viz">
     <svg
       height={introDim}
@@ -109,6 +108,8 @@
       viewBox="0 0 {introDim} {introDim}"
       in:fade={{ duration: 500, delay: 500 }}
     >
+    <g class:overlay={index === 5} transition:fade>
+
       <circle
         in:fly={{ y: 1000, duration: 1500 }}
         out:fade
@@ -126,14 +127,15 @@
           <Clouds height={introDim} width={introDim} before={2} after={2} />
         </g>
       {/if}
-      {#if index === 3 || index === 4}
+      {#if index === 3 || index === 4 || index === 5}
         <g out:blur transform={introTransform}>
           <Clouds height={introDim} width={introDim} before={2} after={4} />
         </g>
       {/if}
+      </g>
     </svg>
   </div>
-{:else if index > 4}
+{:else if index > 5}
   <div
     transition:fade
     class="grid-container"
@@ -146,14 +148,18 @@
         on:mouseleave={stopAudio(i)}
         on:touchstart={playAudio(i)}
         on:touchend={stopAudio(i)}
-        class:nosingalong={index === 14 && d.sing_along !== "Yes"}
+        class:nosingalong={index === 11 && d.sing_along !== "Yes"}
+        class:nottaylor={index === 9 && d.artist !== "Taylor Swift"}
+        class:notworship={index === 12 && (d.genre !== "Worship")}
+        class:notmusical={index === 13 && (d.genre !== "Showtunes")}
+
       >
         <svg
           height={dimension}
           width={dimension}
           viewBox="0 0 {dimension} {dimension}"
         >
-          <g class:overlay={index === 5 || index === 6} transition:fade>
+          <g>
             <circle {cx} {cy} r={sunR} fill="#FFCB04" />
             <Rays
               gender={d.gender}
@@ -172,16 +178,26 @@
             {/if}
           </g>
         </svg>
-        {#if index >= 9 && d.preview}
+        {#if index >= 7 && d.preview}
           <div class="song-title" bind:this={songTitle[i]}>
             <p>{d.title}</p>
           </div>
         {/if}
       </div>
-      {#if index === 9 && d.preview}
+      {#if (index === 7 || index === 8 || index === 10) && d.preview}
         <audio src={d.preview} bind:this={audioCollection[i]} />
       {/if}
-      {#if index === 14 && d.sing_along}
+
+      {#if (index === 9) && d.artist === "Taylor Swift"}
+      <audio src={d.preview} bind:this={audioCollection[i]} />
+      {/if}
+      {#if (index === 12) && d.genre === "Worship"}
+      <audio src={d.preview} bind:this={audioCollection[i]} />
+      {/if}
+      {#if (index === 13) && d.genre === "Showtunes"}
+      <audio src={d.preview} bind:this={audioCollection[i]} />
+      {/if}
+      {#if index === 11 && d.sing_along}
         <audio
           src={"src/assets/audio/" + d.sing_along_track + ".mp3"}
           bind:this={singAlongCollection[i]}
@@ -193,9 +209,14 @@
 
 <style lang="scss">
   .grid-container {
+
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     @media screen and (min-width: 700px) {
+      width: 65%;
+      position: absolute;
+      right: 0;
+      margin-right: 50px;
       grid-template-columns: repeat(10, 1fr);
       gap: 20px;
     }
@@ -224,13 +245,13 @@
       pointer-events: none;
     }
   }
-  .grid-item-9 {
-    opacity: 80%;
+  // .grid-item-9 {
+  //   opacity: 80%;
 
-    &:hover {
-      opacity: 100%;
-    }
-  }
+  //   &:hover {
+  //     opacity: 100%;
+  //   }
+  // }
 
   .song-title {
     font-size: 12px;
@@ -250,6 +271,15 @@
     opacity: 0;
   }
   .nosingalong {
+    opacity: 0.2;
+  }
+  .nottaylor {
+    opacity: 0.2;
+  }
+  .notworship {
+    opacity: 0.2;
+  }
+  .notmusical {
     opacity: 0.2;
   }
 

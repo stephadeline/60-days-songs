@@ -50,7 +50,7 @@
   // let fill="#f1f1f2";
   // let stroke="none";
 
-  $:  afterUse = index === 7 ? before : after;
+  $: afterUse = index === 6 ? before : after;
 
   $: currentCondition = key.filter(d => d.before === before && d.after === afterUse)
 

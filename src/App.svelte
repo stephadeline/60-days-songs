@@ -1,15 +1,12 @@
 <script>
   import Scroller from "@sveltejs/svelte-scroller";
   import Visual from "./components/SvgVisual.svelte";
-  import AudioText from "./components/AudioText.svelte";
-
-  import { fade, fly, blur } from "svelte/transition";
   let count;
   let index;
   let offset = 0;
   let progress;
   let top = 0.1;
-  let threshold = 0.5;
+  let threshold = 0.8;
   let bottom = 0.9;
   let section3;
 
@@ -36,9 +33,6 @@
   function enableAudio() {
     alertWindow = false;
     allowAudio = true;
-    // if (index <= 0) {
-    // alarmAudio.play();
-    // }
   }
 
   function disableAudio() {
@@ -86,6 +80,7 @@
     audio.currentTime = 0;
     audio.play();
   };
+
 </script>
 
 {#if alertWindow === true}
@@ -116,7 +111,7 @@
     </div>
 
     <div slot="foreground" class={"foreground-" + index}>
-      <section>
+      <section id="section-1">
         <audio
           src="src/assets/audio/alarm.mp3"
           id="alarm-mp3"
@@ -136,24 +131,14 @@
       <section id="section-3" bind:this={section3}>
         <p class="scrolly-text">
           No matter how much I've tried, I could never be a morning person. Most
-          days I wake up greeted by <AudioText
-            audioIndex={2}
-            {index}
-            {allowAudio}
-            src="src/assets/audio/noise2.mp4"
-            text="so much noise"
-          />, which clouds my day and prevent me from seeing the sun.
+          days I wake up greeted by <strong>SO MUCH NOISE</strong>, which clouds
+          my day and prevent me from seeing the sun.
         </p>
       </section>
-      <section>
+      <section id="section-4">
         <p class="scrolly-text">
-          But <AudioText
-            audioIndex={3}
-            {index}
-            {allowAudio}
-            src="https://p.scdn.co/mp3-preview/2cdf5bc166d9d6231af6c5e00d2f2e35e78e2851?cid=774b29d4f13844c495f206cafdad9c86"
-            text="listening to music"
-          /> helps. Most days, it can help to make some of the clouds go away.
+          But <strong>listening to music</strong> helps. Most days, it can help
+          to make some of the clouds go away.
           <audio
             src="https://p.scdn.co/mp3-preview/9fbe346e805ed219204f53324f94557ab557b6d3?cid=774b29d4f13844c495f206cafdad9c86"
             id="miley-mp3"
@@ -163,7 +148,7 @@
           </audio>
         </p>
       </section>
-      <section>
+      <section id="section-5">
         <p class="scrolly-text">
           And it definitely has made the last 60 days <strong
             >a little less crappy</strong
@@ -178,34 +163,82 @@
         </audio>
       </section>
 
-      <section class="headline">
+      <section class="headline" id="section-6">
         <h1><strong>#60DaysOf</strong> Songs that start my day</h1>
-        <p>By Stephanie Adeline</p>
+        <p>BY STEPHANIE ADELINE</p>
       </section>
 
-      <section>
-        <p class="scrolly-text">
-          The last 60 days, I tracked my mood in the morning on a scale of 1 to 5. The more clouds there are, the worst I felt.
+      <section class="side">
+        <div class="scrolly-text">
+          <p>
+            The last 60 days, I tracked how crappy I felt in the morning on <strong
+              >a scale of 0 to 4 clouds</strong
+            >. The more clouds there are, the worst I felt.
+          </p>
+          <p>
+            Some days are better than others, but <strong
+              >most days felt like there were at least 2 clouds</strong
+            >.
+          </p>
+          <div class="key-container-1">
+            <div class="key">
+              <img src="src/assets/0-clouds.svg" class="icon" />
+              <p>0</p>
+            </div>
+            <div class="key">
+              <img src="src/assets/1-clouds.svg" class="icon" />
+              <p>1</p>
+            </div>
+            <div class="key">
+              <img src="src/assets/2-clouds.svg" class="icon" />
+              <p>2</p>
+            </div>
+            <div class="key">
+              <img src="src/assets/3-clouds.svg" class="icon" />
+              <p>3</p>
+            </div>
+            <div class="key">
+              <img src="src/assets/4-clouds.svg" class="icon" />
+              <p>4</p>
+            </div>
+          </div>
+          <!-- <div class="slider">
+        <DoubleRangeSlider start={0} end={4}/>
+      </div> -->
+        </div>
+        <!-- <img src="src/assets/viskey.png" class="inline-image" /> -->
+      </section>
+
+      <!-- <section class="side">
+        <p class="scrolly-text">Some days are better than others. But most of the days were at a 3 or less.
+          <img src="src/assets/histogram-before.png" class="inline-image" />
         </p>
-        <img src="src/assets/viskey.png" class="inline-image" />
+      </section> -->
 
+      <section class="side">
+        <div class="scrolly-text">
+          <h3>Listening to music helped to cast some of the clouds
+            away.</h3>
+          <p>
+             On many days, music even had the power to <strong
+              >boost my mood and get rid of all 4 clouds</strong
+            >.
+          </p>
+          <p>
+            You can hover over the suns to hear the song I listened to that day. <em
+              ><strong>P.S.:</strong> I know I am basic, but this is a judgment-free zone 😂</em
+            >
+          </p>
+        </div>
       </section>
 
-      <section>
-        <p class="scrolly-text">This is how I felt when I woke up. Some days are better than others.</p>
-      </section>
-
-      <section>
-        <p class="scrolly-text">This is how listening to music helped to cast some of the clouds away. As you can see, on many of the days, music had the power to boost my mood from a 1 to a 5.</p>
-      </section>
-
-      <section>
+      <!-- <section class="side">
         <p class="scrolly-text">
           Hover over the suns to hear the song I listened to that day. {index}
         </p>
-      </section>
+      </section> -->
 
-      <section>
+      <section class="side">
         <p class="scrolly-text">
           One artist in particular stood out the most. Can you guess which one?
         </p>
@@ -213,87 +246,116 @@
         <button on:click={() => (answer = "Taylor Swift")}>Taylor Swift</button>
         <button on:click={() => (answer = "NIKI")}>NIKI</button>
         {#if answer}
-          <p>
+          <p class="answer">
             You guessed <strong>{answer}</strong>. Scroll to see if you got that
             right!
           </p>
         {/if}
       </section>
 
-      <section>
-        <p class="scrolly-text">
-          <AudioText
-            audioIndex={11}
-            {index}
-            {allowAudio}
-            src="https://p.scdn.co/mp3-preview/57b5f697db04a6f463de366927093882cfd5a00b?cid=cfe923b2d660439caf2b557b21f31221"
-            text="It was Taylor!"
-          /> Fun fact: she was also my top artist on last year's Spotify wrapped.
-          But Miley and Niki were SO close! [insert chart]
+      <section class="side">
+
+        <div  class="scrolly-text">
+        <h3>It was Taylor!</h3>
+
+        <p>
+          On 7 of the 60 days, Taylor helped me get through my mornings.
+          (And yes, I am still stuck in the "Fearless" and "Speak Now" era.)
         </p>
+          
+          <p>But Miley
+          and NIKI were SO close! Miley had 6 songs, and NIKI had 5.
+        </p>
+      </div>
       </section>
 
-      <section>
-        <p class="scrolly-text">
-          Here's another little pleasant surprise. Most of the songs I listened
-          to in the morning were sung by female vocalists. [key here]
-        </p>
+      <section class="side">
+        <div class="scrolly-text">
+          <h3>Female singers</h3>
+          <p>
+            Here's another little pleasant surprise. I found that most of the
+            songs I felt like listening too in the morning were sung by female
+            vocalists!
+          </p>
+          <div class="key-container">
+            <div class="key">
+              <img src="src/assets/female.svg" class="icon" />
+              <p>Female</p>
+            </div>
+            <div class="key">
+              <img src="src/assets/male.svg" class="icon" />
+              <p>Male</p>
+            </div>
+            <div class="key">
+              <img src="src/assets/both.svg" class="icon" />
+              <p>Both</p>
+            </div>
+          </div>
+        </div>
       </section>
 
-      <section>
-        <p class="scrolly-text">
-          Singing along is also helps to improve my mood! It's on those days
-          where I sang along did I feel my best.
-        </p>
+      <section class="side">
+        <div class="scrolly-text">
+          <h3>Singing along also makes the clouds go away!</h3>
+          <p>
+            It's on those days
+            where I sang along did I feel my best.
+          </p>
+          <p>
+            I'm usually self-conscious about my early-morning singing voice,
+            but... For your ears only.. Hover over the suns to listen to get a
+            glimpse of my mornings :)
+          </p>
+        </div>
       </section>
 
-      <section>
-        <p class="scrolly-text">
-          I'm usually self-conscious about my early-morning singing voice,
-          but... hover over the suns to listen to get a glimpse of my mornings
-          :)
+      <section class="side">
+        <div class="scrolly-text">
+          <h3>Genre: Mostly pop songs, but there are some exceptions...</h3>
+          <p>I noticed that my early morning music consumption is mainly pop songs, but usually, closer to Sundays, I'd listen to some <strong>Worship music</strong>.
         </p>
+        </div>
       </section>
 
-      <section>
-        <p class="scrolly-text">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.{index + 1}
+      <section class="side">
+        <div class="scrolly-text">
+          <p>And... In case you can't tell, I'm a big <strong>musical theatre</strong> fan, and although it doesn't show much here, there were some days that I felt like listening to some <strong>showtunes</strong>.
         </p>
+        </div>
       </section>
 
-      <section>
-        <p class="scrolly-text">
-          TEST Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.{index + 1}
-        </p>
-      </section>
 
-      <section>
-        <p class="scrolly-text">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.{index + 1}
-        </p>
-      </section>
-      <section>
-        <p class="scrolly-text">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.{index + 1}
-        </p>
-      </section>
     </div>
   </Scroller>
 
+  <div class="about">
+    <h2>What did I learn from this experience?</h2>
+    <p>The last 2 months have been <strong>SO HARD</strong>. My classmates can probably relate, juggling full-time work and a master's degree is an extreme sport. And it has really been such a struggle just to get myself up in the morning, what with the lack of sleep and the amount of work greeting me as soon as I wake up.</p>
+    <p>I've always found it super hard to wake up in the morning, but these past few months have been 1000% more challenging than ever. So I thought I have to make some changes. And I know, I should work on having a more proper morning routine like eating breakfast and maybe exercising, but I decided to start small. <strong>I just needed to start my day with music.</strong></p>
+    <p>Upon some googling, I did find some articles that shares the benefits of adding music to your daily routine. But I figured, why not take it a step further?</p>
+    <p>I challenged myself to try to sing in the morning, if I feel like it. For as long as I can remember, <strong>singing is my stress relief</strong>. In college, away from home for the first time, singing became a coping mechanism, and I started posting my singing videos on <a href="https://www.instagram.com/stephadeline.sings/">Instagram</a>.</p>
+    <p>But I'd always put too much pressure on myself to be perfect in my singing videos that I post on social media, that I really just wanted a way to sing to my heart's content without having any added pressure. This project has encourage me to just sing, even if you sound horrible, even if you've got that early morning raspy voice.</p>
+
+    <p>Anyways, I'll expose myself and post the full playlist for these songs on Spotify ;)</p>
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/5mTOXm6TMknpxipK4tH0sY?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+
+    <div class="footer">
+      <p>This project is Stephanie's final project for the creative module in the <a href="http://www.mastervisualtoolsudg.com/">Master's in Visual Tools to Empower Citizens program</a> from the University of Girona and the Visualization for Transparency Foundation.
+      </p>
+      <p>
+        All song previews are from Spotify.
+      </p>
+      <p>
+        For the code, please visit this <a href="https://github.com/stephadeline/60-days-songs">GitHub repo</a>. You can reach out to Stephanie via <a href="https://www.linkedin.com/in/stephanie-adeline-310333123/">LinkedIn</a> or <a href="https://twitter.com/stephadeline">Twitter</a>.
+      </p>
+      </div>
+
+
+  </div>
   <!-- <LoremIpsum/> -->
 </div>
+
 
 <style lang="scss">
   div.alert-audio {
@@ -352,9 +414,9 @@
   }
 
   section {
-    height: 120vh;
-    /* background-color: rgba(0,0,0,0.5);
-		color: white; */
+    height: 100vh;
+    // background-color: white;
+    // color: black;
     padding: 1em;
     margin: 0 auto;
     max-width: 400px;
@@ -362,16 +424,30 @@
     button {
       pointer-events: all;
     }
+   .scrolly-text {
+      // margin-top: 50vh;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 5px;
+      color: black;
+      text-align: left;
+      padding: 10px;
+      max-width: 400px;
+      display: inline-block;
+  box-sizing: border-box;
+    }
+
+    @media screen and (min-width: 700px) {
+      &.side {
+        margin: 0 auto 0 20px;
+
+        .scrolly-text {
+          background: none;
+          color: white;
+        }
+      }
+    }
   }
 
-  .scrolly-text {
-    margin-top: 50vh;
-    background-color: rgba(255, 255, 255, 0.7);
-    color: black;
-    text-align: left;
-    padding: 10px;
-    max-width: 400px;
-  }
   .intro {
     background: none;
     color: white;
@@ -404,6 +480,88 @@
   }
 
   .inline-image {
-    max-width: 400px;
+    max-width: 350px;
   }
+
+  .answer {
+    color: white;
+    text-align: left;
+  }
+  .key-container {
+    max-width: 200px;
+    width: 100%;
+    .key {
+      float: left;
+      width: 33.33%;
+      p {
+        text-align: center;
+        margin: 0;
+        font-weight: bold;
+        font-size: 12px;
+      }
+      img {
+        margin: 0 7px;
+        width: 50px;
+        height: 50px;
+      }
+    }
+  }
+
+  .key-container-1 {
+    pointer-events: all;
+    max-width: 400px;
+    width: 100%;
+    .key {
+      pointer-events: all;
+      float: left;
+      width: 20%;
+      p {
+        text-align: center;
+        margin: 0;
+        font-weight: bold;
+      }
+      img {
+        margin: 0 15px;
+        width: 50px;
+        height: 35px;
+      }
+    }
+
+    @media screen and (max-width: 500px) {
+      background-color: rgba(255, 255, 255, 0.7);
+    }
+  }
+
+  .slider {
+    max-width: 400px;
+    pointer-events: all;
+  }
+
+  .about {
+    color: white;
+    max-width: 600px;
+    margin: 50px auto;
+    text-align: left;
+    pointer-events: all;
+
+    .footer {
+      margin-top: 50px;
+      font-size: 12px;
+      line-height: 15px;
+    }
+
+    a {
+      color: white;
+      text-decoration: underline;
+    }
+  }
+
+  .headline {
+    max-width: 500px;
+    color: white;
+  }
+
+
+
+
 </style>
