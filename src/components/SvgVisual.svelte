@@ -1,5 +1,4 @@
 <script>
-  import * as d3 from "d3";
   import Clouds from "./Clouds.svelte";
   import Rays from "./Rays.svelte";
   import data from "../data/data.json";
@@ -8,11 +7,14 @@
   export let allowAudio = false;
 
   export let scrollIntoView;
+  export let highlightedGender;
+  export let highlightedMood;
 
-  let audioCollection = Array.from(data.length);
-  let songTitle = Array.from(data.length);
 
-  let singAlongCollection = Array.from(data.length);
+  let audioCollection = Array.from(data);
+  let songTitle = Array.from(data);
+
+  let singAlongCollection = Array.from(data);
 
   let isMobile = screen.width <= 500;
 
@@ -50,29 +52,39 @@
   //   }
   // }
   export let index = 1;
+  $: noSingAlong =
+    index === 7 ||
+    index === 8 ||
+    index === 9 ||
+    index === 10 ||
+    index === 12 ||
+    index === 13;
 
   $: playAudio = function (i) {
     songTitle[i].style.opacity = 1;
 
-    var song =
-      index === 7 || index === 8 || index === 9 || index === 10 || index === 12 || index === 13
-        ? audioCollection[i]
-        : index === 11
-        ? singAlongCollection[i]
-        : null;
+    var song = noSingAlong
+      ? audioCollection[i]
+      : index === 11
+      ? singAlongCollection[i]
+      : null;
+
+    let volume = noSingAlong ? 0.1 : 0.4;
 
     if (allowAudio === true) {
+      
+      song.volume = volume;
       song.play();
     }
   };
 
   $: stopAudio = function (i) {
     songTitle[i].style.opacity = 0;
-    var song =
-    index === 7 || index === 8 || index === 9 || index === 10 || index === 12 || index === 13                ? audioCollection[i]
-        : index === 11
-        ? singAlongCollection[i]
-        : null;
+    var song = noSingAlong
+      ? audioCollection[i]
+      : index === 11
+      ? singAlongCollection[i]
+      : null;
 
     if (!song.paused) {
       song.pause();
@@ -108,30 +120,29 @@
       viewBox="0 0 {introDim} {introDim}"
       in:fade={{ duration: 500, delay: 500 }}
     >
-    <g class:overlay={index === 5} transition:fade>
-
-      <circle
-        in:fly={{ y: 1000, duration: 1500 }}
-        out:fade
-        cx={introCx}
-        cy={introCy}
-        r={introR}
-        fill="#FFCB04"
-      />
-      {#if index === 2}
-        <g
-          in:blur={{ delay: 2000, duration: 1000 }}
-          out:blur
-          transform={introTransform}
-        >
-          <Clouds height={introDim} width={introDim} before={2} after={2} />
-        </g>
-      {/if}
-      {#if index === 3 || index === 4 || index === 5}
-        <g out:blur transform={introTransform}>
-          <Clouds height={introDim} width={introDim} before={2} after={4} />
-        </g>
-      {/if}
+      <g class:overlay={index === 5} transition:fade>
+        <circle
+          in:fly={{ y: 1000, duration: 1500 }}
+          out:fade
+          cx={introCx}
+          cy={introCy}
+          r={introR}
+          fill="#FFCB04"
+        />
+        {#if index === 2}
+          <g
+            in:blur={{ delay: 2000, duration: 1000 }}
+            out:blur
+            transform={introTransform}
+          >
+            <Clouds height={introDim} width={introDim} before={2} after={2} />
+          </g>
+        {/if}
+        {#if index === 3 || index === 4 || index === 5}
+          <g out:blur transform={introTransform}>
+            <Clouds height={introDim} width={introDim} before={2} after={4} />
+          </g>
+        {/if}
       </g>
     </svg>
   </div>
@@ -150,8 +161,10 @@
         on:touchend={stopAudio(i)}
         class:nosingalong={index === 11 && d.sing_along !== "Yes"}
         class:nottaylor={index === 9 && d.artist !== "Taylor Swift"}
-        class:notworship={index === 12 && (d.genre !== "Worship")}
-        class:notmusical={index === 13 && (d.genre !== "Showtunes")}
+        class:notworship={index === 12 && d.genre !== "Worship"}
+        class:notmusical={index === 13 && d.genre !== "Showtunes"}
+        class:nothighlighted={index === 10 && highlightedGender !== null && d.gender !== highlightedGender}
+        class:nothighlightedmood={index === 6 && highlightedMood !== null && d.before !== highlightedMood}
 
       >
         <svg
@@ -188,14 +201,14 @@
         <audio src={d.preview} bind:this={audioCollection[i]} />
       {/if}
 
-      {#if (index === 9) && d.artist === "Taylor Swift"}
-      <audio src={d.preview} bind:this={audioCollection[i]} />
+      {#if index === 9 && d.artist === "Taylor Swift"}
+        <audio src={d.preview} bind:this={audioCollection[i]} />
       {/if}
-      {#if (index === 12) && d.genre === "Worship"}
-      <audio src={d.preview} bind:this={audioCollection[i]} />
+      {#if index === 12 && d.genre === "Worship"}
+        <audio src={d.preview} bind:this={audioCollection[i]} />
       {/if}
-      {#if (index === 13) && d.genre === "Showtunes"}
-      <audio src={d.preview} bind:this={audioCollection[i]} />
+      {#if index === 13 && d.genre === "Showtunes"}
+        <audio src={d.preview} bind:this={audioCollection[i]} />
       {/if}
       {#if index === 11 && d.sing_along}
         <audio
@@ -209,7 +222,6 @@
 
 <style lang="scss">
   .grid-container {
-
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     @media screen and (min-width: 700px) {
@@ -270,19 +282,9 @@
       1px 1px 0 white;
     opacity: 0;
   }
-  .nosingalong {
+  .nosingalong, .nottaylor, .notworship, .notmusical, .nothighlighted, .nothighlightedmood {
     opacity: 0.2;
   }
-  .nottaylor {
-    opacity: 0.2;
-  }
-  .notworship {
-    opacity: 0.2;
-  }
-  .notmusical {
-    opacity: 0.2;
-  }
-
   .alarm-button {
     position: absolute;
     margin-left: auto;

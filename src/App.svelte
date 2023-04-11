@@ -10,6 +10,9 @@
   let bottom = 0.9;
   let section3;
 
+  let highlightedGender = null;
+  let highlightedMood = null;
+
   let allowAudio = false;
   let alertWindow = true;
   let alarmAudio;
@@ -76,15 +79,30 @@
     }
   }
 
-  // another function with if else
-
   const playAudio = (audio) => {
     let notPlaying = audios.filter((a) => audio !== a);
     notPlaying.forEach((a) => a.pause());
     audio.currentTime = 0;
+
+    if (audio !== alarmAudio || audio !== noiseAudio) {
+      audio.volume = 0.1;
+    }
     audio.play();
   };
 
+  const filterGender = (g) => {
+    highlightedGender = g;
+  };
+  const unfilterGender = () => {
+    highlightedGender = null;
+  };
+
+  const filterMood = (m) => {
+    highlightedMood = m;
+  };
+  const unfilterMood = () => {
+    highlightedMood = null;
+  };
 </script>
 
 {#if alertWindow === true}
@@ -111,7 +129,13 @@
     bind:progress
   >
     <div slot="background">
-      <Visual {index} {allowAudio} {scrollIntoView} />
+      <Visual
+        {index}
+        {allowAudio}
+        {scrollIntoView}
+        {highlightedGender}
+        {highlightedMood}
+      />
     </div>
 
     <div slot="foreground" class={"foreground-" + index}>
@@ -125,12 +149,7 @@
         </audio>
       </section>
       <section id="section-2">
-        <!-- <a href="#section-3" on:click|preventDefault={scrollIntoView}> -->
-        <!-- <button out:fade class="alarm-button" on:click={alarmAudio.pause()}
-            >Wake up!</button
-          > -->
-        <!-- </a> -->
-        <audio src="src/assets/audio/noise2.mp4" bind:this={noiseAudio} />
+        <audio src="src/assets/audio/noise.mp3" bind:this={noiseAudio} />
       </section>
       <section id="section-3" bind:this={section3}>
         <p class="scrolly-text">
@@ -141,8 +160,8 @@
       </section>
       <section id="section-4">
         <p class="scrolly-text">
-          But <strong>listening to music 🎵</strong> helps. Most days, it can help
-          to make some of the clouds go away.
+          But <strong>listening to music 🎵</strong> helps. Most days, it can
+          help to make some of the clouds go away.
           <audio
             src="https://p.scdn.co/mp3-preview/9fbe346e805ed219204f53324f94557ab557b6d3?cid=774b29d4f13844c495f206cafdad9c86"
             id="miley-mp3"
@@ -168,25 +187,27 @@
       </section>
 
       <section class="headline" id="section-6">
-        <h1><strong>#60DaysOfMyLife</strong>: These are the songs that start my day</h1>
+        <h1>
+          <strong>#60DaysOfMyLife</strong>: These are the songs that start my
+          day
+        </h1>
         <p>BY STEPHANIE ADELINE</p>
 
-        
         <audio
-        src="https://p.scdn.co/mp3-preview/3e9b012da3f78d1f1a54c96db15d27335b28d985?cid=774b29d4f13844c495f206cafdad9c86"
-        id="niki-mp3"
-        bind:this={nikiAudio}
-      >
-        Your browser does not support the HTML5 Audio element.
-      </audio>
+          src="https://p.scdn.co/mp3-preview/3e9b012da3f78d1f1a54c96db15d27335b28d985?cid=774b29d4f13844c495f206cafdad9c86"
+          id="niki-mp3"
+          bind:this={nikiAudio}
+        >
+          Your browser does not support the HTML5 Audio element.
+        </audio>
       </section>
 
       <section class="side">
         <div class="scrolly-text">
           <p>
-            The from Jan 26 through March 26, I tracked how crappy I felt in the morning on <strong
-              >a scale of 0 to 4 clouds</strong
-            >. The more clouds there are, the worst I felt.
+            The from Jan 26 through March 26, I tracked how crappy I felt in the
+            morning on <strong>a scale of 0 to 4 clouds</strong>. The more
+            clouds there are, the worst I felt.
           </p>
           <p>
             Some days are better than others, but <strong
@@ -194,24 +215,69 @@
             >.
           </p>
           <div class="key-container-1">
-            <div class="key">
-              <img src="src/assets/0-clouds.svg" class="icon" />
+            <div
+              class="key"
+              on:mouseenter={() => filterMood(5)}
+              on:mouseleave={() => unfilterMood()}
+            >
+              <img
+                src="src/assets/0-clouds.svg"
+                class="icon"
+                class:nohighlight={highlightedMood !== null &&
+                  highlightedMood !== 5}
+              />
               <p>0</p>
             </div>
-            <div class="key">
-              <img src="src/assets/1-clouds.svg" class="icon" />
+            <div
+              class="key"
+              on:mouseenter={() => filterMood(4)}
+              on:mouseleave={() => unfilterMood()}
+            >
+              <img
+                src="src/assets/1-clouds.svg"
+                class="icon"
+                class:nohighlight={highlightedMood !== null &&
+                  highlightedMood !== 4}
+              />
               <p>1</p>
             </div>
-            <div class="key">
-              <img src="src/assets/2-clouds.svg" class="icon" />
+            <div
+              class="key"
+              on:mouseenter={() => filterMood(3)}
+              on:mouseleave={() => unfilterMood()}
+            >
+              <img
+                src="src/assets/2-clouds.svg"
+                class="icon"
+                class:nohighlight={highlightedMood !== null &&
+                  highlightedMood !== 3}
+              />
               <p>2</p>
             </div>
-            <div class="key">
-              <img src="src/assets/3-clouds.svg" class="icon" />
+            <div
+              class="key"
+              on:mouseenter={() => filterMood(2)}
+              on:mouseleave={() => unfilterMood()}
+            >
+              <img
+                src="src/assets/3-clouds.svg"
+                class="icon"
+                class:nohighlight={highlightedMood !== null &&
+                  highlightedMood !== 2}
+              />
               <p>3</p>
             </div>
-            <div class="key">
-              <img src="src/assets/4-clouds.svg" class="icon" />
+            <div
+              class="key"
+              on:mouseenter={() => filterMood(1)}
+              on:mouseleave={() => unfilterMood()}
+            >
+              <img
+                src="src/assets/4-clouds.svg"
+                class="icon"
+                class:nohighlight={highlightedMood !== null &&
+                  highlightedMood !== 1}
+              />
               <p>4</p>
             </div>
           </div>
@@ -230,14 +296,17 @@
 
       <section class="side">
         <div class="scrolly-text">
-          <h3>Listening to music helped to cast some of the clouds
-            away.</h3>
+          <h3>Listening to music helped to cast some of the clouds away.</h3>
           <p>
-             On many days, music even had the power to boost my mood and get rid of all 4 clouds.
+            On many days, music even had the power to boost my mood and get rid
+            of all 4 clouds.
           </p>
           <p>
-            You can <strong>hover over the suns</strong> to hear the song I listened to that day. <em
-              ><strong>P.S.:</strong> I know I am basic, but this is a judgment-free zone 😂</em
+            You can <strong>hover over the suns</strong> to hear the song I
+            listened to that day.
+            <em
+              ><strong>P.S.:</strong> I know I am basic, but this is a judgment-free
+              zone 😂</em
             >
           </p>
         </div>
@@ -265,19 +334,18 @@
       </section>
 
       <section class="side">
+        <div class="scrolly-text">
+          <h3>It was Taylor! ❤️</h3>
 
-        <div  class="scrolly-text">
-        <h3>It was Taylor! ❤️</h3>
+          <p>
+            On 7 of the 60 days, Taylor helped me get through my mornings. (And
+            yes, I am still stuck in the "Fearless" and "Speak Now" era.)
+          </p>
 
-        <p>
-          On 7 of the 60 days, Taylor helped me get through my mornings.
-          (And yes, I am still stuck in the "Fearless" and "Speak Now" era.)
-        </p>
-          
-          <p>But Miley
-          and NIKI were SO close! Miley had 6 songs, and NIKI had 5.
-        </p>
-      </div>
+          <p>
+            But Miley and NIKI were SO close! Miley had 6 songs, and NIKI had 5.
+          </p>
+        </div>
       </section>
 
       <section class="side">
@@ -288,17 +356,44 @@
             songs I felt like listening too in the morning were sung by female
             vocalists!
           </p>
-          <div class="key-container">
-            <div class="key">
-              <img src="src/assets/female.svg" class="icon" />
+          <div class="key-container-2">
+            <div
+              class="key"
+              on:mouseenter={() => filterGender("Female")}
+              on:mouseleave={() => unfilterGender()}
+            >
+              <img
+                src="src/assets/female.svg"
+                class="icon"
+                class:nohighlight={highlightedGender !== null &&
+                  highlightedGender !== "Female"}
+              />
               <p>Female</p>
             </div>
-            <div class="key">
-              <img src="src/assets/male.svg" class="icon" />
+            <div
+              class="key"
+              on:mouseenter={() => filterGender("Male")}
+              on:mouseleave={() => unfilterGender()}
+            >
+              <img
+                src="src/assets/male.svg"
+                class="icon"
+                class:nohighlight={highlightedGender !== null &&
+                  highlightedGender !== "Male"}
+              />
               <p>Male</p>
             </div>
-            <div class="key">
-              <img src="src/assets/both.svg" class="icon" />
+            <div
+              class="key"
+              on:mouseenter={() => filterGender("Both")}
+              on:mouseleave={() => unfilterGender()}
+            >
+              <img
+                src="src/assets/both.svg"
+                class="icon"
+                class:nohighlight={highlightedGender !== null &&
+                  highlightedGender !== "Both"}
+              />
               <p>Both</p>
             </div>
           </div>
@@ -308,10 +403,7 @@
       <section class="side">
         <div class="scrolly-text">
           <h3>Singing along also makes the clouds go away!</h3>
-          <p>
-            It's on those days
-            where I sang along did I feel my best.
-          </p>
+          <p>It's on those days where I sang along did I feel my best.</p>
           <p>
             I'm usually self-conscious about my early-morning singing voice,
             but... For your ears only.. Hover over the suns to listen to get a
@@ -323,50 +415,102 @@
       <section class="side">
         <div class="scrolly-text">
           <h3>Genre: Mostly pop songs, but there are some exceptions...</h3>
-          <p>I noticed that my early morning music consumption is mainly pop songs, but usually, closer to Sundays, I'd listen to some <strong>Worship music</strong>.
-        </p>
+          <p>
+            I noticed that my early morning music consumption is mainly pop
+            songs, but usually, closer to Sundays, I'd listen to some <strong
+              >Worship music</strong
+            >.
+          </p>
         </div>
       </section>
 
       <section class="side">
         <div class="scrolly-text">
-          <p>And... In case you can't tell, I'm a big <strong>musical theatre</strong> fan, and although it doesn't show much here, there were some days that I felt like listening to some <strong>showtunes</strong>.
-        </p>
+          <p>
+            And... In case you can't tell, I'm a big <strong
+              >musical theatre</strong
+            >
+            fan, and although it doesn't show much here, there were some days
+            that I felt like listening to some <strong>showtunes</strong>.
+          </p>
         </div>
       </section>
-
-
+      <section class="side">
+      </section>
     </div>
   </Scroller>
 
   <div class="about">
     <h2>What did I learn from this experience?</h2>
-    <p>The last 2 months have been <strong>SO HARD</strong>. My classmates can probably relate, juggling full-time work and a master's degree is an extreme sport. And it has really been such a struggle just to get myself up in the morning, what with the lack of sleep and the amount of work greeting me as soon as I wake up.</p>
-    <p>I've always found it super hard to wake up in the morning, but these past few months have been 1000% more challenging than ever. So I thought I have to make some changes. And I know, I should work on having a more proper morning routine like eating breakfast and maybe exercising, but I decided to start small. <strong>I just needed to start my day with music.</strong></p>
-    <p>Upon some googling, I did find some articles that shares the benefits of adding music to your daily routine. But I figured, why not take it a step further?</p>
-    <p>I challenged myself to try to sing in the morning, if I feel like it. For as long as I can remember, <strong>singing is my stress relief</strong>. In college, away from home for the first time, singing became a coping mechanism, and I started posting my singing videos on <a href="https://www.instagram.com/stephadeline.sings/">Instagram</a>.</p>
-    <p>But I'd always put too much pressure on myself to be perfect in my singing videos that I post on social media, that I really just wanted a way to sing to my heart's content without having any added pressure. This project has encourage me to just sing, even if you sound horrible, even if you've got that early morning raspy voice.</p>
+    <p>
+      The last 2 months have been <strong>SO HARD</strong>. My classmates can
+      probably relate, juggling full-time work and a master's degree is an
+      extreme sport. And it has really been such a struggle just to get myself
+      up in the morning, what with the lack of sleep and the amount of work
+      greeting me as soon as I wake up.
+    </p>
+    <p>
+      I've always found it super hard to wake up in the morning, but these past
+      few months have been 1000% more challenging than ever. So I thought I have
+      to make some changes. And I know, I should work on having a more proper
+      morning routine like eating breakfast and maybe exercising, but I decided
+      to start small. <strong>I just needed to start my day with music.</strong>
+    </p>
+    <p>
+      Upon some googling, I did find some articles that shares the benefits of
+      adding music to your daily routine. But I figured, why not take it a step
+      further?
+    </p>
+    <p>
+      I challenged myself to try to sing in the morning, if I feel like it. For
+      as long as I can remember, <strong>singing is my stress relief</strong>.
+      In college, away from home for the first time, singing became a coping
+      mechanism, and I started posting my singing videos on
+      <a href="https://www.instagram.com/stephadeline.sings/">Instagram</a>.
+    </p>
+    <p>
+      But I'd always put too much pressure on myself to be perfect in my singing
+      videos that I post on social media, that I really just wanted a way to
+      sing to my heart's content without having any added pressure. This project
+      has encourage me to just sing, even if you sound horrible, even if you've
+      got that early morning raspy voice.
+    </p>
 
-    <p>Anyways, I'll expose myself and post the full playlist for these songs on Spotify ;)</p>
-    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/5mTOXm6TMknpxipK4tH0sY?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-
+    <p>
+      Anyways, I'll expose myself and post the full playlist for these songs on
+      Spotify ;)
+    </p>
+    <iframe
+      style="border-radius:12px"
+      src="https://open.spotify.com/embed/playlist/5mTOXm6TMknpxipK4tH0sY?utm_source=generator&theme=0"
+      width="100%"
+      height="352"
+      frameBorder="0"
+      allowfullscreen=""
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      loading="lazy"
+    />
 
     <div class="footer">
-      <p>This project is Stephanie's final project for the creative module in the <a href="http://www.mastervisualtoolsudg.com/">Master's in Visual Tools to Empower Citizens program</a> from the University of Girona and the Visualization for Transparency Foundation.
-      </p>
       <p>
-        All song previews are from Spotify.
+        This project is Stephanie's final project for the creative module in the <a
+          href="http://www.mastervisualtoolsudg.com/"
+          >Master's in Visual Tools to Empower Citizens program</a
+        > from the University of Girona and the Visualization for Transparency Foundation.
       </p>
+      <p>All song previews are from Spotify.</p>
       <p>
-        For the code, please visit this <a href="https://github.com/stephadeline/60-days-songs">GitHub repo</a>. You can reach out to Stephanie via <a href="https://www.linkedin.com/in/stephanie-adeline-310333123/">LinkedIn</a> or <a href="https://twitter.com/stephadeline">Twitter</a>.
+        For the code, please visit this <a
+          href="https://github.com/stephadeline/60-days-songs">GitHub repo</a
+        >. You can reach out to Stephanie via
+        <a href="https://www.linkedin.com/in/stephanie-adeline-310333123/"
+          >LinkedIn</a
+        >
+        or <a href="https://twitter.com/stephadeline">Twitter</a>.
       </p>
-      </div>
-
-
+    </div>
   </div>
-  <!-- <LoremIpsum/> -->
 </div>
-
 
 <style lang="scss">
   div.alert-audio {
@@ -435,7 +579,7 @@
     button {
       pointer-events: all;
     }
-   .scrolly-text {
+    .scrolly-text {
       // margin-top: 50vh;
       background-color: rgba(255, 255, 255, 0.9);
       border-radius: 5px;
@@ -444,7 +588,7 @@
       padding: 10px;
       max-width: 400px;
       display: inline-block;
-  box-sizing: border-box;
+      box-sizing: border-box;
     }
 
     @media screen and (min-width: 700px) {
@@ -498,10 +642,12 @@
     color: white;
     text-align: left;
   }
-  .key-container {
+  .key-container-2 {
     max-width: 200px;
     width: 100%;
     .key {
+      pointer-events: all;
+      cursor: pointer;
       float: left;
       width: 33.33%;
       p {
@@ -514,15 +660,18 @@
         margin: 0 7px;
         width: 50px;
         height: 50px;
+        &.nohighlight {
+          opacity: 0.2;
+        }
       }
     }
   }
 
   .key-container-1 {
-    pointer-events: all;
     max-width: 400px;
     width: 100%;
     .key {
+      cursor: pointer;
       pointer-events: all;
       float: left;
       width: 20%;
@@ -535,6 +684,9 @@
         margin: 0 15px;
         width: 50px;
         height: 35px;
+        &.nohighlight {
+          opacity: 0.2;
+        }
       }
     }
 
@@ -571,8 +723,4 @@
     max-width: 500px;
     color: white;
   }
-
-
-
-
 </style>
