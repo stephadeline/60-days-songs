@@ -430,13 +430,12 @@
             And... In case you can't tell, I'm a big <strong
               >musical theatre</strong
             >
-            fan, and although it doesn't show much here, there were some days
-            that I felt like listening to some <strong>showtunes</strong>.
+            fan, and although it doesn't show much here, there were some days that
+            I felt like listening to some <strong>showtunes</strong>.
           </p>
         </div>
       </section>
-      <section class="side">
-      </section>
+      <section class="side" />
     </div>
   </Scroller>
 
@@ -480,17 +479,7 @@
       Anyways, I'll expose myself and post the full playlist for these songs on
       Spotify ;)
     </p>
-    <iframe
-      style="border-radius:12px"
-      src="https://open.spotify.com/embed/playlist/5mTOXm6TMknpxipK4tH0sY?utm_source=generator&theme=0"
-      width="100%"
-      height="352"
-      frameBorder="0"
-      allowfullscreen=""
-      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-      loading="lazy"
-    />
-
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/5mTOXm6TMknpxipK4tH0sY?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
     <div class="footer">
       <p>
         This project is Stephanie's final project for the creative module in the <a
