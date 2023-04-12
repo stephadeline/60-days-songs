@@ -5,7 +5,7 @@
   let index;
   let offset = 0;
   let progress;
-  let top = 0.1;
+  let top = screen.width >= 500 ? 0.1 : 0;
   let threshold = 0.8;
   let bottom = 0.9;
   let section3;
@@ -188,8 +188,7 @@
 
       <section class="headline" id="section-6">
         <h1>
-          <strong>#60DaysOfMyLife</strong>: These are the songs that start my
-          day
+          <strong>#60DAYSOF</strong> STARTING MY DAY WITH MUSIC 🎵
         </h1>
         <p>BY STEPHANIE ADELINE</p>
 
@@ -701,7 +700,8 @@
   .about {
     color: white;
     max-width: 600px;
-    margin: 50px auto;
+    margin: 200px auto;
+    padding: 16px;
     text-align: left;
     pointer-events: all;
 

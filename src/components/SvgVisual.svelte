@@ -71,7 +71,7 @@
 
     let volume = noSingAlong ? 0.1 : 0.4;
 
-    if (allowAudio === true) {
+    if (allowAudio === true && song) {
       
       song.volume = volume;
       song.play();
@@ -86,7 +86,7 @@
       ? singAlongCollection[i]
       : null;
 
-    if (!song.paused) {
+    if (song && !song.paused && allowAudio === true) {
       song.pause();
     }
   };
@@ -155,10 +155,10 @@
     {#each data as d, i}
       <div
         class={"grid-item-" + index}
-        on:mouseenter={playAudio(i)}
-        on:mouseleave={stopAudio(i)}
-        on:touchstart={playAudio(i)}
-        on:touchend={stopAudio(i)}
+        on:mouseenter={() => {if(d.title !== "None") { playAudio(i)} }}
+        on:mouseleave={() => {if(d.title !== "None") { stopAudio(i)} }}
+        on:touchstart={() => {if(d.title !== "None") { playAudio(i)} }}
+        on:touchend={() => {if(d.title !== "None") { stopAudio(i)} }}
         class:nosingalong={index === 11 && d.sing_along !== "Yes"}
         class:nottaylor={index === 9 && d.artist !== "Taylor Swift"}
         class:notworship={index === 12 && d.genre !== "Worship"}
@@ -191,7 +191,7 @@
             {/if}
           </g>
         </svg>
-        {#if index >= 7 && d.preview}
+        {#if index >= 7}
           <div class="song-title" bind:this={songTitle[i]}>
             <p>{d.title}</p>
           </div>
@@ -245,7 +245,7 @@
   }
 
   g.overlay {
-    opacity: 30%;
+    opacity: 20%;
   }
 
   [class^="grid-item"] {
