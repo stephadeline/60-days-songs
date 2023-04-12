@@ -188,7 +188,7 @@
 
       <section class="headline" id="section-6">
         <h1>
-          <strong>#60DAYSOF</strong> STARTING MY DAY WITH MUSIC 🎵
+          <strong>STARTING ON A HIGH NOTE:</strong><br/>60 days of morning soundtracks🎵
         </h1>
         <p>BY STEPHANIE ADELINE</p>
 
