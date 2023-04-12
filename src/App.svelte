@@ -206,7 +206,7 @@
           <p>
             The from Jan 26 through March 26, I tracked how crappy I felt in the
             morning on <strong>a scale of 0 to 4 clouds</strong>. The more
-            clouds there are, the worst I felt.
+            clouds there are, the worse I felt.
           </p>
           <p>
             Some days are better than others, but <strong
