@@ -449,7 +449,7 @@
       <strong>I love the light and I hate darkness</strong>. My mood, focus and motivation can be easily impacted by weather and how much natural light I'm getting. Waking up to a rain or a dark sky is an absolute nightmare for me. But at the same time, I am not a morning person, and I have the utmost respect for those who wake up before the sun rises.
     </p>  
     <p>
-      <strong>I also hate noise</strong>. I find it difficult to focus on anything or get in a good mood when I'm in a loud environment. And because I can't wake up early enough, I always wake up greeted by too much noise and it makes me really anxious 😰.
+      <strong>I also hate noise</strong>. I find it difficult to focus on anything or get in a good mood when I'm in a loud environment. And because I can't wake up early enough, I always wake up greeted by too much noise, from my dogs barking at random people on the street, to neighbors doing construction, to my family members talking on the phone (we're a loud family), and it makes me really anxious 😰.
     </p>
     <p>
       I thought long and hard about making a viz for this project that really tells y'all about me, and I honestly can't think of a better metaphor to visualize this!
