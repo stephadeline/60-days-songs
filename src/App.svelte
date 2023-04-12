@@ -5,7 +5,7 @@
   let index;
   let offset = 0;
   let progress;
-  let top = screen.width >= 500 ? 0.1 : 0;
+  let top = screen.width >= 500 ? 0.1 : 0.05;
   let threshold = 0.8;
   let bottom = 0.9;
   let section3;
@@ -113,7 +113,7 @@
 {:else if alertWindow === false}
   <div class="audio-button">
     <button on:click={audioToggle}>
-      <img src={audioIcon} width="40px" height="40px" />
+      <img src={audioIcon}/>
     </button>
   </div>
 {/if}
@@ -537,6 +537,9 @@
     top: 0;
     right: 0;
     margin: 10px;
+    @media screen and (max-width: 500px) {
+      margin: 5px;
+    }
     button {
       background: none;
       pointer-events: all;
@@ -549,6 +552,15 @@
       &:hover {
         opacity: 0.7;
       }
+
+      img {
+        width: 40px;
+        height: 40px;
+      @media screen and (max-width: 500px) {
+        width: 30px;
+        height: 30px;
+      }
+    }
     }
   }
 
