@@ -434,7 +434,13 @@
           </p>
         </div>
       </section>
-      <section class="side" />
+      <section class="side">
+      <div class="scrolly-text">
+        <p>
+          I notice my music taste changes frequently, and these 60 days may not fully reflect all kinds of songs I listen to, or feel like listening to in the morning. But this was a fun little experiment to ask myself, what do I feel like listening today? And just play it, sing it. (I knew y'all won't judge! 😆)
+        </p>
+      </div>
+      </section>
     </div>
   </Scroller>
 
