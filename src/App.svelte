@@ -299,25 +299,30 @@
               zone 😂</em
             >
           </p>
-          <p class="note">Note: On three days, I didn't listen to any songs at all.</p>
+          <p class="note">
+            Note: On three days, I didn't listen to any songs at all.
+          </p>
         </div>
       </section>
 
       <section class="side">
         <div class="scrolly-text">
-        <p >
-          One artist in particular stood out the most. Can you guess which one?
-        </p>
-        <button on:click={() => (answer = "Miley Cyrus")}>Miley Cyrus</button>
-        <button on:click={() => (answer = "Taylor Swift")}>Taylor Swift</button>
-        <button on:click={() => (answer = "NIKI")}>NIKI</button>
-        {#if answer}
-          <p >
-            You guessed <strong>{answer}</strong>. Scroll to see if you got that
-            right!
+          <p>
+            One artist in particular stood out the most. Can you guess which
+            one?
           </p>
-        {/if}
-      </div>
+          <button on:click={() => (answer = "Miley Cyrus")}>Miley Cyrus</button>
+          <button on:click={() => (answer = "Taylor Swift")}
+            >Taylor Swift</button
+          >
+          <button on:click={() => (answer = "NIKI")}>NIKI</button>
+          {#if answer}
+            <p>
+              You guessed <strong>{answer}</strong>. Scroll to see if you got
+              that right!
+            </p>
+          {/if}
+        </div>
       </section>
 
       <section class="side">
@@ -408,9 +413,10 @@
           <h3>Singing along also makes the clouds go away! 😊</h3>
           <p>It's on those days when I sang along did I feel my best.</p>
           <p>
-            I'm quite self-conscious about my early-morning singing voice, because who sounds good singing so early in the morning???
-            But, for your ears only, hover over the suns to listen to get a
-            glimpse of my mornings 🌅🎵
+            I'm quite self-conscious about my early-morning singing voice,
+            because who sounds good singing so early in the morning??? But, for
+            your ears only, hover over the suns to listen to get a glimpse of my
+            mornings 🌅🎵
           </p>
         </div>
       </section>
@@ -515,7 +521,7 @@
     </p>
     <iframe
       style="border-radius:12px"
-      src="https://open.spotify.com/embed/playlist/5mTOXm6TMknpxipK4tH0sY?utm_source=generator&theme=0"
+      src="https://open.spotify.com/embed/playlist/5mTOXm6TMknpxipK4tH0sY?utm_source=generator"
       width="100%"
       height="352"
       frameBorder="0"
@@ -530,7 +536,12 @@
           >Master's in Visual Tools to Empower Citizens program</a
         > from the University of Girona and the Visualization for Transparency Foundation.
       </p>
-      <p>All song previews are from <a href="https://developer.spotify.com/documentation/web-api/reference/get-several-tracks">Spotify</a>.</p>
+      <p>
+        All song previews are from <a
+          href="https://developer.spotify.com/documentation/web-api/reference/get-several-tracks"
+          >Spotify</a
+        >.
+      </p>
       <p>
         For the code, please visit this <a
           href="https://github.com/stephadeline/60-days-songs">GitHub repo</a
@@ -541,7 +552,11 @@
         or <a href="https://twitter.com/stephadeline">Twitter</a>.
       </p>
       <img src="src/assets/pups.jpg" class="inline-image" />
-      <p>Thanks for making it all the way to the end of the page! Here's a photo of my dogs Mochi & Sapi – my real sources of sunshine (and sometimes clouds) – as a gift🤍.</p>
+      <p>
+        Thanks for making it all the way to the end of the page! Here's a photo
+        of my dogs Mochi & Sapi – my real sources of sunshine (and sometimes
+        clouds) – as a gift🤍.
+      </p>
     </div>
   </div>
 </div>
@@ -627,9 +642,10 @@
       display: inline-block;
       box-sizing: border-box;
       button {
-        border:#648DA6 1px solid;
-        &:hover, &:active {
-          border: rgb(255,203,3) 1px solid;
+        border: #648da6 1px solid;
+        &:hover,
+        &:active {
+          border: rgb(255, 203, 3) 1px solid;
         }
       }
     }
@@ -766,5 +782,9 @@
   .headline {
     max-width: 500px;
     color: white;
+  }
+
+  h2 {
+    padding-top: 30px;
   }
 </style>
