@@ -303,18 +303,20 @@
       </section>
 
       <section class="side">
-        <p class="scrolly-text">
+        <div class="scrolly-text">
+        <p >
           One artist in particular stood out the most. Can you guess which one?
         </p>
         <button on:click={() => (answer = "Miley Cyrus")}>Miley Cyrus</button>
         <button on:click={() => (answer = "Taylor Swift")}>Taylor Swift</button>
         <button on:click={() => (answer = "NIKI")}>NIKI</button>
         {#if answer}
-          <p class="answer">
+          <p >
             You guessed <strong>{answer}</strong>. Scroll to see if you got that
             right!
           </p>
         {/if}
+      </div>
       </section>
 
       <section class="side">
@@ -545,7 +547,6 @@
 
 <style lang="scss">
   div.alert-audio {
-    // background: rgba(0, 0, 0, 0.8);
     color: white;
     position: fixed;
     top: 0;
@@ -553,7 +554,6 @@
     transform: translate(-50%, 0);
     z-index: 1000;
     max-width: 400px;
-    // padding: 200px;
     font-size: 12px;
     button {
       padding: 5px 10px;
@@ -597,14 +597,10 @@
     color: white;
   }
   .demo {
-    /* background-color: #7FB1CB; */
     width: 100%;
   }
 
   [slot="background"] {
-    /* background-color: rgba(255,62,0,0.05);
-		border-top: 2px solid #ff3e00;
-		border-bottom: 2px solid #ff3e00; */
     font-size: 1.4em;
     overflow: hidden;
     padding: 1em;
@@ -613,8 +609,6 @@
 
   section {
     height: 100vh;
-    // background-color: white;
-    // color: black;
     padding: 1em;
     margin: 0 auto;
     max-width: 400px;
@@ -623,7 +617,6 @@
       pointer-events: all;
     }
     .scrolly-text {
-      // margin-top: 50vh;
       background-color: rgba(255, 255, 255, 0.9);
       border-radius: 5px;
       color: black;
@@ -632,6 +625,12 @@
       max-width: 400px;
       display: inline-block;
       box-sizing: border-box;
+      button {
+        border:#648DA6 1px solid;
+        &:hover, &:active {
+          border: rgb(255,203,3) 1px solid;
+        }
+      }
     }
 
     @media screen and (min-width: 700px) {
@@ -664,12 +663,8 @@
   }
 
   .alarm-button {
-    // position: absolute;
     margin-left: auto;
     margin-right: auto;
-    // left: 0;
-    // right: 0;
-    // top: 70vh;
     text-align: center;
     width: 200px;
     border-radius: 50px;
@@ -683,10 +678,6 @@
     width: 200px;
   }
 
-  .answer {
-    color: white;
-    text-align: left;
-  }
   .key-container-2 {
     max-width: 200px;
     width: 100%;
