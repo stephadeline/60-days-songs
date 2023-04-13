@@ -299,6 +299,7 @@
               zone 😂</em
             >
           </p>
+          <p class="note">Note: On three days, I didn't listen to any songs at all.</p>
         </div>
       </section>
 
@@ -755,6 +756,11 @@
       color: white;
       text-decoration: underline;
     }
+  }
+
+  .note {
+    font-size: 12px;
+    line-height: 15px;
   }
 
   .headline {
