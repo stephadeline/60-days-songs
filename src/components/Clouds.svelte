@@ -1,7 +1,7 @@
 <script>
 
   import key from "./../data/key.json";
-  import { fade, fly, blur } from "svelte/transition";
+  import { fade } from "svelte/transition";
 
 
   // placements
@@ -45,10 +45,6 @@
   export let after = 4
   export let index = 0
 
-  // let cloudProps = { fill: "#f1f1f2", stroke: "none"}
-
-  // let fill="#f1f1f2";
-  // let stroke="none";
 
   $: afterUse = index === 6 ? before : after;
 

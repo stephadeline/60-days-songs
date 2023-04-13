@@ -19,7 +19,7 @@
   let noiseAudio;
   let mileyAudio;
   let taylorAudio;
-  let nikiAudio;
+  let beyonceAudio;
   let answer;
   $: audioIcon = allowAudio
     ? "src/assets/icon_audio-on.svg"
@@ -55,7 +55,7 @@
     }
   };
 
-  $: audios = [alarmAudio, noiseAudio, mileyAudio, taylorAudio, nikiAudio]; // add audio objects
+  $: audios = [alarmAudio, noiseAudio, mileyAudio, taylorAudio, beyonceAudio]; // add audio objects
 
   $: if (allowAudio === true) {
     switch (index) {
@@ -66,13 +66,13 @@
         playAudio(noiseAudio);
         break;
       case 3:
-        playAudio(mileyAudio);
-        break;
-      case 4:
         playAudio(taylorAudio);
         break;
+      case 4:
+        playAudio(mileyAudio);
+        break;
       case 5:
-        playAudio(nikiAudio);
+        playAudio(beyonceAudio);
         break;
       default:
         audios.forEach((a) => a.pause());
@@ -113,7 +113,7 @@
 {:else if alertWindow === false}
   <div class="audio-button">
     <button on:click={audioToggle}>
-      <img src={audioIcon}/>
+      <img src={audioIcon} />
     </button>
   </div>
 {/if}
@@ -163,9 +163,9 @@
           But <strong>listening to music 🎵</strong> helps. Most days, it can
           help to make some of the clouds go away.
           <audio
-            src="https://p.scdn.co/mp3-preview/9fbe346e805ed219204f53324f94557ab557b6d3?cid=774b29d4f13844c495f206cafdad9c86"
-            id="miley-mp3"
-            bind:this={mileyAudio}
+            src="https://p.scdn.co/mp3-preview/57b5f697db04a6f463de366927093882cfd5a00b?cid=cfe923b2d660439caf2b557b21f31221"
+            id="taylor-mp3"
+            bind:this={taylorAudio}
           >
             Your browser does not support the HTML5 Audio element.
           </audio>
@@ -178,9 +178,9 @@
           >.
         </p>
         <audio
-          src="https://p.scdn.co/mp3-preview/8d949db76b94c73e48890b86a7e5d559531cd965?cid=774b29d4f13844c495f206cafdad9c86"
-          id="taylor-mp3"
-          bind:this={taylorAudio}
+          src="https://p.scdn.co/mp3-preview/9fbe346e805ed219204f53324f94557ab557b6d3?cid=774b29d4f13844c495f206cafdad9c86"
+          id="miley-mp3"
+          bind:this={mileyAudio}
         >
           Your browser does not support the HTML5 Audio element.
         </audio>
@@ -188,14 +188,14 @@
 
       <section class="headline" id="section-6">
         <h1>
-          <strong>STARTING ON A HIGH NOTE:</strong><br/>60 days of morning soundtracks🎵
+          <strong>STARTING ON A HIGH NOTE🎵:</strong><br />60 days of morning
+          soundtracks
         </h1>
-        <p>BY STEPHANIE ADELINE</p>
-
+        <p>By Stephanie Adeline</p>
         <audio
-          src="https://p.scdn.co/mp3-preview/3e9b012da3f78d1f1a54c96db15d27335b28d985?cid=774b29d4f13844c495f206cafdad9c86"
-          id="niki-mp3"
-          bind:this={nikiAudio}
+          src="https://p.scdn.co/mp3-preview/b33aaf728bc4a9357d00b4460ba81fde8a1407b2?cid=774b29d4f13844c495f206cafdad9c86"
+          id="beyonce-mp3"
+          bind:this={beyonceAudio}
         >
           Your browser does not support the HTML5 Audio element.
         </audio>
@@ -205,7 +205,9 @@
         <div class="scrolly-text">
           <p>
             The from Jan 26 through March 26, I tracked how crappy I felt in the
-            morning on <strong>a scale of 0 to 4 clouds</strong>. Four clouds mean I had absolutely no motivation to wake up that morning, and zero clouds mean I was super pumped about the day.
+            morning on <strong>a scale of 0 to 4 clouds</strong>. Four clouds
+            mean I had absolutely no motivation to wake up that morning, and
+            zero clouds mean I was super pumped about the day.
           </p>
           <p>
             Some days are better than others, but <strong
@@ -279,18 +281,8 @@
               <p>4</p>
             </div>
           </div>
-          <!-- <div class="slider">
-        <DoubleRangeSlider start={0} end={4}/>
-      </div> -->
         </div>
-        <!-- <img src="src/assets/viskey.png" class="inline-image" /> -->
       </section>
-
-      <!-- <section class="side">
-        <p class="scrolly-text">Some days are better than others. But most of the days were at a 3 or less.
-          <img src="src/assets/histogram-before.png" class="inline-image" />
-        </p>
-      </section> -->
 
       <section class="side">
         <div class="scrolly-text">
@@ -309,12 +301,6 @@
           </p>
         </div>
       </section>
-
-      <!-- <section class="side">
-        <p class="scrolly-text">
-          Hover over the suns to hear the song I listened to that day. {index}
-        </p>
-      </section> -->
 
       <section class="side">
         <p class="scrolly-text">
@@ -342,6 +328,22 @@
 
           <p>
             But Miley and NIKI were SO close! Miley had 6 songs, and NIKI had 5.
+          </p>
+        </div>
+      </section>
+      <section class="side">
+        <div class="scrolly-text">
+          <h3>On repeat!</h3>
+
+          <p>
+            Six songs were played on <strong>more than one mornings</strong>!
+            The song that was played the most was...
+          </p>
+
+          <p>
+            <strong>Flowers by Miley Cyrus</strong>! For a total of 3 times
+            during the first 2 weeks. You can tell I really loved it when it
+            first came out 🤣
           </p>
         </div>
       </section>
@@ -400,12 +402,12 @@
 
       <section class="side">
         <div class="scrolly-text">
-          <h3>Singing along also makes the clouds go away!</h3>
-          <p>It's on those days where I sang along did I feel my best.</p>
+          <h3>Singing along also makes the clouds go away! 😊</h3>
+          <p>It's on those days when I sang along did I feel my best.</p>
           <p>
-            I'm usually self-conscious about my early-morning singing voice,
-            but... For your ears only.. Hover over the suns to listen to get a
-            glimpse of my mornings :)
+            I'm quite self-conscious about my early-morning singing voice, because who sounds good singing so early in the morning???
+            But, for your ears only, hover over the suns to listen to get a
+            glimpse of my mornings 🌅🎵
           </p>
         </div>
       </section>
@@ -416,7 +418,7 @@
           <p>
             I noticed that my early morning music consumption is mainly pop
             songs, but usually, closer to Sundays, I'd listen to some <strong
-              >Worship music</strong
+              >Worship music🙏</strong
             >.
           </p>
         </div>
@@ -429,16 +431,20 @@
               >musical theatre</strong
             >
             fan, and although it doesn't show much here, there were some days that
-            I felt like listening to some <strong>showtunes</strong>.
+            I felt like listening to some <strong>showtunes🎭</strong>.
           </p>
         </div>
       </section>
       <section class="side">
-      <div class="scrolly-text">
-        <p>
-          I notice my music taste changes frequently, and these 60 days may not fully reflect all kinds of songs I listen to, or feel like listening to in the morning. But this was a fun little experiment to ask myself, what do I feel like listening today? And just play it, sing it. (I knew y'all won't judge! 😆)
-        </p>
-      </div>
+        <div class="scrolly-text">
+          <p>
+            I notice my music taste changes frequently, and these 60 days may
+            not fully reflect all kinds of songs I listen to, or feel like
+            listening to in the morning. But this was a fun little experiment to
+            ask myself, what do I feel like listening today? And just play it,
+            sing it. (I knew y'all won't judge! 😆)
+          </p>
+        </div>
       </section>
     </div>
   </Scroller>
@@ -446,13 +452,24 @@
   <div class="about">
     <h2>Why suns ☀️, clouds ☁️ and noise 🔊?</h2>
     <p>
-      <strong>I love the light and I hate darkness</strong>. My mood, focus and motivation can be easily impacted by weather and how much natural light I'm getting. Waking up to a rain or a dark sky is an absolute nightmare for me. But at the same time, I am not a morning person, and I have the utmost respect for those who wake up before the sun rises.
-    </p>  
-    <p>
-      <strong>I also hate noise</strong>. I find it difficult to focus on anything or get in a good mood when I'm in a loud environment. And because I can't wake up early enough, I always wake up greeted by too much noise, from my dogs barking at random people on the street, to neighbors doing construction, to my family members talking on the phone (we're a loud family), and it makes me really anxious 😰.
+      <strong>I love the light and I hate darkness</strong>. My mood, focus and
+      motivation can be easily impacted by weather and how much natural light
+      I'm getting. Waking up to a rain or a dark sky is an absolute nightmare
+      for me. But at the same time, I am not a morning person, and I have the
+      utmost respect for those who wake up before the sun rises.
     </p>
     <p>
-      I thought long and hard about making a viz for this project that really tells y'all about me, and I honestly can't think of a better metaphor to visualize this!
+      <strong>I also hate noise</strong>. I find it difficult to focus on
+      anything or get in a good mood when I'm in a loud environment. And because
+      I can't wake up early enough, I always wake up greeted by too much noise,
+      from my dogs barking at random people on the street, to neighbors doing
+      construction, to my family members talking on the phone (we're a loud
+      family), and it makes me really anxious 😰.
+    </p>
+    <p>
+      I thought long and hard about making a viz for this project that really
+      tells y'all about me, and I honestly can't think of a better metaphor to
+      visualize this!
     </p>
     <h2>What did I learn from this experience?</h2>
     <p>
@@ -510,7 +527,7 @@
           >Master's in Visual Tools to Empower Citizens program</a
         > from the University of Girona and the Visualization for Transparency Foundation.
       </p>
-      <p>All song previews are from Spotify.</p>
+      <p>All song previews are from <a href="https://developer.spotify.com/documentation/web-api/reference/get-several-tracks">Spotify</a>.</p>
       <p>
         For the code, please visit this <a
           href="https://github.com/stephadeline/60-days-songs">GitHub repo</a
@@ -520,6 +537,8 @@
         >
         or <a href="https://twitter.com/stephadeline">Twitter</a>.
       </p>
+      <img src="src/assets/pups.jpg" class="inline-image" />
+      <p>Thanks for making it all the way to the end of the page! Here's a photo of my dogs Mochi & Sapi – my real sources of sunshine (and sometimes clouds) – as a gift🤍.</p>
     </div>
   </div>
 </div>
@@ -565,11 +584,11 @@
       img {
         width: 40px;
         height: 40px;
-      @media screen and (max-width: 500px) {
-        width: 30px;
-        height: 30px;
+        @media screen and (max-width: 500px) {
+          width: 30px;
+          height: 30px;
+        }
       }
-    }
     }
   }
 
@@ -659,7 +678,9 @@
   }
 
   .inline-image {
-    max-width: 350px;
+    margin: 10px auto;
+    border-radius: 5px;
+    width: 200px;
   }
 
   .answer {
@@ -727,7 +748,7 @@
   .about {
     color: white;
     max-width: 600px;
-    margin: 200px auto;
+    margin: 200px auto 0;
     padding: 16px;
     text-align: left;
     pointer-events: all;
@@ -736,6 +757,7 @@
       margin-top: 50px;
       font-size: 12px;
       line-height: 15px;
+      text-align: center;
     }
 
     a {

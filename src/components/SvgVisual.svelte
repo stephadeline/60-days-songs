@@ -10,10 +10,8 @@
   export let highlightedGender;
   export let highlightedMood;
 
-
   let audioCollection = Array.from(data);
   let songTitle = Array.from(data);
-
   let singAlongCollection = Array.from(data);
 
   let isMobile = screen.width <= 500;
@@ -21,6 +19,15 @@
   let row = isMobile ? 12 : 6;
 
   let nSunsPerRow = 60 / row;
+
+  let repeatedSongs = [
+    "Flowers",
+    "Always Remember Us This Way",
+    "Golden Hour",
+    "High School in Jakarta",
+    "The Climb",
+    "good 4 u",
+  ];
 
   $: prop = isMobile ? 1 : 0.5;
 
@@ -46,33 +53,28 @@
 
   $: introTransform = isMobile ? "translate(0, -45)" : "translate(0, -90)";
 
-  // $: if (allowAudio === true) {
-  //     if (index === 4) {
-  //     songSample.play();
-  //   }
-  // }
   export let index = 1;
   $: noSingAlong =
     index === 7 ||
     index === 8 ||
     index === 9 ||
     index === 10 ||
-    index === 12 ||
-    index === 13;
+    index === 11 ||
+    index === 13 ||
+    index === 14;
 
   $: playAudio = function (i) {
     songTitle[i].style.opacity = 1;
 
     var song = noSingAlong
       ? audioCollection[i]
-      : index === 11
+      : index === 12
       ? singAlongCollection[i]
       : null;
 
     let volume = noSingAlong ? 0.1 : 0.4;
 
     if (allowAudio === true && song) {
-      
       song.volume = volume;
       song.play();
     }
@@ -82,7 +84,7 @@
     songTitle[i].style.opacity = 0;
     var song = noSingAlong
       ? audioCollection[i]
-      : index === 11
+      : index === 12
       ? singAlongCollection[i]
       : null;
 
@@ -131,7 +133,7 @@
         />
         {#if index === 2}
           <g
-            in:blur={{ delay: 2000, duration: 1000 }}
+            in:blur={{ delay: 1000, duration: 1000 }}
             out:blur
             transform={introTransform}
           >
@@ -155,17 +157,37 @@
     {#each data as d, i}
       <div
         class={"grid-item-" + index}
-        on:mouseenter={() => {if(d.title !== "None") { playAudio(i)} }}
-        on:mouseleave={() => {if(d.title !== "None") { stopAudio(i)} }}
-        on:touchstart={() => {if(d.title !== "None") { playAudio(i)} }}
-        on:touchend={() => {if(d.title !== "None") { stopAudio(i)} }}
-        class:nosingalong={index === 11 && d.sing_along !== "Yes"}
+        on:mouseenter={() => {
+          if (d.title !== "None") {
+            playAudio(i);
+          }
+        }}
+        on:mouseleave={() => {
+          if (d.title !== "None") {
+            stopAudio(i);
+          }
+        }}
+        on:touchstart={() => {
+          if (d.title !== "None") {
+            playAudio(i);
+          }
+        }}
+        on:touchend={() => {
+          if (d.title !== "None") {
+            stopAudio(i);
+          }
+        }}
+        class:nothighlightedmood={index === 6 &&
+          highlightedMood !== null &&
+          d.before !== highlightedMood}
         class:nottaylor={index === 9 && d.artist !== "Taylor Swift"}
-        class:notworship={index === 12 && d.genre !== "Worship"}
-        class:notmusical={index === 13 && d.genre !== "Showtunes"}
-        class:nothighlighted={index === 10 && highlightedGender !== null && d.gender !== highlightedGender}
-        class:nothighlightedmood={index === 6 && highlightedMood !== null && d.before !== highlightedMood}
-
+        class:notrepeat={index === 10 && !repeatedSongs.includes(d.title)}
+        class:nothighlighted={index === 11 &&
+          highlightedGender !== null &&
+          d.gender !== highlightedGender}
+        class:nosingalong={index === 12 && d.sing_along !== "Yes"}
+        class:notworship={index === 13 && d.genre !== "Worship"}
+        class:notmusical={index === 14 && d.genre !== "Showtunes"}
       >
         <svg
           height={dimension}
@@ -174,12 +196,15 @@
         >
           <g>
             <circle {cx} {cy} r={sunR} fill="#FFCB04" />
-            <Rays
-              gender={d.gender}
-              {index}
-              {dimension}
-              rotating={d.sing_along === "Yes"}
-            />
+            {#if index >= 11}
+              <Rays
+                gender={d.gender}
+                {index}
+                {dimension}
+                rotatingIndex={12}
+                rotating={d.sing_along === "Yes"}
+              />
+            {/if}
             {#if index > 5}
               <Clouds
                 height={dimension}
@@ -197,24 +222,27 @@
           </div>
         {/if}
       </div>
-      {#if (index === 7 || index === 8 || index === 10) && d.preview}
+      {#if (index === 7 || index === 8 || index === 11) && d.preview}
         <audio src={d.preview} bind:this={audioCollection[i]} />
       {/if}
 
       {#if index === 9 && d.artist === "Taylor Swift"}
         <audio src={d.preview} bind:this={audioCollection[i]} />
       {/if}
-      {#if index === 12 && d.genre === "Worship"}
+      {#if index === 10 && repeatedSongs.includes(d.title)}
         <audio src={d.preview} bind:this={audioCollection[i]} />
       {/if}
-      {#if index === 13 && d.genre === "Showtunes"}
-        <audio src={d.preview} bind:this={audioCollection[i]} />
-      {/if}
-      {#if index === 11 && d.sing_along}
+      {#if index === 12 && d.sing_along}
         <audio
           src={"src/assets/audio/" + d.sing_along_track + ".mp3"}
           bind:this={singAlongCollection[i]}
         />
+      {/if}
+      {#if index === 13 && d.genre === "Worship"}
+        <audio src={d.preview} bind:this={audioCollection[i]} />
+      {/if}
+      {#if index === 14 && d.genre === "Showtunes"}
+        <audio src={d.preview} bind:this={audioCollection[i]} />
       {/if}
     {/each}
   </div>
@@ -257,13 +285,6 @@
       pointer-events: none;
     }
   }
-  // .grid-item-9 {
-  //   opacity: 80%;
-
-  //   &:hover {
-  //     opacity: 100%;
-  //   }
-  // }
 
   .song-title {
     font-size: 12px;
@@ -282,7 +303,13 @@
       1px 1px 0 white;
     opacity: 0;
   }
-  .nosingalong, .nottaylor, .notworship, .notmusical, .nothighlighted, .nothighlightedmood {
+  .nosingalong,
+  .nottaylor,
+  .notworship,
+  .notmusical,
+  .nothighlighted,
+  .nothighlightedmood,
+  .notrepeat {
     opacity: 0.2;
   }
   .alarm-button {

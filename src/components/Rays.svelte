@@ -5,12 +5,13 @@
   export let gender = "None";
   export let index;
   export let rotating = true;
+  export let rotatingIndex = 12
   import { fade, fly } from "svelte/transition";
+
 
 </script>
 
-{#if index >= 10}
-<g class:rotating="{index >=11 && rotating === true}">
+<g class:rotating="{index >= rotatingIndex && rotating === true}">
 {#if gender === "Female"}
 <g id="triangles" transform={"scale(" + scale + ")"} in:fade >
   <polygon points="50.0237 .2865 44.3043 15.0021 55.7431 15.0021 50.0237 .2865" fill="#ffcb04" />
@@ -58,7 +59,6 @@
 {/if}
 </g>
 
-{/if}
 
 <style>
   .rotating {
