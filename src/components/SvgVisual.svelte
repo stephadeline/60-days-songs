@@ -111,7 +111,7 @@
 
   {#if index === 1}
     <a href="#section-3" on:click|preventDefault={scrollIntoView}>
-      <button transition:fade class="alarm-button">Wake up!</button>
+      <button in:fade class="alarm-button">Wake up!</button>
     </a>
   {/if}
 {:else if index > 1 && index <= 5}
