@@ -555,7 +555,7 @@
       <p>
         Thanks for making it all the way to the end of the page! Here's a photo
         of my dogs Mochi & Sapi – my real sources of sunshine (and sometimes
-        clouds) – as a gift🤍.
+        clouds) – as a gift to brighten your day🤍☀️.
       </p>
     </div>
   </div>
