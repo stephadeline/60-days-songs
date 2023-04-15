@@ -163,7 +163,7 @@
           But <strong>listening to music 🎵</strong> helps. Most days, it can
           help to make some of the clouds go away.
           <audio
-            src="https://p.scdn.co/mp3-preview/57b5f697db04a6f463de366927093882cfd5a00b?cid=cfe923b2d660439caf2b557b21f31221"
+            src="https://p.scdn.co/mp3-preview/57b5f697db04a6f463de366927093882cfd5a00b"
             id="taylor-mp3"
             bind:this={taylorAudio}
           >
@@ -178,7 +178,7 @@
           >.
         </p>
         <audio
-          src="https://p.scdn.co/mp3-preview/9fbe346e805ed219204f53324f94557ab557b6d3?cid=774b29d4f13844c495f206cafdad9c86"
+          src="https://p.scdn.co/mp3-preview/9fbe346e805ed219204f53324f94557ab557b6d3"
           id="miley-mp3"
           bind:this={mileyAudio}
         >
@@ -193,7 +193,7 @@
         </h1>
         <p>By Stephanie Adeline</p>
         <audio
-          src="https://p.scdn.co/mp3-preview/b33aaf728bc4a9357d00b4460ba81fde8a1407b2?cid=774b29d4f13844c495f206cafdad9c86"
+          src="https://p.scdn.co/mp3-preview/b33aaf728bc4a9357d00b4460ba81fde8a1407b2"
           id="beyonce-mp3"
           bind:this={beyonceAudio}
         >
